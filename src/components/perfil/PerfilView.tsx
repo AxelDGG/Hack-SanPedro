@@ -1,56 +1,173 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { LogOut, PawPrint } from "lucide-react";
+import { ChevronRight, LogOut, PawPrint, Trophy } from "lucide-react";
 import { RequireAuth } from "@/components/auth/RequireAuth";
-import { useSession } from "@/components/providers/SessionProvider";
+import { useSession, type Profile } from "@/components/providers/SessionProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Pagina } from "@/components/layout/Pagina";
 import { Button } from "@/components/ui/Button";
+import { GridInsignias } from "@/components/gamificacion/GridInsignias";
+import { MOTIVOS } from "@/components/gamificacion/insignias";
+import { useGamificacion } from "@/hooks/useGamificacion";
+import { useColonias } from "@/hooks/useColonias";
+import { createClient } from "@/lib/supabase/client";
 import { ROLES } from "@/lib/constants";
+import { haceCuanto } from "@/lib/format";
 
 export function PerfilView() {
-  const router = useRouter();
-  const { signOut } = useSession();
-
   return (
     <Pagina>
       <PageHeader title="Perfil" />
-      <RequireAuth motivo="para ver tu perfil">
-        {(profile) => (
-          <div className="flex flex-col gap-4 px-4">
-            <section className="flex items-center gap-4 rounded-3xl bg-white p-5 ring-1 ring-arena-oscura">
-              <div className="flex size-16 items-center justify-center rounded-full bg-terracota/15 font-display text-2xl font-semibold text-terracota">
-                {profile.nombre.charAt(0).toUpperCase()}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="truncate font-display text-xl font-semibold">{profile.nombre}</p>
-                <span className="mt-1 inline-block rounded-full bg-arena px-2.5 py-0.5 text-xs font-bold uppercase tracking-wide text-tinta-suave">
-                  {ROLES[profile.rol].label}
-                </span>
-              </div>
-            </section>
-
-            <section className="flex items-center justify-between rounded-3xl bg-terracota p-5 text-white">
-              <div>
-                <p className="text-sm font-semibold opacity-90">Tus huellas</p>
-                <p className="font-display text-4xl font-semibold">{profile.puntos}</p>
-              </div>
-              <PawPrint className="size-12 opacity-80" />
-            </section>
-
-            <Button
-              variant="danger"
-              onClick={async () => {
-                await signOut();
-                router.replace("/");
-              }}
-            >
-              <LogOut className="size-5" /> Cerrar sesión
-            </Button>
-          </div>
-        )}
-      </RequireAuth>
+      <RequireAuth motivo="para ver tu perfil">{(profile) => <Contenido profile={profile} />}</RequireAuth>
     </Pagina>
+  );
+}
+
+function Contenido({ profile }: { profile: Profile }) {
+  const router = useRouter();
+  const { signOut, refreshProfile } = useSession();
+  const resumen = useGamificacion(profile.id, profile.puntos);
+  const colonias = useColonias();
+  const [guardandoColonia, setGuardandoColonia] = useState(false);
+  // Optimista: el selector cambia al instante y el perfil se sincroniza después.
+  const [coloniaSel, setColoniaSel] = useState<number | null>(profile.colonia_id);
+
+  async function cambiarColonia(id: string) {
+    setColoniaSel(id ? Number(id) : null);
+    setGuardandoColonia(true);
+    await createClient()
+      .from("profiles")
+      .update({ colonia_id: id ? Number(id) : null })
+      .eq("id", profile.id);
+    await refreshProfile();
+    setGuardandoColonia(false);
+  }
+
+  const ganadas = resumen?.insignias.filter((i) => i.otorgada_at).length ?? 0;
+
+  return (
+    <div className="flex flex-col gap-4 px-4 pb-10">
+      <section className="flex items-center gap-4 rounded-3xl bg-white p-5 ring-1 ring-arena-oscura">
+        <div className="flex size-16 shrink-0 items-center justify-center rounded-full bg-terracota/15 font-display text-2xl font-semibold text-terracota">
+          {profile.nombre.charAt(0).toUpperCase()}
+        </div>
+        <div className="min-w-0 flex-1">
+          <p className="truncate font-display text-xl font-semibold">{profile.nombre}</p>
+          <span className="mt-1 inline-block rounded-full bg-arena px-2.5 py-0.5 text-xs font-bold tracking-wide text-tinta-suave uppercase">
+            {ROLES[profile.rol].label}
+          </span>
+          <label className="mt-2 flex items-center gap-2 text-xs font-semibold text-tinta-suave">
+            Colonia
+            <select
+              value={coloniaSel ?? ""}
+              onChange={(e) => cambiarColonia(e.target.value)}
+              disabled={guardandoColonia}
+              className="min-w-0 flex-1 rounded-lg border border-arena-oscura bg-crema px-2 py-1 text-sm text-tinta"
+              data-testid="colonia"
+            >
+              <option value="">Sin colonia</option>
+              {colonias.map((c) => (
+                <option key={c.id} value={c.id}>
+                  {c.nombre}
+                </option>
+              ))}
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section className="rounded-3xl bg-terracota p-5 text-white">
+        <div className="flex items-center justify-between">
+          <div>
+            <p className="text-sm font-semibold opacity-90">Tus huellas</p>
+            <p className="font-display text-5xl font-semibold" data-testid="huellas">
+              {profile.puntos}
+            </p>
+          </div>
+          <PawPrint className="size-14 opacity-80" />
+        </div>
+        {resumen && (
+          <dl className="mt-4 grid grid-cols-3 gap-2 text-center">
+            {(
+              [
+                ["Reportes", resumen.reportes],
+                ["Confirmaciones", resumen.confirmaciones],
+                ["Casos resueltos", resumen.casos_resueltos],
+              ] as const
+            ).map(([etiqueta, valor]) => (
+              <div key={etiqueta} className="rounded-2xl bg-white/15 px-2 py-2">
+                <dd className="font-display text-2xl font-semibold">{valor}</dd>
+                <dt className="text-[11px] leading-tight font-semibold opacity-90">{etiqueta}</dt>
+              </div>
+            ))}
+          </dl>
+        )}
+      </section>
+
+      <nav className="grid grid-cols-2 gap-2">
+        <Atajo href="/manada" icono={<PawPrint className="size-5" />} titulo="Mi Manada" />
+        <Atajo href="/ranking" icono={<Trophy className="size-5" />} titulo="Ranking" />
+      </nav>
+
+      {resumen && (
+        <>
+          <section>
+            <h2 className="mb-2 flex items-baseline justify-between font-display text-xl font-semibold">
+              Insignias
+              <span className="text-sm font-semibold text-tinta-suave">
+                {ganadas} de {resumen.insignias.length}
+              </span>
+            </h2>
+            <GridInsignias insignias={resumen.insignias} />
+          </section>
+
+          {resumen.recientes.length > 0 && (
+            <section>
+              <h2 className="mb-2 font-display text-xl font-semibold">Actividad reciente</h2>
+              <ul className="divide-y divide-arena rounded-3xl bg-white px-4 ring-1 ring-arena-oscura">
+                {resumen.recientes.map((e) => (
+                  <li key={e.id} className="flex items-center gap-3 py-3">
+                    <span className="flex-1 text-sm">
+                      {e.animal_id ? (
+                        <Link href={`/animal/${e.animal_id}`} className="font-semibold">
+                          {MOTIVOS[e.motivo] ?? e.motivo}
+                        </Link>
+                      ) : (
+                        MOTIVOS[e.motivo] ?? e.motivo
+                      )}
+                      <span className="block text-xs text-tinta-suave">{haceCuanto(e.created_at)}</span>
+                    </span>
+                    <span className="font-display text-lg font-semibold text-terracota">+{e.puntos}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+        </>
+      )}
+
+      <Button
+        variant="danger"
+        onClick={async () => {
+          await signOut();
+          router.replace("/");
+        }}
+      >
+        <LogOut className="size-5" /> Cerrar sesión
+      </Button>
+    </div>
+  );
+}
+
+function Atajo({ href, icono, titulo }: { href: string; icono: React.ReactNode; titulo: string }) {
+  return (
+    <Link href={href} className="flex items-center gap-2 rounded-2xl bg-white px-4 py-3 font-display font-semibold ring-1 ring-arena-oscura">
+      <span className="text-terracota">{icono}</span>
+      <span className="flex-1">{titulo}</span>
+      <ChevronRight className="size-4 text-tinta-suave" />
+    </Link>
   );
 }
