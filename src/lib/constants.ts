@@ -56,8 +56,8 @@ export const HUELLAS = {
   casoResuelto: [20, 15, 10, 5],
 } as const;
 
-/** Centro aproximado de San Pedro Garza García. */
-export const CENTRO_SAN_PEDRO: [number, number] = [25.6573, -100.4026];
+/** Vista inicial del mapa: San Pedro Garza García, sesgada hacia las colonias con más reportes. */
+export const CENTRO_SAN_PEDRO: [number, number] = [25.6635, -100.3930];
 
 export const BUCKET_FOTOS = "fotos";
 

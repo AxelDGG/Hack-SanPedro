@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "next typegen && tsc --noEmit",
+    "pretypecheck": "next typegen",
+    "typecheck": "tsc --noEmit",
     "seed": "tsx --env-file=.env.local scripts/seed.ts",
     "icons": "node scripts/generate-icons.mjs",
     "gen:types": "supabase gen types typescript --project-id xbstmlpqpmghbsqbcfpu --schema public > src/types/database.types.ts"
@@ -17,6 +18,7 @@
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.117.3",
     "leaflet": "^1.9.4",
+    "leaflet.heat": "^0.2.0",
     "lucide-react": "^1.53.0",
     "next": "16.4.0",
     "react": "19.3.0",
@@ -28,6 +30,7 @@
   "devDependencies": {
     "@tailwindcss/turbopack": "^4",
     "@types/leaflet": "^1.9.22",
+    "@types/leaflet.heat": "^0.2.5",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

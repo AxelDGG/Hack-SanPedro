@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Camera, HeartHandshake, Hexagon, MapIcon, PawPrint, Trophy, UserRound, type LucideIcon } from "lucide-react";
@@ -19,7 +20,19 @@ const CUARTO_SLOT: Record<Rol, NavItem> = {
 };
 
 export function BottomNav() {
-  const pathname = usePathname();
+  // usePathname() es dato de la URL: en rutas dinámicas debe ir dentro de <Suspense>.
+  return (
+    <Suspense fallback={<Barra pathname={null} />}>
+      <BarraConRuta />
+    </Suspense>
+  );
+}
+
+function BarraConRuta() {
+  return <Barra pathname={usePathname()} />;
+}
+
+function Barra({ pathname }: { pathname: string | null }) {
   const { profile } = useSession();
   const rol = profile?.rol ?? "vecino";
 
@@ -31,7 +44,7 @@ export function BottomNav() {
 
   return (
     <nav
-      className="fixed inset-x-0 bottom-0 z-[1000] border-t border-arena-oscura bg-crema/95 backdrop-blur"
+      className="fixed inset-x-0 bottom-0 z-[1100] border-t border-arena-oscura bg-crema/95 backdrop-blur"
       style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
       aria-label="Navegación principal"
     >
@@ -74,6 +87,7 @@ function NavLink({ item, active }: { item: NavItem; active: boolean }) {
   );
 }
 
-function isActive(pathname: string, href: string) {
+function isActive(pathname: string | null, href: string) {
+  if (!pathname) return false;
   return href === "/" ? pathname === "/" : pathname.startsWith(href);
 }

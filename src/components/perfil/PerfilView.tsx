@@ -5,6 +5,7 @@ import { LogOut, PawPrint } from "lucide-react";
 import { RequireAuth } from "@/components/auth/RequireAuth";
 import { useSession } from "@/components/providers/SessionProvider";
 import { PageHeader } from "@/components/layout/PageHeader";
+import { Pagina } from "@/components/layout/Pagina";
 import { Button } from "@/components/ui/Button";
 import { ROLES } from "@/lib/constants";
 
@@ -13,7 +14,7 @@ export function PerfilView() {
   const { signOut } = useSession();
 
   return (
-    <>
+    <Pagina>
       <PageHeader title="Perfil" />
       <RequireAuth motivo="para ver tu perfil">
         {(profile) => (
@@ -50,6 +51,6 @@ export function PerfilView() {
           </div>
         )}
       </RequireAuth>
-    </>
+    </Pagina>
   );
 }

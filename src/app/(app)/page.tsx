@@ -1,5 +1,5 @@
-import { EnConstruccion } from "@/components/layout/EnConstruccion";
+import { MapaPrincipal } from "@/components/map/MapaPrincipal";
 
 export default function MapaPage() {
-  return <EnConstruccion titulo="Mapa" fase={1} />;
+  return <MapaPrincipal />;
 }
