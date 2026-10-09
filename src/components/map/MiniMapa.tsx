@@ -4,25 +4,27 @@ import { useEffect, useMemo } from "react";
 import L from "leaflet";
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "@/components/map/mapa.css";
-import { iconoAnimal } from "@/components/map/markerIcon";
-import type { Especie } from "@/lib/constants";
+import "./mapa.css";
+import { iconoAnimal } from "./markerIcon";
+import type { Especie, Estado } from "@/lib/constants";
 
 interface Props {
   lat: number;
   lng: number;
   especie: Especie;
-  onMover: (lat: number, lng: number) => void;
+  estado?: Estado;
+  /** Si se pasa, el pin se puede arrastrar o mover tocando el mapa. */
+  onMover?: (lat: number, lng: number) => void;
 }
 
-/** Mapa pequeño con el pin del reporte; se puede arrastrar o tocar para ajustar la ubicación. */
-export default function MiniMapa({ lat, lng, especie, onMover }: Props) {
-  const icono = iconoAnimal({ estado: "avistado", especie, urgente: false, nuevo: false, seleccionado: false });
+/** Mapa pequeño con un solo pin; editable cuando recibe `onMover`. */
+export default function MiniMapa({ lat, lng, especie, estado = "avistado", onMover }: Props) {
+  const icono = iconoAnimal({ estado, especie, urgente: false, nuevo: false, seleccionado: false });
   const handlers = useMemo<L.LeafletEventHandlerFnMap>(
     () => ({
       dragend: (e) => {
         const p = (e.target as L.Marker).getLatLng();
-        onMover(p.lat, p.lng);
+        onMover?.(p.lat, p.lng);
       },
     }),
     [onMover],
@@ -31,9 +33,9 @@ export default function MiniMapa({ lat, lng, especie, onMover }: Props) {
   return (
     <MapContainer center={[lat, lng]} zoom={17} zoomControl={false} attributionControl={false} className="h-full w-full">
       <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} />
-      <Marker position={[lat, lng]} icon={icono} draggable eventHandlers={handlers} />
+      <Marker position={[lat, lng]} icon={icono} draggable={!!onMover} eventHandlers={handlers} />
       <Seguir lat={lat} lng={lng} />
-      <TocarParaMover onMover={onMover} />
+      {onMover && <TocarParaMover onMover={onMover} />}
     </MapContainer>
   );
 }

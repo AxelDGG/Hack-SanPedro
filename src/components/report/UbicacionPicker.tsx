@@ -5,7 +5,7 @@ import { Crosshair, MapPin } from "lucide-react";
 import type { Especie } from "@/lib/constants";
 import type { Posicion } from "@/hooks/useGeolocation";
 
-const MiniMapa = dynamic(() => import("./MiniMapa"), {
+const MiniMapa = dynamic(() => import("@/components/map/MiniMapa"), {
   ssr: false,
   loading: () => <div className="size-full animate-pulse bg-arena" />,
 });
