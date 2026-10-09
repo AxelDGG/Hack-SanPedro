@@ -38,10 +38,14 @@ export function ReporteExitoso({ resultado, esConfirmacion, onOtro }: Props) {
         </p>
       </div>
 
-      {resultado.puntos > 0 && (
+      {resultado.puntos > 0 ? (
         <p className="rounded-full bg-terracota/10 px-5 py-2 font-display text-2xl font-semibold text-terracota">
           +{resultado.puntos} huellas
         </p>
+      ) : (
+        esConfirmacion && (
+          <p className="text-sm text-tinta-suave">Ya habías sumado huellas por este animal; tu avistamiento igual cuenta.</p>
+        )
       )}
 
       {resultado.insignias.length > 0 && (

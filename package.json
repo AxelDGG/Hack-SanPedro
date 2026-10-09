@@ -12,7 +12,8 @@
     "typecheck": "tsc --noEmit",
     "seed": "tsx --env-file=.env.local scripts/seed.ts",
     "icons": "node scripts/generate-icons.mjs",
-    "gen:types": "supabase gen types typescript --project-id xbstmlpqpmghbsqbcfpu --schema public > src/types/database.types.ts"
+    "gen:types": "supabase gen types typescript --project-id xbstmlpqpmghbsqbcfpu --schema public > src/types/database.types.ts",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.132.1",
@@ -29,6 +30,7 @@
     "zod": "^4.6.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.0",
     "@tailwindcss/turbopack": "^4",
     "@types/leaflet": "^1.9.22",
     "@types/leaflet.heat": "^0.2.5",
