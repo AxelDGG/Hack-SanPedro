@@ -13,14 +13,15 @@ import { LineaDeTiempo } from "./LineaDeTiempo";
 import { ProgresoEstado } from "./ProgresoEstado";
 import { StatusPill } from "./StatusPill";
 import { Urgencia } from "./Urgencia";
+import { AccionesRescate } from "@/components/rescate/AccionesRescate";
 
 const MiniMapa = dynamic(() => import("@/components/map/MiniMapa"), {
   ssr: false,
   loading: () => <div className="size-full animate-pulse bg-arena" />,
 });
 
-/** Ficha pública del animal; `acciones` permite que cada rol agregue sus botones. */
-export function FichaAnimal({ id, acciones }: { id: string; acciones?: React.ReactNode }) {
+/** Ficha pública del animal; rescatistas y municipio ven además sus acciones. */
+export function FichaAnimal({ id }: { id: string }) {
   const { animal, avistamientos, cambios, estado } = useFichaAnimal(id);
   const [aviso, setAviso] = useState<string | null>(null);
 
@@ -119,7 +120,7 @@ export function FichaAnimal({ id, acciones }: { id: string; acciones?: React.Rea
         <MiniMapa lat={animal.lat} lng={animal.lng} especie={animal.especie} estado={animal.estado} />
       </div>
 
-      {acciones}
+      <AccionesRescate animalId={animal.id} nombre={nombre} estado={animal.estado} rescatistaId={animal.rescatista_id} />
 
       {(animal.estado === "avistado" || animal.estado === "en_atencion") && (
         <Link href={`/reportar?animal=${animal.id}`} className={buttonClass("secondary")}>
