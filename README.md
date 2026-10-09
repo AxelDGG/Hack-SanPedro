@@ -20,12 +20,28 @@ Vecinos reportan avistamientos con foto y ubicación, rescatistas actualizan el 
 |---|---|---|
 | 0 | Base: proyecto, esquema SQL, RLS, auth, layout, PWA | ✅ |
 | 1 | Mapa en vivo, marcadores por estado, ubicación, calor, datos demo | ✅ |
-| 2 | Reportar con foto + GPS + IA | ⏳ |
-| 3 | Detección de duplicados ("¿Es este?") | ⏳ |
-| 4 | Ficha del animal | ⏳ |
-| 5 | Panel de rescatista | ⏳ |
-| 6 | Dashboard del municipio (H3) | ⏳ |
-| 7 | Gamificación (insignias, Mi Manada, ranking) | ⏳ |
+| 2 | Reportar con foto + GPS + IA | ✅ |
+| 3 | Detección de duplicados ("¿Es este?") y "Lo vi también" | ✅ |
+| 4 | Ficha del animal con historia en vivo | ✅ |
+| 5 | Panel de rescatista | ✅ |
+| 6 | Dashboard del municipio (H3) | ✅ |
+| 7 | Gamificación (huellas, insignias, Mi Manada, ranking, avisos en vivo) | ✅ |
+
+## Recorrido de la demo
+
+1. **Vecina** (celular, botón *Vecina* en `/login`) → botón de cámara → toma foto → la IA llena especie, condición y urgencia → si hay un animal parecido cerca, la app pregunta "¿Es alguno de estos?" → publicar (+10 huellas).
+2. **Otra pantalla** con el mapa abierto: el pin cae con la etiqueta "NUEVO" y aparece el aviso "Nuevo reporte…".
+3. **Rescatista** (`/rescate`): casos por urgencia y distancia → *Tomar caso* → *Cambiar estado* → Rescatado.
+4. **Municipio** (`/municipio`): el indicador "En la calle" baja y el hexágono se actualiza en vivo; zonas prioritarias para esterilizar y métricas por mes.
+5. La vecina recibe al instante el aviso "+20 huellas · ¡ya está a salvo!" y lo ve en *Mi Manada*.
+
+## IA de visión
+
+`/api/analyze` recibe la foto (ya reducida a 1280 px en el navegador) y usa structured outputs con un esquema Zod (`src/lib/ai/schema.ts`). La respuesta incluye `es_animal`, `especie`, `rasgos`, `condiciones`, `urgencia` (1–5), `confianza` y `resumen`.
+
+- Mientras `AI_MOCK=true`, o mientras falte la key o el modelo, responde un **análisis simulado** que la interfaz etiqueta como tal.
+- Para activar la IA real: `ANTHROPIC_API_KEY=…`, `ANTHROPIC_MODEL=<modelo elegido>` y `AI_MOCK=false`.
+- Si la IA falla o tarda, el formulario se puede llenar a mano.
 
 ## Setup local
 
@@ -97,6 +113,7 @@ npm run dev:https    # HTTPS local: necesario para GPS y cámara desde el celula
 | `npm run typecheck` | Tipos de rutas + `tsc --noEmit` |
 | `npm run seed` | Datos demo (ver arriba) |
 | `npm run gen:types` | Regenera `src/types/database.types.ts` |
+| `npm run test:e2e` | Pruebas end-to-end con Playwright (ver abajo) |
 | `npm run icons` | Regenera los íconos PWA desde `src/app/icon.svg` |
 
 ## Arquitectura
@@ -106,8 +123,11 @@ supabase/migrations/   Esquema, funciones (RPC), RLS, storage y realtime
 scripts/               seed.ts, generadores de íconos e ilustraciones
 public/placeholders/   Ilustraciones originales para los datos demo
 src/app/               Rutas (App Router). (app)/ lleva la barra inferior
-src/components/        map/, animal/, auth/, layout/, perfil/, ui/
-src/hooks/             useRealtimeAnimals, useGeolocation, useColonias
+src/components/        map/, report/, animal/, rescate/, dashboard/, gamificacion/, auth/, layout/, perfil/, ui/
+src/lib/ai/            Análisis de foto (servidor) y esquema compartido
+src/lib/geo/zonas.ts   Agrupación H3, escala de color y colonia más cercana
+e2e/                   Pruebas Playwright por fase + criterio de éxito
+src/hooks/             useRealtimeAnimals, useFichaAnimal, useCasos, useStatsMensuales, useGamificacion…
 src/lib/               supabase/ (clientes), constants, format
 src/types/             Tipos generados de Supabase
 ```
@@ -121,6 +141,32 @@ src/types/             Tipos generados de Supabase
 - **Caso resuelto** (el animal llega a rescatado o más): cada persona que lo reportó o confirmó gana huellas según su orden de llegada. El 1º recibe +20, el 2º +15, el 3º +10 y del 4º en adelante +5. Se paga una sola vez por animal.
 
 **Colonias.** Los centros se tomaron de OpenStreetMap (Nominatim). Cada animal se asigna a la colonia más cercana; si se consiguen polígonos oficiales, se pueden sustituir.
+
+## Pruebas
+
+`npm run test:e2e` corre 20 pruebas con Playwright en un Chromium móvil sin ventana, con GPS simulado. Levanta `npm run dev` si no está corriendo.
+
+- Cubren todas las fases y el **criterio de éxito completo** (`e2e/criterio-exito.spec.ts`) con cuatro dispositivos simultáneos: vecina, mapa, rescatista y municipio.
+- Usan la base configurada en `.env.local` y **borran lo que crean**: animales, huellas y fotos.
+- La primera vez instala el navegador:
+
+```bash
+npx playwright install chromium
+```
+
+## Accesibilidad y color
+
+Los colores de estado (rojo, ámbar, azul, violeta y verde) y la escala de los hexágonos se validaron contra daltonismo y contraste.
+
+- Los pines de casos resueltos van rellenos, así que el estado no depende solo del color.
+- Las gráficas tienen tooltip por mes, navegación con teclado y vista de tabla.
+
+## Limitaciones conocidas
+
+- **Fotos huérfanas:** la foto se sube en cuanto se elige, para ganar tiempo. Si el usuario abandona el reporte, la foto queda en Storage sin usarse.
+- **Colonias aproximadas:** se usan los centros de OpenStreetMap, no polígonos oficiales.
+- **Modo demo público:** con `NEXT_PUBLIC_DEMO_MODE=true` cualquiera puede entrar como cualquier rol. Desactívalo fuera de la demo.
+- **Seguridad:** Supabase recomienda activar *Leaked password protection* en *Authentication → Password security*.
 
 ## Deploy en Vercel
 
