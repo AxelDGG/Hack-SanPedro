@@ -26,3 +26,8 @@ export function distancia(metros: number): string {
 export function fechaCorta(fecha: string | Date): string {
   return new Date(fecha).toLocaleDateString("es-MX", { day: "numeric", month: "short", year: "numeric" });
 }
+
+/** "1 gato", "3 gatos" */
+export function plural(n: number, singular: string, varios = `${singular}s`): string {
+  return `${n} ${n === 1 ? singular : varios}`;
+}

@@ -26,6 +26,10 @@ export function iconoAnimal(o: Opciones): L.DivIcon {
   if (enCache) return enCache;
 
   const color = ESTADOS[o.estado].color;
+  // Segunda codificación además del color: casos resueltos van rellenos (silueta blanca).
+  const resuelto = o.estado === "rescatado" || o.estado === "esterilizado" || o.estado === "adoptado";
+  const fondo = resuelto ? color : "#fff";
+  const glifo = resuelto ? "#fff" : color;
   const clases = [
     "cos-pin",
     o.urgente && "cos-pin--urgente",
@@ -42,8 +46,8 @@ export function iconoAnimal(o: Opciones): L.DivIcon {
     html: `<div class="${clases}" style="--c:${color}">
       <svg viewBox="0 0 34 44" width="34" height="44" aria-hidden="true">
         <path d="M17 1.5C8.4 1.5 1.5 8.3 1.5 16.8 1.5 28.4 17 42.5 17 42.5s15.5-14.1 15.5-25.7C32.5 8.3 25.6 1.5 17 1.5z" fill="${color}" stroke="#fff" stroke-width="2.5"/>
-        <circle cx="17" cy="16.5" r="10.5" fill="#fff"/>
-        <svg x="8" y="7.5" width="18" height="18" viewBox="0 0 24 24" fill="${color}">${GLIFOS[o.especie]}</svg>
+        <circle cx="17" cy="16.5" r="10.5" fill="${fondo}" stroke="#fff" stroke-width="${resuelto ? 1.5 : 0}"/>
+        <svg x="8" y="7.5" width="18" height="18" viewBox="0 0 24 24" fill="${glifo}">${GLIFOS[o.especie]}</svg>
       </svg>
     </div>`,
   });

@@ -11,11 +11,11 @@
   --color-salvia: #1f7a6d;
   --color-ambar: #f2a23a;
 
-  --color-estado-avistado: #e2583e;
-  --color-estado-en-atencion: #f2a23a;
-  --color-estado-rescatado: #3d8bd9;
-  --color-estado-esterilizado: #8e6bd8;
-  --color-estado-adoptado: #3baa6b;
+  --color-estado-avistado: #e34948;
+  --color-estado-en-atencion: #eda100;
+  --color-estado-rescatado: #2a78d6;
+  --color-estado-esterilizado: #4a3aa7;
+  --color-estado-adoptado: #008300;
 
   --font-display: var(--font-fredoka), ui-rounded, system-ui, sans-serif;
   --font-sans: var(--font-nunito), system-ui, sans-serif;

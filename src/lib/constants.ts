@@ -5,12 +5,16 @@ export type Especie = Enums<"especie_animal">;
 export type Condicion = Enums<"condicion_animal">;
 export type Rol = Enums<"rol_usuario">;
 
+/**
+ * Colores por estado, validados para daltonismo (todos los pares; rojo↔verde queda en la banda
+ * de advertencia, por eso los pines de casos resueltos además van rellenos).
+ */
 export const ESTADOS: Record<Estado, { label: string; color: string; descripcion: string }> = {
-  avistado: { label: "Avistado", color: "#E2583E", descripcion: "Visto en la calle, sin atender" },
-  en_atencion: { label: "En atención", color: "#F2A23A", descripcion: "Un rescatista tomó el caso" },
-  rescatado: { label: "Rescatado", color: "#3D8BD9", descripcion: "Fuera de la calle" },
-  esterilizado: { label: "Esterilizado", color: "#8E6BD8", descripcion: "Esterilizado y a salvo" },
-  adoptado: { label: "Adoptado", color: "#3BAA6B", descripcion: "¡Encontró hogar!" },
+  avistado: { label: "Avistado", color: "#e34948", descripcion: "Visto en la calle, sin atender" },
+  en_atencion: { label: "En atención", color: "#eda100", descripcion: "Un rescatista tomó el caso" },
+  rescatado: { label: "Rescatado", color: "#2a78d6", descripcion: "Fuera de la calle" },
+  esterilizado: { label: "Esterilizado", color: "#4a3aa7", descripcion: "Esterilizado y a salvo" },
+  adoptado: { label: "Adoptado", color: "#008300", descripcion: "¡Encontró hogar!" },
 };
 
 /** Orden del flujo de atención. */
