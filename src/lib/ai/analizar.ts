@@ -55,7 +55,9 @@ export async function analizarFoto(imagen: Buffer, tipo: TipoImagen, pistas?: Pi
   const respuesta = await cliente.messages.parse(
     {
       model: modelo,
-      max_tokens: 2000,
+      // Holgado a propósito: Haiku 5.5 siempre piensa un poco y eso cuenta dentro de max_tokens;
+      // solo se cobra lo que se usa (unos cientos de tokens por foto).
+      max_tokens: 8000,
       system: SISTEMA,
       // Clasificar una foto no requiere razonamiento profundo: esfuerzo bajo = más rápido y barato.
       output_config: { effort: "low", format: zodOutputFormat(AnalisisSchema) },
@@ -180,7 +182,7 @@ export async function analizarPublicacion(texto: string): Promise<{ publicacion:
   const respuesta = await cliente.messages.parse(
     {
       model: process.env.ANTHROPIC_MODEL!,
-      max_tokens: 1500,
+      max_tokens: 8000,
       system: SISTEMA_PUBLICACION,
       output_config: { effort: "low", format: zodOutputFormat(PublicacionSchema) },
       messages: [{ role: "user", content: `Publicación:\n"""\n${texto.slice(0, 3000)}\n"""` }],

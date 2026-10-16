@@ -12,7 +12,7 @@ Vecinos reportan con foto (la IA llena los datos), rescatistas atienden los caso
 - **Supabase**: Postgres + PostGIS, Auth (contraseña y magic link), Storage (fotos) y Realtime (mapa en vivo).
 - **Leaflet + OpenStreetMap** (sin API key), capa de calor con `leaflet.heat`.
 - **H3** (`h3-js`) para agrupar zonas críticas en hexágonos.
-- **IA de visión (Anthropic)** para llenar el reporte con la foto: especie, raza, color, tamaño, sexo, collar, señas, estado aparente y urgencia. También lee publicaciones copiadas de grupos. *El modelo está pendiente de decidir; mientras tanto la app usa un análisis simulado (`AI_MOCK=true`).*
+- **IA de visión (Anthropic)** para llenar el reporte con la foto: especie, raza, color, tamaño, sexo, collar, señas, estado aparente y urgencia. También lee publicaciones copiadas de grupos. Modelo: **Claude Haiku 5.5** (`claude-haiku-5-5`), ~$0.0005 USD por foto. *Sin API key la app usa un análisis simulado.*
 - **Alertas**: notificaciones push de la PWA (`web-push`), correo con **Resend** y avisos en vivo dentro de la app.
 - **Registro Municipal de Mascotas**: API externa, hoy simulada en [`registro-municipal-api/`](registro-municipal-api) (Hono, deploy aparte).
 - Deploy en **Vercel**.
@@ -87,7 +87,7 @@ La llave se queda en el servidor (`/api/registro`). Cuando exista la API oficial
 `/api/analyze` recibe la foto (ya reducida a 1280 px en el navegador) y usa structured outputs con un esquema Zod (`src/lib/ai/schema.ts`). La respuesta incluye `es_animal` (solo perros y gatos), `especie`, `raza`, `color`, `tamano`, `sexo`, `collar`, `rasgos`, `condiciones`, `urgencia` (1–5), `confianza` y `resumen`. `/api/analizar-publicacion` hace lo mismo con el texto de una publicación de un grupo.
 
 - Mientras `AI_MOCK=true`, o mientras falte la key o el modelo, responde un **análisis simulado** que la interfaz etiqueta como tal. El simulado reconoce las ilustraciones demo (`public/placeholders`) por su huella y color (`npm run huellas-demo` regenera `src/lib/ai/huellas-demo.json`); con fotos reales da una respuesta de ejemplo.
-- Para activar la IA real: `ANTHROPIC_API_KEY=…`, `ANTHROPIC_MODEL=<modelo elegido>` y `AI_MOCK=false`.
+- Para activar la IA real: `ANTHROPIC_API_KEY=…` (de [platform.claude.com](https://platform.claude.com), con créditos prepagados; un plan de claude.ai no sirve para la app), `ANTHROPIC_MODEL=claude-haiku-5-5` y `AI_MOCK=false`.
 - Si la IA falla o tarda, el formulario se puede llenar a mano.
 
 ## Setup local
