@@ -9,7 +9,8 @@ CallejerOS pueda integrarse desde ya: consultar el padrón, buscar coincidencias
 la calle y las mascotas registradas, avisar a la familia y reportar extravíos.
 
 - TypeScript + [Hono](https://hono.dev). Sin base de datos: los datos son JSON generados de forma determinista.
-- Todas las respuestas llevan el encabezado `X-Simulacion: true`. CORS abierto a cualquier origen.
+- Todas las respuestas llevan el encabezado `X-Simulacion: true`. CORS cerrado salvo los orígenes de `CORS_ORIGENES`.
+- Publicado en **https://callejeros-registro.vercel.app** (proyecto `callejeros-registro` de Vercel).
 - Documentación navegable con consola “Probar” en `GET /` y especificación en `GET /openapi.json` (OpenAPI 3.1).
 
 ## Inicio rápido
@@ -36,7 +37,7 @@ npx tsc --noEmit     # verificación de tipos
 | Variable | Uso |
 | --- | --- |
 | `REGISTRO_API_KEY` | Clave que deben enviar los clientes en `X-Api-Key`. Si no está definida se usa `demo-callejeros-2026` y la página `/` la muestra. **En Vercel es obligatoria**: sin ella, las rutas protegidas responden `503`. |
-| `CORS_ORIGENES` | Orígenes de navegador autorizados, separados por coma (p. ej. `https://callejeros.vercel.app`). Vacío = ninguno: la app principal llama de servidor a servidor y no lo necesita. |
+| `CORS_ORIGENES` | Orígenes de navegador autorizados, separados por coma (p. ej. `https://callejeros-six.vercel.app`). Vacío = ninguno: la app principal llama de servidor a servidor y no lo necesita. |
 | `PORT` | Sólo en local (por defecto 4000). |
 
 **En la app principal (CallejerOS)**
@@ -236,17 +237,17 @@ otra fuente.
 
 ## Despliegue en Vercel (proyecto separado)
 
+Publicado en https://callejeros-registro.vercel.app, proyecto `callejeros-registro`, con la CLI desde esta carpeta:
+
+```bash
+cd registro-municipal-api && vercel deploy --prod
+```
+
 Hono funciona en Vercel sin configuración: `src/index.ts` exporta la app por defecto y los archivos de
-`public/` se sirven desde la CDN (no hace falta `vercel.json`).
-
-1. En Vercel: **Add New → Project**, importa el repositorio y en **Root Directory** elige `registro-municipal-api`.
-   El preset se detecta como **Hono**; deja los comandos por defecto.
-2. En **Environment Variables** agrega `REGISTRO_API_KEY` con una clave propia (Production y Preview).
-3. Deploy. Comprueba `https://<proyecto>.vercel.app/salud` y abre `/` para la documentación.
-4. En la app principal define `REGISTRO_API_URL=https://<proyecto>.vercel.app` y el mismo `REGISTRO_API_KEY`.
-
-Con la CLI: `cd registro-municipal-api && vercel link && vercel env add REGISTRO_API_KEY && vercel --prod`.
-Para probar el comportamiento de Vercel en local: `vercel dev`.
+`public/` se sirven desde la CDN (no hace falta `vercel.json`). La variable `REGISTRO_API_KEY` ya está
+cargada en Production; la app principal usa la misma en su `REGISTRO_API_KEY`. Para probar el
+comportamiento de Vercel en local: `vercel dev`. Los pasos para hacerlo importando el repo están en el
+[HISTORIAL](../HISTORIAL.md) de CallejerOS.
 
 Limitaciones: avisos y extravíos viven en memoria por instancia; en Vercel se pierden cuando la instancia se
 recicla y dos peticiones pueden caer en instancias distintas. En Vercel `/fotos/*` lo sirve la CDN desde
@@ -254,10 +255,8 @@ recicla y dos peticiones pueden caer en instancias distintas. En Vercel `/fotos/
 
 ### Convivencia con la app principal
 
-Esta carpeta vive dentro del repositorio de CallejerOS. El `tsconfig.json` raíz incluye `**/*.ts`, así que el
-chequeo de tipos de Next también revisa estos archivos y necesita que `registro-municipal-api/node_modules`
-esté instalado (`hono`). Si el build de la app principal falla con “Cannot find module 'hono'”, agrega
-`"registro-municipal-api"` al `exclude` del `tsconfig.json` raíz.
+Esta carpeta vive dentro del repositorio de CallejerOS, pero cada proyecto se instala y compila por separado:
+la app la excluye en su `tsconfig.json`, en `eslint.config.mjs` y en `.vercelignore`.
 
 ## Estructura
 

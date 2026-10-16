@@ -5,6 +5,7 @@ Un solo lugar para los avisos de **perros y gatos** de **San Pedro Garza García
 Vecinos reportan con foto (la IA llena los datos), rescatistas atienden los casos y el municipio ve las zonas críticas para planear campañas de esterilización. Todo con mecánica de juego: huellas (puntos), insignias y ranking por colonia.
 
 > Proyecto para el hackathon del municipio de San Pedro · categoría *Red comunitaria para el bienestar animal*.
+> Cómo se construyó y qué decisiones cambiaron: [HISTORIAL.md](HISTORIAL.md).
 
 ## Stack
 
@@ -13,23 +14,18 @@ Vecinos reportan con foto (la IA llena los datos), rescatistas atienden los caso
 - **Leaflet + OpenStreetMap** (sin API key), capa de calor con `leaflet.heat`.
 - **H3** (`h3-js`) para agrupar zonas críticas en hexágonos.
 - **IA de visión (Anthropic)** para llenar el reporte con la foto: especie, raza, color, tamaño, sexo, collar, señas, estado aparente y urgencia. También lee publicaciones copiadas de grupos. Modelo: **Claude Haiku 5.5** (`claude-haiku-5-5`), ~$0.0005 USD por foto. *Sin API key la app usa un análisis simulado.*
-- **Alertas**: notificaciones push de la PWA (`web-push`), correo con **Resend** y avisos en vivo dentro de la app.
+- **Alertas**: notificaciones push de la PWA (`web-push`), correo con **Gmail** (`nodemailer`; Resend queda de respaldo) y avisos en vivo dentro de la app.
 - **Registro Municipal de Mascotas**: API externa, hoy simulada en [`registro-municipal-api/`](registro-municipal-api) (Hono, deploy aparte).
 - Deploy en **Vercel**.
 
-## Estado por fases
+## En línea
 
-| Fase | Contenido | Estado |
-|---|---|---|
-| 0 | Base: proyecto, esquema SQL, RLS, auth, layout, PWA | ✅ |
-| 1 | Mapa en vivo, marcadores por estado, ubicación, calor, datos demo | ✅ |
-| 2 | Reportar con foto + GPS + IA | ✅ |
-| 3 | Detección de duplicados ("¿Es este?") y "Lo vi también" | ✅ |
-| 4 | Ficha del animal con historia en vivo | ✅ |
-| 5 | Panel de rescatista | ✅ |
-| 6 | Dashboard del municipio (H3) | ✅ |
-| 7 | Gamificación (huellas, insignias, Mi Manada, ranking, avisos en vivo) | ✅ |
-| 8 | Taller: perdidos/encontrados/callejeros, asistente para personas mayores, anti-duplicados, alertas por colonia, registro municipal | ✅ |
+| | |
+|---|---|
+| App | https://callejeros-six.vercel.app |
+| Registro municipal (simulado) | https://callejeros-registro.vercel.app |
+| Links cortos para los grupos | `/r/perdido`, `/r/vi`, `/r/callejero` |
+| Código | https://github.com/AxelDGG/HackSanPedro |
 
 ## Recorrido de la demo
 
@@ -69,7 +65,7 @@ Varias capas, de la más fuerte a la más débil:
 ## Alertas por colonia
 
 - Cada vecino **sigue colonias** (la suya se agrega sola al elegirla o con su primer reporte) en `/avisos`.
-- Al publicar, `report_sighting` crea las notificaciones para quienes siguen esa colonia o una cercana (800 m; 2 km si es mascota perdida). La app las muestra en vivo y `/api/alertas` las manda por **push** y **correo** (Resend) una sola vez.
+- Al publicar, `report_sighting` crea las notificaciones para quienes siguen esa colonia o una cercana (800 m; 2 km si es mascota perdida). La app las muestra en vivo y `/api/alertas` las manda por **push** y **correo** (Gmail) una sola vez.
 - La familia de una mascota perdida recibe aviso inmediato cuando alguien la ve o cuando se reporta un animal parecido.
 
 ## Registro Municipal de Mascotas (simulado)
@@ -87,7 +83,8 @@ La llave se queda en el servidor (`/api/registro`). Cuando exista la API oficial
 `/api/analyze` recibe la foto (ya reducida a 1280 px en el navegador) y usa structured outputs con un esquema Zod (`src/lib/ai/schema.ts`). La respuesta incluye `es_animal` (solo perros y gatos), `especie`, `raza`, `color`, `tamano`, `sexo`, `collar`, `rasgos`, `condiciones`, `urgencia` (1–5), `confianza` y `resumen`. `/api/analizar-publicacion` hace lo mismo con el texto de una publicación de un grupo.
 
 - Mientras `AI_MOCK=true`, o mientras falte la key o el modelo, responde un **análisis simulado** que la interfaz etiqueta como tal. El simulado reconoce las ilustraciones demo (`public/placeholders`) por su huella y color (`npm run huellas-demo` regenera `src/lib/ai/huellas-demo.json`); con fotos reales da una respuesta de ejemplo.
-- Para activar la IA real: `ANTHROPIC_API_KEY=…` (de [platform.claude.com](https://platform.claude.com), con créditos prepagados; un plan de claude.ai no sirve para la app), `ANTHROPIC_MODEL=claude-haiku-5-5` y `AI_MOCK=false`.
+- Para activar la IA real: `ANTHROPIC_API_KEY=…` (de [platform.claude.com](https://platform.claude.com), creada dentro de un workspace y con créditos; un plan de claude.ai no sirve para la app), `ANTHROPIC_MODEL=claude-haiku-5-5` y `AI_MOCK=false`.
+- **Producción usa la IA real; en local conviene `AI_MOCK=true`** para que las pruebas no gasten créditos y den siempre el mismo resultado.
 - Si la IA falla o tarda, el formulario se puede llenar a mano.
 
 ## Setup local
@@ -121,8 +118,8 @@ npm run gen:types   # requiere `npx supabase login`
 
 En *Authentication → URL Configuration*:
 
-- **Site URL**: `http://localhost:3000` (en producción, la URL de Vercel).
-- **Redirect URLs**: agrega `http://localhost:3000/**` y `https://<tu-app>.vercel.app/**`.
+- **Site URL**: `https://callejeros-six.vercel.app` (para probar solo en local, `http://localhost:3000`).
+- **Redirect URLs**: agrega `https://callejeros-six.vercel.app/**` y `http://localhost:3000/**`.
 
 El correo incluido en Supabase solo envía unos pocos emails por hora. Para la demo usa contraseña o los botones de **modo demo**. Si quieres registros sin confirmar correo, desactiva *Confirm email* en *Authentication → Providers → Email*.
 
@@ -130,7 +127,7 @@ El correo incluido en Supabase solo envía unos pocos emails por hora. Para la d
 
 - **Invitados**: en *Authentication → Sign In / Providers* activa **Allow anonymous sign-ins**. Sin esto, los links de los grupos piden iniciar sesión.
 - **Push**: genera las llaves con `npx web-push generate-vapid-keys` y ponlas en `NEXT_PUBLIC_VAPID_PUBLIC_KEY` y `VAPID_PRIVATE_KEY`.
-- **Correo**: crea una API key en [Resend](https://resend.com/api-keys) (`RESEND_API_KEY`). Sin dominio verificado, Resend solo entrega al correo dueño de la cuenta; para producción verifica un dominio y cambia `RESEND_FROM`.
+- **Correo**: crea una cuenta de Gmail solo para esto, activa la verificación en dos pasos y genera una [contraseña de aplicación](https://myaccount.google.com/apppasswords). Ponlas en `GMAIL_USER` y `GMAIL_APP_PASSWORD`. Sin dominio propio y a cualquier destinatario, unos 500 correos al día. Resend sigue como alternativa (ver [HISTORIAL.md](HISTORIAL.md)).
 
 ### 4. Registro municipal y colonias
 
@@ -204,7 +201,7 @@ src/types/             Tipos generados de Supabase
 - **Confirmar** el reporte de otro vecino: +5, una vez por animal.
 - **Caso resuelto** (el animal llega a rescatado o más): cada persona que lo reportó o confirmó gana huellas según su orden de llegada. El 1º recibe +20, el 2º +15, el 3º +10 y del 4º en adelante +5. Se paga una sola vez por animal.
 
-**Colonias.** Los centros se tomaron de OpenStreetMap (Nominatim). Cada animal se asigna a la colonia más cercana; si se consiguen polígonos oficiales, se pueden sustituir.
+**Colonias.** 205 colonias del registro municipal (SEPOMEX, Plan de Desarrollo Urbano 2024 y OpenStreetMap), cargadas con `npm run sync:colonias`. Cada animal se asigna a la colonia con el centro más cercano; si se consiguen polígonos oficiales, se pueden sustituir.
 
 ## Seguridad
 
@@ -219,7 +216,7 @@ Vercel: red global (CDN) ── balanceo de carga automático entre regiones y m
    ▼
 Next.js (CallejerOS)
    │  sesión obligatoria en las rutas de API · límites por usuario e IP · validación de entradas
-   │  llaves secretas solo en el servidor (Supabase secret, Anthropic, Resend, registro)
+   │  llaves secretas solo en el servidor (Supabase secret, Anthropic, Gmail, registro)
    ├──────────────► Registro municipal (API aparte): llave X-Api-Key, CORS cerrado, límites
    ▼
 Supabase (Postgres)
@@ -246,18 +243,17 @@ Supabase (Postgres)
 - **Unir duplicados**: un vecino solo puede unir *su* reporte a otro; los ajenos los une un rescatista o el municipio.
 - Funciones internas (`consumir_cuota`, `notificar_reporte`, `reasignar_colonias`…) no se pueden llamar desde el navegador.
 
-**Pendiente de configurar en las plataformas** (no se puede desde el código):
+**En las plataformas**
 
-1. **Supabase → Authentication**: activar *Leaked password protection* y, al abrir el modo invitado al público, un CAPTCHA (Cloudflare Turnstile) para las sesiones anónimas. Supabase ya limita 30 sesiones anónimas por hora por IP.
-2. **Vercel → Firewall** (ya configurado en `callejeros`): *rate limit* de 300 peticiones por minuto por IP en `/api/*` y `/compartir`, *Bot Protection* en "Challenge" y crawlers de IA bloqueados. Si hay un ataque: `vercel firewall attack-mode enable`. La acción *bypass* (excepciones) requiere plan Pro.
-3. **Vercel → Settings**: *Deployment Protection* en los previews y las llaves secretas solo en *Production*.
-4. **Registro municipal**: en su deploy, `REGISTRO_API_KEY` propia (sin ella responde 503) y `CORS_ORIGENES` vacío o con el dominio de la app.
+- **Vercel → Firewall** (configurado en `callejeros`): *rate limit* de 300 peticiones por minuto por IP en `/api/*` y `/compartir`, *Bot Protection* en "Challenge" y crawlers de IA bloqueados. Si hay un ataque: `vercel firewall attack-mode enable`.
+- **Registro municipal** (configurado): `REGISTRO_API_KEY` propia (sin ella responde 503) y `CORS_ORIGENES` vacío.
+- **Pendiente en Supabase → Authentication**: activar *Leaked password protection* y, cuando el modo invitado sea público, un CAPTCHA (Cloudflare Turnstile) para las sesiones anónimas. Supabase ya limita 30 sesiones anónimas por hora por IP.
 
 `e2e/seguridad.spec.ts` comprueba que los teléfonos no se descargan en bloque, que las funciones internas no se pueden llamar, que nadie absorbe reportes ajenos, que no se puede mandar el SMS del registro con un reporte ajeno, los encabezados y que las rutas con IA piden sesión.
 
 ## Pruebas
 
-`npm run test:e2e` corre 34 pruebas con Playwright en un Chromium móvil sin ventana, con GPS simulado. Levanta `npm run dev` si no está corriendo.
+`npm run test:e2e` corre 34 pruebas con Playwright en un Chromium móvil sin ventana, con GPS simulado. Levanta `npm run dev` si no está corriendo. Necesitan `AI_MOCK=true` en `.env.local`: esperan las respuestas del análisis simulado.
 
 - Cubren todas las fases y el **criterio de éxito completo** (`e2e/criterio-exito.spec.ts`) con cuatro dispositivos simultáneos: vecina, mapa, rescatista y municipio.
 - Usan la base configurada en `.env.local` y **borran lo que crean**: animales, huellas y fotos.
@@ -281,14 +277,21 @@ Los colores de estado (rojo, ámbar, azul, violeta y verde) y la escala de los h
 - **Registro simulado en memoria:** los avisos al propietario y los extravíos de la API simulada se pierden al reiniciarla.
 - **Huella de foto:** es de 48 bits; detecta la misma foto reenviada, no la misma mascota en otra foto (eso lo cubre el parecido por rasgos o la IA).
 - **Modo demo público:** con `NEXT_PUBLIC_DEMO_MODE=true` cualquiera puede entrar como cualquier rol. Desactívalo fuera de la demo.
-- **Seguridad:** Supabase recomienda activar *Leaked password protection* en *Authentication → Password security*.
+- **Créditos de IA:** los créditos promocionales actuales vencen el 20 de octubre de 2026; sin saldo, la IA deja de responder y el reporte se llena a mano.
 
 ## Deploy en Vercel
 
-1. Importa el repo en Vercel.
-2. Variables de entorno: `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `NEXT_PUBLIC_SITE_URL`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `AI_MOCK`, `NEXT_PUBLIC_DEMO_MODE`, `DEMO_PASSWORD`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `RESEND_API_KEY`, `RESEND_FROM`, `REGISTRO_API_URL` y `REGISTRO_API_KEY`. `SUPABASE_SECRET_KEY` también hace falta para mandar alertas (`/api/alertas`, solo servidor); nunca como `NEXT_PUBLIC_`.
-3. Agrega la URL de Vercel a las *Redirect URLs* de Supabase.
-4. El registro municipal simulado se despliega como **otro proyecto** de Vercel con *Root Directory* `registro-municipal-api` (ver su README) y su URL va en `REGISTRO_API_URL`.
+Son dos proyectos del equipo *axeldgg's projects*: `callejeros` (la app) y `callejeros-registro` (el registro municipal simulado). Hoy se despliegan con la CLI desde la carpeta local; el repo de GitHub no está conectado a Vercel.
+
+```bash
+vercel deploy --prod                              # app, desde la raíz
+cd registro-municipal-api && vercel deploy --prod # registro
+```
+
+- **Variables de la app** (Production): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY` (solo servidor, para las alertas y los límites de uso), `NEXT_PUBLIC_SITE_URL`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `AI_MOCK`, `NEXT_PUBLIC_DEMO_MODE`, `DEMO_PASSWORD`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `REGISTRO_API_URL` y `REGISTRO_API_KEY`.
+- Las variables `NEXT_PUBLIC_*` se fijan al compilar: si cambian, hay que volver a desplegar.
+- El `.vercelignore` deja fuera el registro, las pruebas y los archivos locales.
+- Pasos para hacerlo importando el repo: [HISTORIAL.md](HISTORIAL.md).
 
 ## Créditos
 
