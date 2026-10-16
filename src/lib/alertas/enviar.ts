@@ -1,12 +1,53 @@
 import "server-only";
 import webpush from "web-push";
+import nodemailer from "nodemailer";
 import { Resend } from "resend";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { TIPOS } from "@/lib/constants";
 
 const pushListo = () =>
   !!process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && !!process.env.VAPID_PRIVATE_KEY && !!process.env.SUPABASE_SECRET_KEY;
-const correoListo = () => !!process.env.RESEND_API_KEY && !!process.env.SUPABASE_SECRET_KEY;
+// Correo: Gmail (cuenta dedicada con contraseña de aplicación) o, si no está, Resend.
+const gmailListo = () => !!process.env.GMAIL_USER && !!process.env.GMAIL_APP_PASSWORD;
+const correoListo = () => (gmailListo() || !!process.env.RESEND_API_KEY) && !!process.env.SUPABASE_SECRET_KEY;
+
+interface Correo {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+}
+
+/** Manda los correos y devuelve cuántos salieron. */
+async function mandarCorreos(correos: Correo[]): Promise<number> {
+  if (gmailListo()) {
+    const gmail = nodemailer.createTransport({
+      service: "gmail",
+      auth: { user: process.env.GMAIL_USER, pass: process.env.GMAIL_APP_PASSWORD!.replace(/\s/g, "") },
+    });
+    let enviados = 0;
+    // Uno por uno: Gmail limita el ritmo y son pocos por reporte.
+    for (const c of correos) {
+      try {
+        await gmail.sendMail({ from: `"CallejerOS" <${process.env.GMAIL_USER}>`, ...c });
+        enviados++;
+      } catch (e) {
+        console.error("[alertas] gmail", (e as Error).message);
+      }
+    }
+    return enviados;
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const { error } = await resend.batch.send(
+    correos.slice(0, 100).map((c) => ({ from: process.env.RESEND_FROM ?? "CallejerOS <onboarding@resend.dev>", ...c })),
+  );
+  if (error) {
+    console.error("[alertas] resend", error.message);
+    return 0;
+  }
+  return correos.length;
+}
 
 let vapidConfigurado = false;
 
@@ -92,24 +133,20 @@ export async function enviarAlertasDe(animalId: string) {
       return !n.email_enviado_at && p?.alertas_email && p.email_alertas;
     });
     if (conCorreo.length) {
-      const resend = new Resend(process.env.RESEND_API_KEY);
       const foto = animal?.foto_portada_url
         ? animal.foto_portada_url.startsWith("http")
           ? animal.foto_portada_url
           : `${sitio()}${animal.foto_portada_url}`
         : null;
       const color = animal ? TIPOS[animal.tipo].color : "#e2583e";
-      const { error } = await resend.batch.send(
+      correos = await mandarCorreos(
         conCorreo.slice(0, 100).map((n) => ({
-          from: process.env.RESEND_FROM ?? "CallejerOS <onboarding@resend.dev>",
           to: prefDe.get(n.user_id)!.email_alertas!,
           subject: n.titulo,
           html: plantillaCorreo({ titulo: n.titulo, cuerpo: n.cuerpo, url: `${sitio()}${n.url}`, foto, color }),
           text: `${n.titulo}\n\n${n.cuerpo}\n\nVer el reporte: ${sitio()}${n.url}`,
         })),
       );
-      if (error) console.error("[alertas] correo", error.message);
-      else correos = conCorreo.length;
     }
     await db
       .from("notificaciones")
