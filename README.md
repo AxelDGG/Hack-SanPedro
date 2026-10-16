@@ -232,7 +232,7 @@ Supabase (Postgres)
 **En la app**
 
 - **Encabezados** (`next.config.ts`): Content-Security-Policy (solo scripts propios; solo se habla con Supabase; mapa de OpenStreetMap), HSTS de 2 años, `X-Frame-Options: DENY` (nadie puede meter la app en un iframe), `nosniff`, `Referrer-Policy` y `Permissions-Policy` (cámara, micrófono y ubicación solo para la app). Sin `X-Powered-By`.
-- **Límites de uso** (`src/lib/seguridad/limite.ts`, contador en Postgres para que valga con varias instancias): análisis con IA 20/h por usuario y 60/h por IP; lectura de publicaciones igual; búsquedas en el registro 40/h; avisos por SMS a familias 5/h; alertas 30/h; compartir 20/h. En desarrollo el margen es ×10.
+- **Límites de uso** (`src/lib/seguridad/limite.ts`, contador en Postgres para que valga con varias instancias): análisis con IA 20/h por usuario (300/h por IP, holgado porque en un evento muchos comparten IP); lectura de publicaciones igual; búsquedas en el registro 40/h; avisos por SMS a familias 5/h; alertas 30/h; compartir 20/h. En desarrollo el margen es ×10.
 - **Rutas de API**: todas piden sesión (o invitado) y validan lo que reciben (tipo y tamaño de foto ≤ 5 MB, texto ≤ 3000 caracteres, formato de folio…).
 - **Registro municipal**: la llave nunca llega al navegador (`/api/registro`). Solo quien hizo un reporte puede mandar el aviso por SMS a la familia (y solo en las 2 horas siguientes) o marcar a su mascota como extraviada o en casa.
 - **Fotos**: el navegador las vuelve a dibujar antes de subirlas, así se borran los metadatos EXIF (incluido el GPS de quien la tomó). Las que llegan por "Compartir" se borran en cuanto el asistente hace su copia limpia.
@@ -249,7 +249,7 @@ Supabase (Postgres)
 **Pendiente de configurar en las plataformas** (no se puede desde el código):
 
 1. **Supabase → Authentication**: activar *Leaked password protection* y, al abrir el modo invitado al público, un CAPTCHA (Cloudflare Turnstile) para las sesiones anónimas. Supabase ya limita 30 sesiones anónimas por hora por IP.
-2. **Vercel → Firewall**: una regla de *rate limit* para `/api/*` (p. ej. 100 peticiones por minuto por IP), *Bot Protection* activado y, si hay un ataque, *Attack Challenge Mode*.
+2. **Vercel → Firewall** (ya configurado en `callejeros`): *rate limit* de 300 peticiones por minuto por IP en `/api/*` y `/compartir`, *Bot Protection* en "Challenge" y crawlers de IA bloqueados. Si hay un ataque: `vercel firewall attack-mode enable`. La acción *bypass* (excepciones) requiere plan Pro.
 3. **Vercel → Settings**: *Deployment Protection* en los previews y las llaves secretas solo en *Production*.
 4. **Registro municipal**: en su deploy, `REGISTRO_API_KEY` propia (sin ella responde 503) y `CORS_ORIGENES` vacío o con el dominio de la app.
 

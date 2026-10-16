@@ -1,0 +1,9 @@
+# La app principal no necesita estos archivos en Vercel.
+# El registro municipal es otro proyecto (Root Directory: registro-municipal-api).
+registro-municipal-api
+e2e
+test-results
+playwright-report
+.next
+node_modules
+.env*.local

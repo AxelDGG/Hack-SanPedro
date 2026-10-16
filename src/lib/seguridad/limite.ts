@@ -6,16 +6,20 @@ import { createAdminClient } from "@/lib/supabase/admin";
  * Límites de uso por hora para las rutas del servidor (contador en Postgres: funciona igual con
  * varias instancias de Vercel, a diferencia de un contador en memoria).
  */
+/**
+ * El límite por usuario frena el abuso individual. El de IP es un tope de respaldo y va holgado:
+ * en un evento o una escuela, decenas de personas salen a internet con la misma IP.
+ */
 export const LIMITES = {
   // La IA cuesta dinero por llamada.
-  analizar: { usuario: 20, ip: 60 },
-  publicacion: { usuario: 20, ip: 60 },
+  analizar: { usuario: 20, ip: 300 },
+  publicacion: { usuario: 20, ip: 300 },
   // Búsquedas en el registro municipal (evita que se raspe el padrón).
-  registro: { usuario: 40, ip: 120 },
+  registro: { usuario: 40, ip: 500 },
   // Avisos por SMS a las familias registradas.
-  avisoPropietario: { usuario: 5, ip: 15 },
-  alertas: { usuario: 30, ip: 90 },
-  compartir: { usuario: 20, ip: 40 },
+  avisoPropietario: { usuario: 5, ip: 40 },
+  alertas: { usuario: 30, ip: 400 },
+  compartir: { usuario: 20, ip: 150 },
 } as const;
 
 /** IP de quien llama. En Vercel la pone la plataforma (no la puede falsear el cliente). */
