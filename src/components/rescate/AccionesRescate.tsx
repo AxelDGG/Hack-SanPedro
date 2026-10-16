@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { CheckCircle2, HandHeart, RefreshCw } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useSession } from "@/components/providers/SessionProvider";
 import { Button } from "@/components/ui/Button";
 import type { Estado } from "@/lib/constants";
+import { EASE_SOFT } from "@/lib/motion";
 import { CambiarEstado } from "./CambiarEstado";
 
 interface Props {
@@ -51,22 +53,31 @@ export function AccionesRescate({ animalId, nombre, estado, rescatistaId }: Prop
         </Button>
       </div>
       {aviso && (
-        <p role="status" className="flex items-center gap-1.5 text-sm font-semibold text-salvia">
+        <motion.p
+          key={aviso}
+          role="status"
+          className="flex items-center gap-1.5 text-sm font-semibold text-salvia"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: EASE_SOFT }}
+        >
           <CheckCircle2 className="size-4" /> {aviso}
-        </p>
+        </motion.p>
       )}
-      {abierto && (
-        <CambiarEstado
-          animalId={animalId}
-          nombre={nombre}
-          estadoActual={estado}
-          onCerrar={() => setAbierto(false)}
-          onListo={(mensaje) => {
-            setAbierto(false);
-            setAviso(mensaje);
-          }}
-        />
-      )}
+      <AnimatePresence>
+        {abierto && (
+          <CambiarEstado
+            animalId={animalId}
+            nombre={nombre}
+            estadoActual={estado}
+            onCerrar={() => setAbierto(false)}
+            onListo={(mensaje) => {
+              setAbierto(false);
+              setAviso(mensaje);
+            }}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

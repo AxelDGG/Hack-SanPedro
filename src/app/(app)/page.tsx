@@ -1,5 +1,5 @@
-import { MapaPrincipal } from "@/components/map/MapaPrincipal";
+import { Inicio } from "@/components/inicio/Inicio";
 
-export default function MapaPage() {
-  return <MapaPrincipal />;
+export default function InicioPage() {
+  return <Inicio />;
 }

@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import type { Condicion, Especie, Estado } from "@/lib/constants";
+import type { Condicion, Especie, Estado, TipoReporte } from "@/lib/constants";
 
 export interface Caso {
   id: string;
+  tipo: TipoReporte;
   especie: Especie;
   apodo: string | null;
   rasgos: string | null;
@@ -31,7 +32,7 @@ async function mios(userId: string): Promise<Caso[]> {
   const { data } = await createClient()
     .from("animals")
     .select(
-      "id, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, rescatista_id, total_avistamientos, visto_ultima_vez, colonias(nombre)",
+      "id, tipo, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, rescatista_id, total_avistamientos, visto_ultima_vez, colonias(nombre)",
     )
     .eq("rescatista_id", userId)
     .neq("estado", "adoptado")

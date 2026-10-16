@@ -1,6 +1,7 @@
 /**
- * Datos demo de CallejerOS: usuarios por rol, ~60 animales, ~150 avistamientos,
- * historial de estados y huellas coherentes con las reglas de la base.
+ * Datos demo de CallejerOS: usuarios por rol, ~70 perros y gatos (callejeros, perdidos y
+ * encontrados), ~170 avistamientos, historial de estados, huellas coherentes con las reglas
+ * de la base, contactos de prueba y avisos de colonia para la vecina demo.
  *
  *   npm run seed            # falla si ya hay datos demo
  *   npm run seed -- --reset # borra usuarios demo y TODOS los animales, y vuelve a sembrar
@@ -9,7 +10,16 @@
  */
 import { createClient } from "@supabase/supabase-js";
 import type { Database, TablesInsert } from "../src/types/database.types";
-import { DEMO_EMAILS, type Condicion, type Especie, type Estado, type Rol } from "../src/lib/constants";
+import {
+  DEMO_EMAILS,
+  type Condicion,
+  type Estado,
+  type Origen,
+  type Rol,
+  type Sexo,
+  type Tamano,
+  type TipoReporte,
+} from "../src/lib/constants";
 
 const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const SECRET = process.env.SUPABASE_SECRET_KEY;
@@ -95,9 +105,13 @@ const CLUSTERS: [string, number][] = [
   ["Casco Urbano", 6],
   ["Vista Montaña", 5],
 ];
-const TOTAL_ANIMALES = 60;
+const TOTAL_ANIMALES = 70;
 
-// El índice de color coincide con la ilustración placeholder (perro-1…8, gato-1…6).
+// El índice coincide con la ilustración placeholder (perro-1…8, gato-1…6).
+const TAMANO_PERRO: Tamano[] = ["mediano", "grande", "chico", "mediano", "chico", "grande", "mediano", "mediano"];
+const RAZAS_PERRO = ["Mestizo", "Mestizo", "Mestizo", "Labrador", "Schnauzer", "Chihuahua", "Pastor Alemán", "French Poodle", "Husky", "Pitbull"];
+const RAZAS_GATO = ["Doméstico pelo corto", "Doméstico pelo corto", "Doméstico pelo corto", "Siamés", "Angora", "Persa"];
+const CONTACTOS = ["Doña Mary", "Juan Pérez", "Lety", "Don Chuy", "Claudia R.", "Familia Garza", "Pepe", "Maru"];
 const COLORES_PERRO = [
   "Café claro",
   "Negro",
@@ -141,7 +155,22 @@ const NOTAS_ESTADO: Record<Estado, string[]> = {
   rescatado: ["Lo llevamos al refugio temporal", "Rescatado, en revisión veterinaria"],
   esterilizado: ["Campaña municipal de esterilización", "Esterilizado y vacunado"],
   adoptado: ["¡Encontró familia!", "Adoptado por una familia de la colonia"],
+  reunido: ["¡Volvió a casa!", "Gracias a los vecinos que avisaron"],
 };
+
+const NOTAS_PERDIDO = [
+  "Se salió cuando abrieron la cochera.",
+  "Es muy miedosa, no la persigan.",
+  "Se asustó con los cohetes.",
+  "Trae collar con su nombre.",
+  "Responde a su nombre, es muy cariñoso.",
+];
+const NOTAS_ENCONTRADO = [
+  "Lo tengo resguardado en mi casa.",
+  "Anda desorientado, parece de casa.",
+  "Trae collar pero sin placa.",
+  "Está bien cuidado, alguien lo debe estar buscando.",
+];
 
 // ───────── Utilidades de BD ─────────
 async function ok<T>(p: PromiseLike<{ data: T | null; error: { message: string } | null }>, que: string): Promise<T> {
@@ -210,6 +239,7 @@ async function main() {
   const avistamientos: TablesInsert<"sightings">[] = [];
   const cambios: TablesInsert<"status_updates">[] = [];
   const huellas: TablesInsert<"point_events">[] = [];
+  const contactos: TablesInsert<"animal_contactos">[] = [];
 
   const ubicaciones: { colonia: string; cluster: boolean }[] = [];
   for (const [colonia, n] of CLUSTERS) for (let i = 0; i < n; i++) ubicaciones.push({ colonia, cluster: true });
@@ -222,12 +252,19 @@ async function main() {
     const centro = coloniaPorNombre.get(colonia)!;
     const base = { lat: centro.lat + gauss() * 0.0008, lng: centro.lng + gauss() * 0.0009 };
 
-    const especie = pesado<Especie>([["perro", 65], ["gato", 30], ["otro", 5]]);
-    const estado = pesado<Estado>(
-      cluster
-        ? [["avistado", 5], ["en_atencion", 2], ["rescatado", 2], ["esterilizado", 1.5], ["adoptado", 1]]
-        : [["avistado", 2], ["en_atencion", 1.5], ["rescatado", 2], ["esterilizado", 2], ["adoptado", 2]],
+    // Los callejeros se concentran en los clusters; perdidos y encontrados salen en todo el municipio.
+    const tipo = pesado<TipoReporte>(
+      cluster ? [["callejero", 75], ["perdido", 13], ["encontrado", 12]] : [["callejero", 35], ["perdido", 35], ["encontrado", 30]],
     );
+    const especie = pesado<"perro" | "gato">([["perro", 68], ["gato", 32]]);
+    const estado =
+      tipo === "callejero"
+        ? pesado<Estado>(
+            cluster
+              ? [["avistado", 5], ["en_atencion", 2], ["rescatado", 2], ["esterilizado", 1.5], ["adoptado", 1]]
+              : [["avistado", 2], ["en_atencion", 1.5], ["rescatado", 2], ["esterilizado", 2], ["adoptado", 2]],
+          )
+        : pesado<Estado>([["avistado", 7], ["reunido", 3]]);
 
     // Condición y urgencia coherentes.
     const condiciones = new Set<Condicion>([pesado<Condicion>([["sano", 40], ["flaco", 30], ["herido", 15], ["cachorro", 15]])]);
@@ -236,24 +273,39 @@ async function main() {
     let urgencia = condiciones.has("herido") ? int(4, 5) : condiciones.has("flaco") ? int(2, 3) : int(1, 2);
     if (condiciones.has("cachorro")) urgencia = Math.min(5, urgencia + 1);
 
-    // Ilustración y rasgos.
+    // Ilustración y rasgos estructurados (lo que la IA llenaría con la foto).
     let foto: string;
+    let color: string;
     let rasgos: string;
+    let raza: string;
+    let tamano: Tamano;
     if (especie === "perro") {
       const i = int(0, COLORES_PERRO.length - 1);
       foto = `/placeholders/perro-${i + 1}.svg`;
-      rasgos = `${COLORES_PERRO[i]}, ${pick(RASGOS_PERRO)}`;
-    } else if (especie === "gato") {
+      color = COLORES_PERRO[i];
+      rasgos = pick(RASGOS_PERRO);
+      raza = tipo === "callejero" ? "Mestizo" : pick(RAZAS_PERRO);
+      tamano = TAMANO_PERRO[i];
+    } else {
       const i = int(0, COLORES_GATO.length - 1);
       foto = `/placeholders/gato-${i + 1}.svg`;
-      rasgos = `${COLORES_GATO[i]}, ${pick(RASGOS_GATO)}`;
-    } else {
-      foto = `/placeholders/otro-${int(1, 2)}.svg`;
-      rasgos = pick(["Conejo blanco", "Tortuga mediana", "Gallina suelta"]);
+      color = COLORES_GATO[i];
+      rasgos = pick(RASGOS_GATO);
+      raza = tipo === "callejero" ? "Doméstico pelo corto" : pick(RAZAS_GATO);
+      tamano = pick<Tamano>(["chico", "mediano"]);
     }
+    const sexo: Sexo | null = tipo === "callejero" && rand() < 0.6 ? null : pick<Sexo>(["macho", "hembra"]);
+    const origen = pesado<Origen>(
+      tipo === "callejero" ? [["app", 80], ["whatsapp", 15], ["facebook", 5]] : [["app", 40], ["whatsapp", 40], ["facebook", 15], ["instagram", 5]],
+    );
 
     // Línea de tiempo: más días de historia para los estados avanzados.
-    const idx = (["avistado", "en_atencion", "rescatado", "esterilizado", "adoptado"] as Estado[]).indexOf(estado);
+    const idx =
+      tipo === "callejero"
+        ? (["avistado", "en_atencion", "rescatado", "esterilizado", "adoptado"] as Estado[]).indexOf(estado)
+        : estado === "reunido"
+          ? 1
+          : 0;
     const duraciones = [int(1, 4), int(1, 6), int(5, 18), int(7, 25)].slice(0, idx).map((d) => d * DIA + int(1, 20) * HORA);
     const historia = duraciones.reduce((s, d) => s + d, 0);
     const recienteEnCasco = estado === "avistado" && colonia === "Casco Urbano" && avistadosRecientesEnCasco < 4;
@@ -264,10 +316,12 @@ async function main() {
     const tiemposEstado: number[] = [];
     let t = creado;
     for (const d of duraciones) tiemposEstado.push((t += d));
-    const finActivo = idx >= 2 ? tiemposEstado[1] : AHORA - HORA; // tras el rescate ya no se ve en la calle
+    // Tras el rescate (o al volver a casa) ya no se ve en la calle.
+    const finActivo = tipo !== "callejero" && idx === 1 ? tiemposEstado[0] : idx >= 2 ? tiemposEstado[1] : AHORA - HORA;
 
     const animalId = crypto.randomUUID();
-    const rescatista = idx >= 1 ? pesado(rescatistas.map((r, i) => [r, i === 0 ? 4 : 3] as [UsuarioDemo, number])) : null;
+    const rescatista =
+      tipo === "callejero" && idx >= 1 ? pesado(rescatistas.map((r, i) => [r, i === 0 ? 4 : 3] as [UsuarioDemo, number])) : null;
 
     // Avistamientos: el primero crea el animal; los demás son confirmaciones.
     const pesoVecino = (v: UsuarioDemo) =>
@@ -291,7 +345,14 @@ async function main() {
         foto_url: i === 0 || rand() < 0.7 ? foto : null,
         lat: punto.lat,
         lng: punto.lng,
-        notas: rand() < 0.6 ? pick(NOTAS) : null,
+        notas:
+          rand() < 0.6
+            ? i === 0 && tipo === "perdido"
+              ? pick(NOTAS_PERDIDO)
+              : i === 0 && tipo === "encontrado"
+                ? pick(NOTAS_ENCONTRADO)
+                : pick(NOTAS)
+            : null,
         es_confirmacion: i > 0,
         created_at: iso(ts),
       });
@@ -300,9 +361,18 @@ async function main() {
 
     animales.push({
       id: animalId,
+      tipo,
       especie,
-      apodo: rand() < 0.5 ? pick(APODOS) : null,
+      // Una mascota perdida siempre tiene nombre; un callejero, a veces apodo.
+      apodo: tipo === "perdido" || (tipo === "callejero" && rand() < 0.5) ? pick(APODOS) : null,
       rasgos,
+      raza,
+      color,
+      tamano,
+      sexo,
+      collar: tipo === "callejero" ? false : rand() < 0.6,
+      origen,
+      perdido_desde: tipo === "perdido" ? iso(creado - int(2, 30) * HORA) : null,
       condiciones: [...condiciones],
       estado,
       urgencia,
@@ -316,10 +386,19 @@ async function main() {
       created_at: iso(creado),
     });
 
+    if (tipo !== "callejero") {
+      contactos.push({
+        animal_id: animalId,
+        nombre: tipo === "perdido" ? pick(CONTACTOS) : reportero.nombre.split(" ")[0],
+        // Números de prueba (81 0000 0xxx): no son de nadie.
+        telefono: `8100000${String(int(100, 999))}`,
+      });
+    }
+
     // Historial de estados.
-    const flujo: Estado[] = ["avistado", "en_atencion", "rescatado", "esterilizado", "adoptado"];
+    const flujo: Estado[] = tipo === "callejero" ? ["avistado", "en_atencion", "rescatado", "esterilizado", "adoptado"] : ["avistado", "reunido"];
     for (let i = 1; i <= idx; i++) {
-      const quien = flujo[i] === "esterilizado" && rand() < 0.4 ? municipio : rescatista!;
+      const quien = tipo !== "callejero" ? reportero : flujo[i] === "esterilizado" && rand() < 0.4 ? municipio : rescatista!;
       cambios.push({
         animal_id: animalId,
         user_id: ids.get(quien.email)!,
@@ -345,8 +424,11 @@ async function main() {
           : { user_id: userId, motivo: "confirmacion", puntos: 5, animal_id: animalId, created_at: iso(ts) },
       );
     }
-    if (idx >= 2) {
+    // Caso resuelto: rescate de un callejero o mascota de vuelta en casa (sin premiar a su familia).
+    const resuelto = tipo === "callejero" ? idx >= 2 : idx === 1;
+    if (resuelto) {
       [...primeraVez.entries()]
+        .filter(([userId]) => !(tipo === "perdido" && userId === reporteroId))
         .sort((a, b) => a[1] - b[1])
         .forEach(([userId], orden) =>
           huellas.push({
@@ -354,7 +436,7 @@ async function main() {
             motivo: "caso_resuelto",
             puntos: [20, 15, 10][orden] ?? 5,
             animal_id: animalId,
-            created_at: iso(tiemposEstado[1]),
+            created_at: iso(tiemposEstado[tipo === "callejero" ? 1 : 0]),
           }),
         );
     }
@@ -365,12 +447,54 @@ async function main() {
   await ok(db.from("sightings").insert(avistamientos), "insertar avistamientos");
   await ok(db.from("status_updates").insert(cambios), "insertar estados");
   await ok(db.from("point_events").insert(huellas), "insertar huellas");
+  await ok(db.from("animal_contactos").insert(contactos), "insertar contactos");
+
+  // 3. Avisos de colonia para la vecina demo: así "Avisos" no aparece vacío en la demo.
+  console.log("🔔 Creando avisos de colonia…");
+  const vecinaId = ids.get(DEMO_EMAILS.vecino)!;
+  const casco = coloniaPorNombre.get("Casco Urbano")!;
+  const cercanos = animales
+    .filter((a) => a.estado === "avistado" && a.reportado_por !== vecinaId)
+    .map((a) => ({ a, d: Math.hypot(a.lat - casco.lat, (a.lng - casco.lng) * 0.9) }))
+    .sort((x, y) => x.d - y.d)
+    .slice(0, 5);
+  const avisos: TablesInsert<"notificaciones">[] = cercanos.map(({ a }, i) => {
+    const esp = a.especie === "gato" ? "gato" : "perro";
+    const nombreColonia = colonias.find((c) => c.id === (a.colonia_id ?? -1))?.nombre ?? "tu zona";
+    return {
+      user_id: vecinaId,
+      animal_id: a.id!,
+      tipo: "reporte_zona",
+      titulo:
+        a.tipo === "perdido"
+          ? `Se busca: ${a.apodo ?? esp} en ${nombreColonia}`
+          : a.tipo === "encontrado"
+            ? `Encontraron un ${esp} en ${nombreColonia}`
+            : `Un ${esp} necesita ayuda en ${nombreColonia}`,
+      cuerpo: `${a.color}. ${a.tipo === "perdido" ? "¿Lo has visto? Avisa en CallejerOS." : "Si lo ves, confirma el reporte."}`,
+      url: `/animal/${a.id}`,
+      leida: i >= 2,
+      push_enviado_at: a.created_at,
+      email_enviado_at: a.created_at,
+      created_at: a.visto_ultima_vez,
+    };
+  });
+  // Las colonias se asignan con un trigger al insertar; se leen de vuelta para los títulos.
+  const asignadas = await ok(db.from("animals").select("id, colonia_id").in("id", cercanos.map(({ a }) => a.id!)), "leer colonias");
+  for (const av of avisos) {
+    const col = asignadas.find((x) => x.id === av.animal_id)?.colonia_id;
+    const nombre = colonias.find((c) => c.id === col)?.nombre;
+    if (nombre) av.titulo = av.titulo.replace("tu zona", nombre);
+  }
+  await ok(db.from("notificaciones").insert(avisos), "insertar avisos");
 
   console.log("🏅 Otorgando insignias…");
   for (const id of ids.values()) await ok(db.rpc("award_badges", { p_user: id }), "insignias");
 
   const conteo = animales.reduce<Record<string, number>>((acc, a) => ({ ...acc, [a.estado!]: (acc[a.estado!] ?? 0) + 1 }), {});
+  const porTipo = animales.reduce<Record<string, number>>((acc, a) => ({ ...acc, [a.tipo!]: (acc[a.tipo!] ?? 0) + 1 }), {});
   console.log(`\n✅ Listo: ${USUARIOS.length} usuarios, ${animales.length} animales, ${avistamientos.length} avistamientos.`);
+  console.log("   Tipos:", porTipo);
   console.log("   Estados:", conteo);
   console.log(`   Usuarios demo: ${Object.values(DEMO_EMAILS).join(", ")} (contraseña: DEMO_PASSWORD)`);
 }

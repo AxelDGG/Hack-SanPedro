@@ -37,13 +37,14 @@ body {
   --nav-h: calc(4.5rem + env(safe-area-inset-bottom));
 }
 
-@keyframes cos-aparecer {
-  from {
-    transform: translateY(-12px);
-    opacity: 0;
-  }
-  to {
-    transform: none;
-    opacity: 1;
+/* Con "reducir movimiento" activo se apagan también las animaciones CSS
+   (las de motion ya las controla <MotionProvider>). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

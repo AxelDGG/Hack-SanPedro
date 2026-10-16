@@ -1,8 +1,11 @@
 "use client";
 
-import { LoaderCircle, LogIn, ShieldAlert } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { LogIn, ShieldAlert } from "lucide-react";
+import { createClient } from "@/lib/supabase/client";
 import { useSession, type Profile } from "@/components/providers/SessionProvider";
 import { ButtonLink } from "@/components/ui/Button";
+import { HuellasCaminando } from "@/components/ui/HuellasCaminando";
 import { ROLES, type Rol } from "@/lib/constants";
 
 interface Props {
@@ -10,6 +13,11 @@ interface Props {
   roles?: Rol[];
   /** Texto para invitar a iniciar sesión. */
   motivo?: string;
+  /**
+   * Sin sesión, entra como invitado (sesión anónima de Supabase) en vez de pedir cuenta:
+   * quien llega desde un link de WhatsApp reporta sin registrarse.
+   */
+  invitado?: boolean;
   children: (profile: Profile) => React.ReactNode;
 }
 
@@ -17,13 +25,30 @@ interface Props {
  * Muestra el contenido solo con sesión (y rol, si aplica).
  * Es solo UX: los permisos reales los imponen RLS y las RPCs.
  */
-export function RequireAuth({ roles, motivo = "para continuar", children }: Props) {
+export function RequireAuth({ roles, motivo = "para continuar", invitado = false, children }: Props) {
   const { user, profile, loading } = useSession();
+  const [errorInvitado, setErrorInvitado] = useState(false);
+  const intentado = useRef(false);
+  const entrandoComoInvitado = invitado && !loading && !user && !errorInvitado;
 
-  if (loading || (user && !profile)) {
+  useEffect(() => {
+    if (!entrandoComoInvitado || intentado.current) return;
+    intentado.current = true;
+    // SessionProvider recibe la sesión nueva por onAuthStateChange y crea el perfil.
+    void createClient()
+      .auth.signInAnonymously()
+      .then(({ error }) => {
+        if (error) {
+          console.error("[invitado]", error.message);
+          setErrorInvitado(true);
+        }
+      });
+  }, [entrandoComoInvitado]);
+
+  if (loading || entrandoComoInvitado || (user && !profile)) {
     return (
-      <div className="flex justify-center py-16 text-tinta-suave">
-        <LoaderCircle className="size-8 animate-spin" aria-label="Cargando" />
+      <div className="flex justify-center py-16 text-terracota/70">
+        <HuellasCaminando />
       </div>
     );
   }

@@ -7,6 +7,9 @@ import type { Tables } from "@/types/database.types";
 export type AnimalMapa = Pick<
   Tables<"animals">,
   | "id"
+  | "tipo"
+  | "origen"
+  | "fusionado_en"
   | "especie"
   | "apodo"
   | "rasgos"
@@ -23,13 +26,13 @@ export type AnimalMapa = Pick<
 >;
 
 const CAMPOS =
-  "id, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at";
+  "id, tipo, origen, fusionado_en, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at";
 
 const SEGUNDOS_RESALTADO = 20;
 
 function aAnimalMapa(row: Tables<"animals">): AnimalMapa {
-  const { id, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at } = row;
-  return { id, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at };
+  const { id, tipo, origen, fusionado_en, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at } = row;
+  return { id, tipo, origen, fusionado_en, especie, apodo, rasgos, condiciones, estado, urgencia, lat, lng, foto_portada_url, visto_ultima_vez, total_avistamientos, colonia_id, created_at };
 }
 
 /**

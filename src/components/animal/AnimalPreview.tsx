@@ -40,7 +40,7 @@ export function AnimalPreview({ animal, colonia, onCerrar }: Props) {
         <div className="min-w-0 flex-1 pr-6">
           <div className="flex flex-wrap items-center gap-2">
             <h2 className="font-display text-lg leading-tight font-semibold">{titulo}</h2>
-            <StatusPill estado={animal.estado} />
+            <StatusPill estado={animal.estado} tipo={animal.tipo} />
           </div>
           {animal.rasgos && <p className="mt-0.5 line-clamp-2 text-sm text-tinta-suave">{animal.rasgos}</p>}
           <div className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-tinta-suave">

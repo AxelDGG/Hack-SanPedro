@@ -2,17 +2,22 @@ import { expect, test } from "@playwright/test";
 import { admin, borrarAnimales } from "./helpers";
 
 test.describe("Fase 1 · mapa", () => {
-  test("muestra los animales, filtra por estado y abre la tarjeta", async ({ page }) => {
-    await page.goto("/");
+  test("muestra los casos abiertos, filtra por tipo y abre la tarjeta", async ({ page }) => {
+    await page.goto("/mapa");
     const pines = page.locator(".cos-pin");
     await expect(pines.first()).toBeVisible();
-    const total = await pines.count();
-    expect(total).toBeGreaterThanOrEqual(50);
+    const abiertos = await pines.count();
+    expect(abiertos).toBeGreaterThanOrEqual(35);
 
-    // Ocultar "Adoptado" reduce los pines visibles.
-    await page.getByRole("button", { name: "Adoptado" }).click();
-    await expect.poll(() => pines.count()).toBeLessThan(total);
-    await page.getByRole("button", { name: "Adoptado" }).click();
+    // Los casos resueltos (rescatados, en casa…) se muestran aparte.
+    await page.getByRole("button", { name: "Resueltos" }).click();
+    await expect.poll(() => pines.count()).toBeGreaterThan(abiertos);
+    await page.getByRole("button", { name: "Resueltos" }).click();
+
+    // Ocultar los callejeros deja solo mascotas perdidas y encontradas.
+    await page.getByTestId("filtro-callejero").click();
+    await expect.poll(() => pines.count()).toBeLessThan(abiertos);
+    await page.getByTestId("filtro-callejero").click();
 
     // Capa de calor.
     await page.getByRole("button", { name: "Calor" }).click();
@@ -20,13 +25,21 @@ test.describe("Fase 1 · mapa", () => {
     await page.getByRole("button", { name: "Calor" }).click();
 
     // Tocar un pin abre la tarjeta con acciones.
-    await pines.first().click({ force: true });
+    // Un pin que quede dentro de la pantalla (algunos caen en el borde del mapa).
+    const vista = page.viewportSize()!;
+    for (const pin of await pines.all()) {
+      const caja = await pin.boundingBox();
+      if (caja && caja.y > 160 && caja.y + caja.height < vista.height - 120 && caja.x > 10 && caja.x + caja.width < vista.width - 10) {
+        await pin.click({ force: true });
+        break;
+      }
+    }
     await expect(page.getByRole("link", { name: "Ver ficha" })).toBeVisible();
     await expect(page.getByRole("link", { name: "Lo vi también" })).toBeVisible();
   });
 
   test("un reporte nuevo aparece en vivo sin recargar", async ({ page }) => {
-    await page.goto("/");
+    await page.goto("/mapa");
     await expect(page.locator(".cos-pin").first()).toBeVisible();
     const antes = await page.locator(".cos-pin").count();
     await page.waitForTimeout(1500); // deja que Realtime termine de suscribirse

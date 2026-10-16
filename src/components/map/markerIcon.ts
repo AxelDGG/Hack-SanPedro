@@ -1,5 +1,5 @@
 import L from "leaflet";
-import { ESTADOS, type Especie, type Estado } from "@/lib/constants";
+import { ESTADOS, ESTADOS_RESUELTOS, TIPOS, type Especie, type Estado, type TipoReporte } from "@/lib/constants";
 
 // Siluetas propias (viewBox 24×24) para distinguir especie dentro del pin.
 const GLIFOS: Record<Especie, string> = {
@@ -11,6 +11,7 @@ const GLIFOS: Record<Especie, string> = {
 
 interface Opciones {
   estado: Estado;
+  tipo?: TipoReporte;
   especie: Especie;
   urgente: boolean;
   nuevo: boolean;
@@ -19,15 +20,19 @@ interface Opciones {
 
 const cache = new Map<string, L.DivIcon>();
 
-/** Pin SVG coloreado por estado; pulsa si es urgente y "cae" si acaba de llegar por Realtime. */
+/**
+ * Pin SVG: mientras el caso está abierto lo colorea el tipo (se busca, encontrado) o el estado
+ * del rescate (callejero); pulsa si es urgente y "cae" si acaba de llegar por Realtime.
+ */
 export function iconoAnimal(o: Opciones): L.DivIcon {
-  const clave = `${o.estado}|${o.especie}|${o.urgente}|${o.nuevo}|${o.seleccionado}`;
+  const tipo = o.tipo ?? "callejero";
+  const clave = `${o.estado}|${tipo}|${o.especie}|${o.urgente}|${o.nuevo}|${o.seleccionado}`;
   const enCache = cache.get(clave);
   if (enCache) return enCache;
 
-  const color = ESTADOS[o.estado].color;
   // Segunda codificación además del color: casos resueltos van rellenos (silueta blanca).
-  const resuelto = o.estado === "rescatado" || o.estado === "esterilizado" || o.estado === "adoptado";
+  const resuelto = ESTADOS_RESUELTOS.includes(o.estado);
+  const color = !resuelto && tipo !== "callejero" ? TIPOS[tipo].color : ESTADOS[o.estado].color;
   const fondo = resuelto ? color : "#fff";
   const glifo = resuelto ? "#fff" : color;
   const clases = [

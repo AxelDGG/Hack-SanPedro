@@ -1,0 +1,352 @@
+[
+  {
+    "nombre": "perro-1",
+    "huella": 2617393311968,
+    "color": [
+      226,
+      200,
+      171
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Café claro",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Orejas caídas más oscuras, mancha café en el ojo",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perro mediano café claro en la calle, se ve tranquilo."
+    }
+  },
+  {
+    "nombre": "perro-2",
+    "huella": 7084161135088,
+    "color": [
+      172,
+      178,
+      171
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Negro",
+      "tamano": "grande",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Hocico claro, orejas paradas",
+      "condiciones": [
+        "flaco"
+      ],
+      "urgencia": 3,
+      "resumen": "Perro grande negro, se nota delgado."
+    }
+  },
+  {
+    "nombre": "perro-3",
+    "huella": 276099764320,
+    "color": [
+      239,
+      217,
+      198
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Beige",
+      "tamano": "chico",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Pelo corto, orejas redondas",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perro chico beige en la calle, se ve tranquilo."
+    }
+  },
+  {
+    "nombre": "perro-4",
+    "huella": 2617393312224,
+    "color": [
+      203,
+      191,
+      188
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Café oscuro",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Hocico beige, orejas caídas",
+      "condiciones": [
+        "flaco"
+      ],
+      "urgencia": 3,
+      "resumen": "Perro mediano café oscuro, se nota con hambre."
+    }
+  },
+  {
+    "nombre": "perro-5",
+    "huella": 310727939082,
+    "color": [
+      240,
+      232,
+      205
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Blanco con manchas cafés",
+      "tamano": "chico",
+      "sexo": "desconocido",
+      "collar": true,
+      "rasgos": "Manchas cafés en las orejas",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perrito blanco con manchas, bien cuidado: parece tener dueño."
+    }
+  },
+  {
+    "nombre": "perro-6",
+    "huella": 2617393311968,
+    "color": [
+      198,
+      193,
+      206
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Schnauzer",
+      "color": "Gris",
+      "tamano": "grande",
+      "sexo": "desconocido",
+      "collar": true,
+      "rasgos": "Pelo gris, orejas largas",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perro gris de raza con collar; probablemente está perdido."
+    }
+  },
+  {
+    "nombre": "perro-7",
+    "huella": 2617393312240,
+    "color": [
+      220,
+      185,
+      161
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Mestizo",
+      "color": "Rojizo",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Pelo rojizo, orejas caídas",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perro mediano rojizo en la calle, se ve tranquilo."
+    }
+  },
+  {
+    "nombre": "perro-8",
+    "huella": 20245617340640,
+    "color": [
+      215,
+      215,
+      199
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "perro",
+      "raza": "Pastor Alemán",
+      "color": "Beige con orejas negras",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Orejas negras y hocico oscuro",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Perro tipo pastor, orejas negras."
+    }
+  },
+  {
+    "nombre": "gato-1",
+    "huella": 44188509495408,
+    "color": [
+      243,
+      209,
+      185
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Naranja atigrado",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Ojos verdes, rayas en la frente",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Gato naranja atigrado en buen estado aparente."
+    }
+  },
+  {
+    "nombre": "gato-2",
+    "huella": 44429044428912,
+    "color": [
+      180,
+      181,
+      187
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Negro",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Ojos amarillos",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Gato negro en buen estado aparente."
+    }
+  },
+  {
+    "nombre": "gato-3",
+    "huella": 44188509429856,
+    "color": [
+      231,
+      226,
+      199
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Gris claro",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Pelo esponjado",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Gato gris claro en buen estado aparente."
+    }
+  },
+  {
+    "nombre": "gato-4",
+    "huella": 35270841879554,
+    "color": [
+      237,
+      229,
+      238
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Blanco con naranja",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Manchas naranjas en la cabeza",
+      "condiciones": [
+        "cachorro"
+      ],
+      "urgencia": 3,
+      "resumen": "Gatito blanco con naranja, solo; conviene atenderlo."
+    }
+  },
+  {
+    "nombre": "gato-5",
+    "huella": 44429044445296,
+    "color": [
+      215,
+      199,
+      178
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Café",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Ojos verdes",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Gato café en buen estado aparente."
+    }
+  },
+  {
+    "nombre": "gato-6",
+    "huella": 44429044445296,
+    "color": [
+      194,
+      204,
+      202
+    ],
+    "analisis": {
+      "es_animal": true,
+      "confianza": 0.93,
+      "especie": "gato",
+      "raza": "Doméstico pelo corto",
+      "color": "Gris oscuro",
+      "tamano": "mediano",
+      "sexo": "desconocido",
+      "collar": false,
+      "rasgos": "Pelo corto, muy arisco",
+      "condiciones": [
+        "sano"
+      ],
+      "urgencia": 2,
+      "resumen": "Gato gris oscuro en buen estado aparente."
+    }
+  }
+]

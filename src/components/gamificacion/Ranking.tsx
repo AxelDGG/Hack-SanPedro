@@ -1,11 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { Crown, Medal } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useSession } from "@/components/providers/SessionProvider";
 import { useColonias } from "@/hooks/useColonias";
+import { Pestanas } from "@/components/ui/Pestanas";
+import { NumeroAnimado } from "@/components/ui/NumeroAnimado";
 import { plural } from "@/lib/format";
+import { EASE_SOFT, RESORTE } from "@/lib/motion";
 
 interface FilaVecino {
   id: string;
@@ -27,7 +31,7 @@ type Pestana = "vecinos" | "colonias";
 async function obtenerVecinos(coloniaId: number | null): Promise<FilaVecino[]> {
   let consulta = createClient()
     .from("profiles")
-    .select("id, nombre, puntos, colonias(nombre)")
+    .select("id, nombre, puntos, colonias!profiles_colonia_id_fkey(nombre)")
     .gt("puntos", 0)
     .order("puntos", { ascending: false })
     .limit(25);
@@ -75,25 +79,14 @@ export function Ranking() {
 
   return (
     <div className="flex flex-col gap-4 px-4 pb-10">
-      <div className="grid grid-cols-2 gap-1 rounded-2xl bg-arena p-1 text-sm" role="tablist">
-        {(
-          [
-            ["vecinos", "Vecinos"],
-            ["colonias", "Colonias"],
-          ] as const
-        ).map(([valor, etiqueta]) => (
-          <button
-            key={valor}
-            type="button"
-            role="tab"
-            aria-selected={pestana === valor}
-            onClick={() => setPestana(valor)}
-            className={`rounded-xl py-2 font-bold transition ${pestana === valor ? "bg-white shadow-sm" : "text-tinta-suave"}`}
-          >
-            {etiqueta}
-          </button>
-        ))}
-      </div>
+      <Pestanas
+        opciones={[
+          ["vecinos", "Vecinos"],
+          ["colonias", "Colonias"],
+        ]}
+        valor={pestana}
+        onCambio={setPestana}
+      />
 
       {pestana === "vecinos" ? (
         <>
@@ -158,34 +151,50 @@ function Lista({ filas, cargando, vacio, testId }: { filas: Fila[]; cargando: bo
 
   return (
     <ol className="flex flex-col gap-2" data-testid={testId}>
-      {filas.map((f, i) => (
-        <li
-          key={f.clave}
-          aria-current={f.resaltar ? "true" : undefined}
-          className={`flex items-center gap-3 rounded-2xl px-4 py-3 ring-1 ${
-            f.resaltar ? "bg-terracota/10 ring-terracota/40" : "bg-white ring-arena-oscura"
-          }`}
-        >
-          <Posicion n={i + 1} />
-          <span className="min-w-0 flex-1">
-            <span className="block truncate font-semibold">
-              {f.titulo}
-              {f.resaltar && <span className="ml-1.5 text-xs font-bold text-terracota">(tú)</span>}
+      <AnimatePresence mode="popLayout">
+        {filas.map((f, i) => (
+          <motion.li
+            key={f.clave}
+            layout
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.45, ease: EASE_SOFT, delay: Math.min(i, 10) * 0.04 } }}
+            exit={{ opacity: 0, scale: 0.96, transition: { duration: 0.15 } }}
+            transition={RESORTE}
+            aria-current={f.resaltar ? "true" : undefined}
+            className={`flex items-center gap-3 rounded-2xl px-4 py-3 ring-1 ${
+              f.resaltar ? "bg-terracota/10 ring-terracota/40" : "bg-white ring-arena-oscura"
+            }`}
+          >
+            <Posicion n={i + 1} />
+            <span className="min-w-0 flex-1">
+              <span className="block truncate font-semibold">
+                {f.titulo}
+                {f.resaltar && <span className="ml-1.5 text-xs font-bold text-terracota">(tú)</span>}
+              </span>
+              <span className="block truncate text-xs text-tinta-suave">{f.detalle}</span>
             </span>
-            <span className="block truncate text-xs text-tinta-suave">{f.detalle}</span>
-          </span>
-          <span className="text-right">
-            <span className="block font-display text-xl font-semibold tabular-nums">{f.valor}</span>
-            <span className="block text-[10px] font-bold tracking-wide text-tinta-suave uppercase">huellas</span>
-          </span>
-        </li>
-      ))}
+            <span className="text-right">
+              <NumeroAnimado valor={f.valor} className="block font-display text-xl font-semibold" />
+              <span className="block text-[10px] font-bold tracking-wide text-tinta-suave uppercase">huellas</span>
+            </span>
+          </motion.li>
+        ))}
+      </AnimatePresence>
     </ol>
   );
 }
 
 function Posicion({ n }: { n: number }) {
-  if (n === 1) return <Crown className="size-7 shrink-0 text-ambar" aria-label="Primer lugar" />;
+  if (n === 1)
+    return (
+      <motion.span
+        className="shrink-0"
+        animate={{ y: [0, -3, 0], rotate: [0, -6, 0] }}
+        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <Crown className="size-7 fill-ambar/30 text-ambar" aria-label="Primer lugar" />
+      </motion.span>
+    );
   if (n <= 3)
     return <Medal className={`size-7 shrink-0 ${n === 2 ? "text-[#9b9a94]" : "text-[#b0703f]"}`} aria-label={`Lugar ${n}`} />;
   return <span className="w-7 shrink-0 text-center font-display text-lg font-semibold text-tinta-suave tabular-nums">{n}</span>;

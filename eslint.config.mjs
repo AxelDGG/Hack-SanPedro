@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Proyecto aparte (API simulada del registro municipal) con su propia configuración.
+    "registro-municipal-api/**",
   ]),
 ]);
 

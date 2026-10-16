@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 import Anthropic from "@anthropic-ai/sdk";
 import { createClient } from "@/lib/supabase/server";
 import { analizarFoto, type TipoImagen } from "@/lib/ai/analizar";
+import { revisarLimite } from "@/lib/seguridad/limite";
 
 export const maxDuration = 30;
 
@@ -15,6 +16,8 @@ export async function POST(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Inicia sesión para analizar fotos." }, { status: 401 });
+  const limitado = await revisarLimite(request, "analizar", user.id);
+  if (limitado) return limitado;
 
   const form = await request.formData().catch(() => null);
   const foto = form?.get("foto");
@@ -24,7 +27,12 @@ export async function POST(request: NextRequest) {
   if (foto.size > MAX_BYTES) return NextResponse.json({ error: "La foto pesa más de 5 MB." }, { status: 413 });
 
   try {
-    const resultado = await analizarFoto(Buffer.from(await foto.arrayBuffer()), foto.type as TipoImagen);
+    const huella = Number(form?.get("huella"));
+    const color = String(form?.get("color") ?? "").split(",").map(Number);
+    const resultado = await analizarFoto(Buffer.from(await foto.arrayBuffer()), foto.type as TipoImagen, {
+      huella: Number.isFinite(huella) && huella > 0 ? huella : null,
+      color: color.length === 3 && color.every(Number.isFinite) ? (color as [number, number, number]) : null,
+    });
     return NextResponse.json(resultado);
   } catch (error) {
     if (error instanceof Anthropic.RateLimitError) {

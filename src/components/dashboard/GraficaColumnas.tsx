@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+import { EASE_SOFT } from "@/lib/motion";
 
 export interface Serie {
   clave: string;
@@ -67,7 +69,15 @@ export function GraficaColumnas({ titulo, categorias, series }: Props) {
       </figcaption>
 
       <div className="relative">
-        <svg viewBox={`0 0 ${ANCHO} ${ALTO}`} className="w-full" role="group" aria-label={titulo}>
+        <motion.svg
+          viewBox={`0 0 ${ANCHO} ${ALTO}`}
+          className="w-full"
+          role="group"
+          aria-label={titulo}
+          initial="oculto"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-40px" }}
+        >
           {escala.map((t) => (
             <g key={t}>
               <line x1={MARGEN.izquierda} x2={ANCHO - MARGEN.derecha} y1={y(t)} y2={y(t)} stroke={t === 0 ? "#c3b59c" : "#ece2d0"} strokeWidth={1} />
@@ -97,12 +107,18 @@ export function GraficaColumnas({ titulo, categorias, series }: Props) {
                 {series.map((s, j) => {
                   const v = s.valores[i];
                   const alto = (v / tope) * altoUtil;
+                  // Las columnas crecen desde el eje, mes por mes.
                   return v > 0 ? (
-                    <path
+                    <motion.path
                       key={s.clave}
                       d={columna(x0 + j * (barra + HUECO), y(v), barra, alto)}
                       fill={s.color}
-                      opacity={resaltado ? 1 : 0.35}
+                      className="transition-opacity"
+                      style={{ originY: 1, opacity: resaltado ? 1 : 0.35 }}
+                      variants={{
+                        oculto: { scaleY: 0 },
+                        visible: { scaleY: 1, transition: { duration: 0.6, ease: EASE_SOFT, delay: i * 0.06 + j * 0.03 } },
+                      }}
                     />
                   ) : null;
                 })}
@@ -117,27 +133,33 @@ export function GraficaColumnas({ titulo, categorias, series }: Props) {
               </g>
             );
           })}
-        </svg>
+        </motion.svg>
 
-        {activo !== null && (
-          <div
-            role="tooltip"
-            className="pointer-events-none absolute top-0 rounded-xl bg-tinta px-3 py-2 text-xs text-white shadow-lg"
-            style={{
-              left: `${((MARGEN.izquierda + banda * (activo + 0.5)) / ANCHO) * 100}%`,
-              transform: `translateX(${activo > categorias.length / 2 ? "-100%" : "0"})`,
-            }}
-          >
-            <p className="mb-1 font-bold">{categorias[activo]}</p>
-            {series.map((s) => (
-              <p key={s.clave} className="flex items-center gap-2">
-                <span className="h-0.5 w-3 rounded" style={{ backgroundColor: s.color }} />
-                <span className="font-bold">{s.valores[activo]}</span>
-                <span className="text-white/70">{s.etiqueta}</span>
-              </p>
-            ))}
-          </div>
-        )}
+        <AnimatePresence>
+          {activo !== null && (
+            <motion.div
+              role="tooltip"
+              className="pointer-events-none absolute top-0 rounded-xl bg-tinta px-3 py-2 text-xs text-white shadow-lg"
+              style={{
+                left: `${((MARGEN.izquierda + banda * (activo + 0.5)) / ANCHO) * 100}%`,
+                x: activo > categorias.length / 2 ? "-100%" : "0%",
+              }}
+              initial={{ opacity: 0, y: 4 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 4 }}
+              transition={{ duration: 0.15, ease: EASE_SOFT }}
+            >
+              <p className="mb-1 font-bold">{categorias[activo]}</p>
+              {series.map((s) => (
+                <p key={s.clave} className="flex items-center gap-2">
+                  <span className="h-0.5 w-3 rounded" style={{ backgroundColor: s.color }} />
+                  <span className="font-bold">{s.valores[activo]}</span>
+                  <span className="text-white/70">{s.etiqueta}</span>
+                </p>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       <details className="mt-2 text-sm">

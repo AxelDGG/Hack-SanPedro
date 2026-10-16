@@ -3,12 +3,17 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
 import { Camera, ShieldCheck } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { StatusPill } from "@/components/animal/StatusPill";
 import { buttonClass } from "@/components/ui/Button";
+import { HuellasCaminando } from "@/components/ui/HuellasCaminando";
+import { NumeroAnimado } from "@/components/ui/NumeroAnimado";
+import { Pestanas } from "@/components/ui/Pestanas";
 import { ESPECIES, ESTADOS_EN_CALLE, type Especie, type Estado } from "@/lib/constants";
 import { fechaCorta } from "@/lib/format";
+import { EASE_SOFT, RESORTE, RESORTE_REBOTE } from "@/lib/motion";
 
 interface Miembro {
   id: string;
@@ -68,6 +73,7 @@ export function MiManada({ userId }: { userId: string }) {
   if (manada.length === 0) {
     return (
       <div className="mx-4 flex flex-col items-center gap-3 rounded-3xl bg-white p-8 text-center ring-1 ring-arena-oscura">
+        <HuellasCaminando etiqueta="Huellas" className="text-terracota/70" />
         <p className="font-display text-lg">Tu manada está vacía</p>
         <p className="text-sm text-tinta-suave">Cada animal que reportes o confirmes se suma a tu colección.</p>
         <Link href="/reportar" className={buttonClass("primary")}>
@@ -79,67 +85,91 @@ export function MiManada({ userId }: { userId: string }) {
 
   return (
     <div className="flex flex-col gap-4 px-4 pb-10">
-      <section className="flex items-center gap-4 rounded-3xl bg-salvia p-5 text-white">
-        <ShieldCheck className="size-12 shrink-0 opacity-90" />
+      <motion.section
+        className="flex items-center gap-4 rounded-3xl bg-salvia p-5 text-white"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: EASE_SOFT }}
+      >
+        <motion.span
+          className="shrink-0"
+          initial={{ scale: 0, rotate: -30 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ ...RESORTE_REBOTE, delay: 0.2 }}
+        >
+          <ShieldCheck className="size-12 opacity-90" />
+        </motion.span>
         <div>
           <p className="font-display text-2xl font-semibold" data-testid="manada-resumen">
-            {aSalvo.length} de {manada.length} a salvo
+            <NumeroAnimado valor={aSalvo.length} retraso={0.3} /> de {manada.length} a salvo
           </p>
           <p className="text-sm opacity-90">Animales que ayudaste a encontrar y que ya salieron de la calle.</p>
         </div>
-      </section>
+      </motion.section>
 
-      <div className="grid grid-cols-3 gap-1 rounded-2xl bg-arena p-1 text-sm" role="tablist">
-        {(
-          [
-            ["todos", `Todos (${manada.length})`],
-            ["calle", "En la calle"],
-            ["salvo", "A salvo"],
-          ] as const
-        ).map(([valor, etiqueta]) => (
-          <button
-            key={valor}
-            type="button"
-            role="tab"
-            aria-selected={filtro === valor}
-            onClick={() => setFiltro(valor)}
-            className={`rounded-xl py-2 font-bold transition ${filtro === valor ? "bg-white shadow-sm" : "text-tinta-suave"}`}
-          >
-            {etiqueta}
-          </button>
-        ))}
-      </div>
+      <Pestanas
+        opciones={[
+          ["todos", `Todos (${manada.length})`],
+          ["calle", "En la calle"],
+          ["salvo", "A salvo"],
+        ]}
+        valor={filtro}
+        onCambio={setFiltro}
+      />
 
       <ul className="grid grid-cols-2 gap-3 sm:grid-cols-3" data-testid="manada">
-        {visibles.map((m) => {
-          const salvo = !ESTADOS_EN_CALLE.includes(m.estado);
-          return (
-            <li key={m.id}>
-              <Link
-                href={`/animal/${m.id}`}
-                className={`flex flex-col overflow-hidden rounded-2xl bg-white ring-1 transition active:scale-[0.98] ${
-                  salvo ? "ring-salvia/40" : "ring-arena-oscura"
-                }`}
+        <AnimatePresence mode="popLayout">
+          {visibles.map((m, i) => {
+            const salvo = !ESTADOS_EN_CALLE.includes(m.estado);
+            const retraso = Math.min(i, 8) * 0.05;
+            return (
+              <motion.li
+                key={m.id}
+                layout
+                initial={{ opacity: 0, y: 18, scale: 0.94 }}
+                animate={{ opacity: 1, y: 0, scale: 1, transition: { ...RESORTE, delay: retraso } }}
+                exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.18 } }}
+                transition={RESORTE}
+                whileHover={{ y: -4 }}
+                whileTap={{ scale: 0.97 }}
               >
-                <div className="relative aspect-square bg-arena">
-                  {m.foto && <img src={m.foto} alt="" className={`size-full object-cover ${salvo ? "" : "saturate-50"}`} />}
-                  {salvo && (
-                    <span className="absolute top-2 left-2 rounded-full bg-salvia px-2 py-0.5 text-[10px] font-extrabold tracking-wide text-white uppercase">
-                      A salvo
-                    </span>
-                  )}
-                </div>
-                <div className="flex flex-col gap-1 p-2.5">
-                  <p className="truncate font-display font-semibold">{m.apodo ?? ESPECIES[m.especie].label}</p>
-                  <StatusPill estado={m.estado} className="self-start" />
-                  <p className="text-[11px] text-tinta-suave">
-                    {m.loReportaste ? "Lo reportaste" : "Lo confirmaste"} · {fechaCorta(m.desde)}
-                  </p>
-                </div>
-              </Link>
-            </li>
-          );
-        })}
+                <Link
+                  href={`/animal/${m.id}`}
+                  className={`group flex flex-col overflow-hidden rounded-2xl bg-white ring-1 transition-shadow hover:shadow-lg ${
+                    salvo ? "ring-salvia/40" : "ring-arena-oscura"
+                  }`}
+                >
+                  <div className="relative aspect-square overflow-hidden bg-arena">
+                    {m.foto && (
+                      <img
+                        src={m.foto}
+                        alt=""
+                        className={`size-full object-cover transition-transform duration-500 group-hover:scale-105 ${salvo ? "" : "saturate-50"}`}
+                      />
+                    )}
+                    {salvo && (
+                      <motion.span
+                        className="absolute top-2 left-2 rounded-full bg-salvia px-2 py-0.5 text-[10px] font-extrabold tracking-wide text-white uppercase"
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        transition={{ ...RESORTE_REBOTE, delay: 0.25 + retraso }}
+                      >
+                        A salvo
+                      </motion.span>
+                    )}
+                  </div>
+                  <div className="flex flex-col gap-1 p-2.5">
+                    <p className="truncate font-display font-semibold">{m.apodo ?? ESPECIES[m.especie].label}</p>
+                    <StatusPill estado={m.estado} className="self-start" />
+                    <p className="text-[11px] text-tinta-suave">
+                      {m.loReportaste ? "Lo reportaste" : "Lo confirmaste"} · {fechaCorta(m.desde)}
+                    </p>
+                  </div>
+                </Link>
+              </motion.li>
+            );
+          })}
+        </AnimatePresence>
       </ul>
     </div>
   );

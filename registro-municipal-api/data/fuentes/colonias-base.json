@@ -1,0 +1,2480 @@
+[
+  {
+    "nombre": "Alto Eucalipto",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Alto Jazmín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Ampliación Canteras",
+    "lat": 25.65074,
+    "lng": -100.33639,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66260"
+  },
+  {
+    "nombre": "Ampliación Jardines de San Agustín",
+    "lat": 25.62193,
+    "lng": -100.33456,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66274"
+  },
+  {
+    "nombre": "Ampliación Tampiquito",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66247"
+  },
+  {
+    "nombre": "Ampliación Valle del Mirador",
+    "lat": 25.64287,
+    "lng": -100.31636,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Antigua Hacienda San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Balcones de San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Balcones del Campestre",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Balcones del Valle",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66280"
+  },
+  {
+    "nombre": "Barrancas del Pedregal",
+    "lat": 25.64359,
+    "lng": -100.3852,
+    "codigo_postal": "66245",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66245"
+  },
+  {
+    "nombre": "Bosques de la Sierra",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66280"
+  },
+  {
+    "nombre": "Bosques de San Ángel",
+    "lat": 25.62109,
+    "lng": -100.37488,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66290"
+  },
+  {
+    "nombre": "Bosques de San Pedro",
+    "lat": 25.6625,
+    "lng": -100.40587,
+    "codigo_postal": null,
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "Bosques del Valle",
+    "lat": 25.6441,
+    "lng": -100.3745,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Capistrano",
+    "lat": 25.64981,
+    "lng": -100.38265,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Carrizalejo",
+    "lat": 25.6373,
+    "lng": -100.3657,
+    "codigo_postal": "66254",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Casco Urbano",
+    "lat": 25.6629,
+    "lng": -100.4037,
+    "codigo_postal": "66200",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Cerrada Moralillo",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66249"
+  },
+  {
+    "nombre": "Codornices Aldama",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Colinas de la Sierra Madre",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66280"
+  },
+  {
+    "nombre": "Colinas de San Agustín",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66270"
+  },
+  {
+    "nombre": "Colinas de San Ángel",
+    "lat": 25.62433,
+    "lng": -100.37216,
+    "codigo_postal": "66296",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Colonial de la Sierra",
+    "lat": 25.6349,
+    "lng": -100.3848,
+    "codigo_postal": "66286",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Colonial San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Colorines",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66270"
+  },
+  {
+    "nombre": "Conjunto Habitacional Renzo",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "Cortijo del Valle",
+    "lat": 25.64661,
+    "lng": -100.36254,
+    "codigo_postal": "66259",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Del Valle",
+    "lat": 25.6587,
+    "lng": -100.3699,
+    "codigo_postal": "66220",
+    "distrito": "Valle",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Echeverría",
+    "lat": 25.67233,
+    "lng": -100.40186,
+    "codigo_postal": "66218",
+    "distrito": "Industrial",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66218"
+  },
+  {
+    "nombre": "El Obispo",
+    "lat": 25.6804,
+    "lng": -100.4034,
+    "codigo_postal": "66216",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "El Refugio",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "El Santuario",
+    "lat": 25.62935,
+    "lng": -100.38058,
+    "codigo_postal": "66286",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-nominatim"
+  },
+  {
+    "nombre": "El Secreto",
+    "lat": 25.62193,
+    "lng": -100.33456,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66274"
+  },
+  {
+    "nombre": "Fátima",
+    "lat": 25.64846,
+    "lng": -100.37099,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Flor de Mayo",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Fuentes del David",
+    "lat": 25.66744,
+    "lng": -100.3751,
+    "codigo_postal": "66224",
+    "distrito": "Valle",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Fuentes del Valle",
+    "lat": 25.6654,
+    "lng": -100.3657,
+    "codigo_postal": "66224",
+    "distrito": "Valle",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Hacienda Carrizalejo",
+    "lat": 25.62594,
+    "lng": -100.35844,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66295"
+  },
+  {
+    "nombre": "Hacienda de la Sierra",
+    "lat": 25.6446,
+    "lng": -100.31765,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Hacienda de los Callejones",
+    "lat": 25.67023,
+    "lng": -100.40062,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66239"
+  },
+  {
+    "nombre": "Hacienda del Rosario",
+    "lat": 25.64702,
+    "lng": -100.39013,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Hacienda del Valle",
+    "lat": 25.65063,
+    "lng": -100.3965,
+    "codigo_postal": "66246",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "Hacienda Palo Blanco",
+    "lat": 25.65042,
+    "lng": -100.39429,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Hacienda San Agustín",
+    "lat": 25.64023,
+    "lng": -100.33584,
+    "codigo_postal": "66276",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jardines Coloniales",
+    "lat": 25.65102,
+    "lng": -100.39747,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jardines de Mirasierra",
+    "lat": 25.65565,
+    "lng": -100.39163,
+    "codigo_postal": "66236",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jardines de San Agustín",
+    "lat": 25.6303,
+    "lng": -100.33324,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jardines del Campestre",
+    "lat": 25.64968,
+    "lng": -100.34289,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jardines del Valle",
+    "lat": 25.66013,
+    "lng": -100.37351,
+    "codigo_postal": "66220",
+    "distrito": "Valle",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jerónimo Siller",
+    "lat": 25.6438,
+    "lng": -100.36873,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Jesús M. Garza",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66238"
+  },
+  {
+    "nombre": "Joya del Venado",
+    "lat": 25.62594,
+    "lng": -100.35844,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66295"
+  },
+  {
+    "nombre": "La Admiranza",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "La Barranca",
+    "lat": 25.64388,
+    "lng": -100.38512,
+    "codigo_postal": "66240",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "La Cañada",
+    "lat": 25.644,
+    "lng": -100.36302,
+    "codigo_postal": "66259",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66259"
+  },
+  {
+    "nombre": "La Cima",
+    "lat": 25.64836,
+    "lng": -100.40112,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "La Cooperativa",
+    "lat": 25.65063,
+    "lng": -100.3965,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "La Cúspide",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "La Diana",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "La Encantada",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66277"
+  },
+  {
+    "nombre": "La Finca",
+    "lat": 25.6508,
+    "lng": -100.40219,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "La Joya",
+    "lat": 25.66041,
+    "lng": -100.38493,
+    "codigo_postal": "66225",
+    "distrito": "Callejones",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66225"
+  },
+  {
+    "nombre": "La Joya de la Corona",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66297"
+  },
+  {
+    "nombre": "La Montaña",
+    "lat": 25.65178,
+    "lng": -100.38503,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-nominatim"
+  },
+  {
+    "nombre": "La Muralla",
+    "lat": 25.6425,
+    "lng": -100.32805,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "La Parvada Angelitos",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66247"
+  },
+  {
+    "nombre": "La Ventana",
+    "lat": 25.64739,
+    "lng": -100.39517,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Alondras",
+    "lat": 25.63054,
+    "lng": -100.36729,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Bugambilias",
+    "lat": 25.66269,
+    "lng": -100.38465,
+    "codigo_postal": "66226",
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Calzadas",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Las Campanas",
+    "lat": 25.64844,
+    "lng": -100.39204,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Capillas",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66227"
+  },
+  {
+    "nombre": "Las Ceibas",
+    "lat": 25.64278,
+    "lng": -100.334,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Codornices",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Las Privanzas",
+    "lat": 25.63904,
+    "lng": -100.3234,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Querenzas",
+    "lat": 25.63575,
+    "lng": -100.33601,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Sendas Andalucía",
+    "lat": 25.65448,
+    "lng": -100.4163,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66233"
+  },
+  {
+    "nombre": "Las Sendas Galicia",
+    "lat": 25.65448,
+    "lng": -100.41025,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Las Uvas",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Las Verandas",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Lázaro Garza Ayala",
+    "lat": 25.66158,
+    "lng": -100.41446,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Linda Vista",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66238"
+  },
+  {
+    "nombre": "Lomas de San Agustín",
+    "lat": 25.63557,
+    "lng": -100.33303,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Lomas de San Ángel",
+    "lat": 25.62466,
+    "lng": -100.36153,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Lomas de Tampiquito",
+    "lat": 25.64455,
+    "lng": -100.38653,
+    "codigo_postal": "66240",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Lomas del Bosque",
+    "lat": 25.64618,
+    "lng": -100.3833,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66244"
+  },
+  {
+    "nombre": "Lomas del Campestre",
+    "lat": 25.64089,
+    "lng": -100.33127,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Lomas del Rosario",
+    "lat": 25.63822,
+    "lng": -100.39519,
+    "codigo_postal": "66287",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Lomas del Valle",
+    "lat": 25.645,
+    "lng": -100.3816,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Los Amates",
+    "lat": 25.63783,
+    "lng": -100.33362,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Los Arcángeles",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "Los Callejones",
+    "lat": 25.6676,
+    "lng": -100.39729,
+    "codigo_postal": null,
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Los Encinos",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66297"
+  },
+  {
+    "nombre": "Los Fresnos",
+    "lat": 25.64618,
+    "lng": -100.3833,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66244"
+  },
+  {
+    "nombre": "Los Olivos",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66227"
+  },
+  {
+    "nombre": "Los Olmos",
+    "lat": 25.6491,
+    "lng": -100.40627,
+    "codigo_postal": "66235",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Los Pinos",
+    "lat": 25.6717,
+    "lng": -100.3951,
+    "codigo_postal": "66239",
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Los Quetzales",
+    "lat": 25.64054,
+    "lng": -100.3333,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Los Rincones",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Los Sabinos",
+    "lat": 25.65922,
+    "lng": -100.38981,
+    "codigo_postal": "66224",
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Los Sauces",
+    "lat": 25.6604,
+    "lng": -100.4114,
+    "codigo_postal": "66237",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Lucio Blanco",
+    "lat": 25.6712,
+    "lng": -100.4046,
+    "codigo_postal": "66218",
+    "distrito": "Industrial",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Mansión del Rosario",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66247"
+  },
+  {
+    "nombre": "Mesa de la Corona",
+    "lat": 25.62515,
+    "lng": -100.34758,
+    "codigo_postal": "66275",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66275"
+  },
+  {
+    "nombre": "Mirador de Vasconcelos",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66238"
+  },
+  {
+    "nombre": "Mirador del Campestre",
+    "lat": 25.65551,
+    "lng": -100.33635,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Mirasierra",
+    "lat": 25.6528,
+    "lng": -100.3897,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Mirasilla",
+    "lat": 25.63402,
+    "lng": -100.36301,
+    "codigo_postal": null,
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "Misión de San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Misión de San Patricio",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66270"
+  },
+  {
+    "nombre": "Misión del Valle",
+    "lat": 25.65624,
+    "lng": -100.41326,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Montebello",
+    "lat": 25.6446,
+    "lng": -100.35726,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Moralillo",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66249"
+  },
+  {
+    "nombre": "Morelos",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Nemesio García Naranjo",
+    "lat": 25.66862,
+    "lng": -100.40434,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Olímpico",
+    "lat": 25.64812,
+    "lng": -100.3862,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Olinalá",
+    "lat": 25.61876,
+    "lng": -100.37545,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Palo Blanco",
+    "lat": 25.65498,
+    "lng": -100.39858,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Pedregal del Valle",
+    "lat": 25.64033,
+    "lng": -100.38827,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Plan de Ayala",
+    "lat": 25.67319,
+    "lng": -100.41202,
+    "codigo_postal": "66217",
+    "distrito": "Industrial",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66217"
+  },
+  {
+    "nombre": "Portal de Santa Engracia",
+    "lat": 25.64523,
+    "lng": -100.31696,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Prados de la Sierra",
+    "lat": 25.65432,
+    "lng": -100.4055,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada 20 de Noviembre",
+    "lat": 25.65058,
+    "lng": -100.38166,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada Fundadores",
+    "lat": 25.64349,
+    "lng": -100.32965,
+    "codigo_postal": null,
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "Privada Gruta",
+    "lat": 25.64284,
+    "lng": -100.35505,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada Lomas de San Agustín",
+    "lat": 25.63605,
+    "lng": -100.33298,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada Río Ebro",
+    "lat": 25.64996,
+    "lng": -100.36819,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada San Andrés",
+    "lat": 25.65124,
+    "lng": -100.39129,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada San Roberto",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66277"
+  },
+  {
+    "nombre": "Privada Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66268"
+  },
+  {
+    "nombre": "Privada Sierra Madre",
+    "lat": 25.64768,
+    "lng": -100.36538,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Privada Versalles",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Pro Vivienda Popular",
+    "lat": 25.65166,
+    "lng": -100.38765,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66240"
+  },
+  {
+    "nombre": "Punto Central",
+    "lat": 25.64463,
+    "lng": -100.35465,
+    "codigo_postal": "66279",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66279"
+  },
+  {
+    "nombre": "Real de San Agustín",
+    "lat": 25.6439,
+    "lng": -100.33501,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Real del Valle",
+    "lat": 25.64154,
+    "lng": -100.32476,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Canteras",
+    "lat": 25.64395,
+    "lng": -100.3157,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Chipinque",
+    "lat": 25.6347,
+    "lng": -100.35987,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Frida Kahlo",
+    "lat": 25.64886,
+    "lng": -100.32445,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Galeana",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66270"
+  },
+  {
+    "nombre": "Residencial Las Amapas",
+    "lat": 25.67054,
+    "lng": -100.39397,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Los Cubos",
+    "lat": 25.66074,
+    "lng": -100.39636,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Palo Blanco",
+    "lat": 25.65498,
+    "lng": -100.39779,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-nominatim"
+  },
+  {
+    "nombre": "Residencial San Agustín",
+    "lat": 25.6516,
+    "lng": -100.3417,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Residencial San Carlos",
+    "lat": 25.67025,
+    "lng": -100.39313,
+    "codigo_postal": "66228",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Santa Bárbara La Cripta",
+    "lat": 25.66511,
+    "lng": -100.36429,
+    "codigo_postal": "66224",
+    "distrito": "Valle",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66224"
+  },
+  {
+    "nombre": "Residencial Santa Bárbara Oriente",
+    "lat": 25.65666,
+    "lng": -100.33906,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Santa Bárbara Poniente",
+    "lat": 25.65983,
+    "lng": -100.3916,
+    "codigo_postal": null,
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Residencial Sierra del Valle",
+    "lat": 25.6314,
+    "lng": -100.38175,
+    "codigo_postal": "66286",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66286"
+  },
+  {
+    "nombre": "Rincón Colonial",
+    "lat": 25.66701,
+    "lng": -100.40583,
+    "codigo_postal": "66230",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Rincón de Carrizalejo",
+    "lat": 25.644,
+    "lng": -100.36302,
+    "codigo_postal": "66259",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66259"
+  },
+  {
+    "nombre": "Rincón de Corregidora",
+    "lat": 25.66883,
+    "lng": -100.40366,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Rincón de la Montaña",
+    "lat": 25.65176,
+    "lng": -100.3851,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Rincón de San Francisco",
+    "lat": 25.66265,
+    "lng": -100.41056,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Rincón del Campestre",
+    "lat": 25.6351,
+    "lng": -100.33028,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "San Agustín Campestre",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66270"
+  },
+  {
+    "nombre": "San Carlos",
+    "lat": 25.66809,
+    "lng": -100.3899,
+    "codigo_postal": null,
+    "distrito": "Callejones",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "San Francisco",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66227"
+  },
+  {
+    "nombre": "San Gabriel",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "San José",
+    "lat": 25.65871,
+    "lng": -100.40448,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "San Mateo",
+    "lat": 25.64392,
+    "lng": -100.31659,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "San Patricio",
+    "lat": 25.64077,
+    "lng": -100.35049,
+    "codigo_postal": "66270",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "San Pedro 400",
+    "lat": 25.684,
+    "lng": -100.4142,
+    "codigo_postal": "66210",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Santa Cruz",
+    "lat": 25.64273,
+    "lng": -100.33752,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Santa Elena",
+    "lat": 25.65448,
+    "lng": -100.4163,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66233"
+  },
+  {
+    "nombre": "Santa Engracia Oriente",
+    "lat": 25.64349,
+    "lng": -100.32965,
+    "codigo_postal": null,
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "aprox: centro del distrito"
+  },
+  {
+    "nombre": "Santa Engracia Poniente",
+    "lat": 25.65706,
+    "lng": -100.35191,
+    "codigo_postal": "66267",
+    "distrito": "Valle",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Santa Fe",
+    "lat": 25.64114,
+    "lng": -100.32286,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Sierra Nevada",
+    "lat": 25.63404,
+    "lng": -100.37726,
+    "codigo_postal": "66285",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66285"
+  },
+  {
+    "nombre": "Tampiquito",
+    "lat": 25.6528,
+    "lng": -100.3816,
+    "codigo_postal": "66240",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Turquesa",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66277"
+  },
+  {
+    "nombre": "U.H. Revolución",
+    "lat": 25.683,
+    "lng": -100.4093,
+    "codigo_postal": "66219",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Unidad Habitacional San Pedro",
+    "lat": 25.67946,
+    "lng": -100.41517,
+    "codigo_postal": "66210",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle de Chipinque",
+    "lat": 25.6415,
+    "lng": -100.36637,
+    "codigo_postal": "66250",
+    "distrito": "Lomas",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle de San Agustín",
+    "lat": 25.64538,
+    "lng": -100.3354,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle de San Ángel",
+    "lat": 25.6251,
+    "lng": -100.3663,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Valle de Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66268"
+  },
+  {
+    "nombre": "Valle de Vasconcelos",
+    "lat": 25.66302,
+    "lng": -100.41585,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle del Campestre",
+    "lat": 25.6517,
+    "lng": -100.3557,
+    "codigo_postal": "66265",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle del Mezquite",
+    "lat": 25.65676,
+    "lng": -100.39104,
+    "codigo_postal": "66226",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle del Seminario",
+    "lat": 25.67389,
+    "lng": -100.40024,
+    "codigo_postal": "66218",
+    "distrito": "Industrial",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Valle Oriente",
+    "lat": 25.6449,
+    "lng": -100.322,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Veredalta",
+    "lat": 25.63761,
+    "lng": -100.35174,
+    "codigo_postal": "66270",
+    "distrito": "San Ángel",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Verona",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "Villa Campanario",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66230"
+  },
+  {
+    "nombre": "Villa Chipinque",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66297"
+  },
+  {
+    "nombre": "Villa del Obispo",
+    "lat": 25.67914,
+    "lng": -100.39972,
+    "codigo_postal": "66214",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Villa Las Palmas",
+    "lat": 25.64089,
+    "lng": -100.33753,
+    "codigo_postal": "66276",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Villa Montaña",
+    "lat": 25.64502,
+    "lng": -100.40554,
+    "codigo_postal": "66235",
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Villa Montaña Campestre",
+    "lat": 25.63998,
+    "lng": -100.40405,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente",
+    "fuentes": [
+      "pdu2024"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Villas Carmel",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66278"
+  },
+  {
+    "nombre": "Villas Crisantemo",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66280"
+  },
+  {
+    "nombre": "Villas de Aragón",
+    "lat": 25.64487,
+    "lng": -100.35737,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66273"
+  },
+  {
+    "nombre": "Villas de San Agustín",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66266"
+  },
+  {
+    "nombre": "Villas de Santa Bárbara",
+    "lat": 25.65547,
+    "lng": -100.39792,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66236"
+  },
+  {
+    "nombre": "Villas de Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66268"
+  },
+  {
+    "nombre": "Villas de Terrasol",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66249"
+  },
+  {
+    "nombre": "Villas del Pedregal",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66280"
+  },
+  {
+    "nombre": "Villas del Valle",
+    "lat": 25.63404,
+    "lng": -100.37726,
+    "codigo_postal": "66285",
+    "distrito": "Lomas",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66285"
+  },
+  {
+    "nombre": "Villas La Rivera",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66297"
+  },
+  {
+    "nombre": "Vista Montaña",
+    "lat": 25.6816,
+    "lng": -100.4064,
+    "codigo_postal": "66216",
+    "distrito": "El Obispo",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "app-principal (OSM/Nominatim)"
+  },
+  {
+    "nombre": "Vista Real",
+    "lat": 25.65168,
+    "lng": -100.32524,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "osm-overpass"
+  },
+  {
+    "nombre": "Vistas del Valle",
+    "lat": 25.62515,
+    "lng": -100.34758,
+    "codigo_postal": "66275",
+    "distrito": "San Ángel",
+    "aprox": true,
+    "fuentes": [
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66275"
+  },
+  {
+    "nombre": "Volkswagen",
+    "lat": 25.67023,
+    "lng": -100.40062,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "aprox": true,
+    "fuentes": [
+      "pdu2024",
+      "sepomex"
+    ],
+    "fuente_coordenadas": "aprox: centroide del código postal 66239"
+  }
+]

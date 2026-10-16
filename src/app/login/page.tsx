@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { Logo } from "@/components/ui/Logo";
+import { Aparecer } from "@/components/ui/Aparecer";
 import { LoginForm } from "@/components/auth/LoginForm";
 import { DemoLogin } from "@/components/auth/DemoLogin";
 
@@ -14,18 +15,24 @@ export default function LoginPage() {
       <Link href="/" className="self-start">
         <Logo />
       </Link>
-      <div>
+      <Aparecer retraso={0.05}>
         <h1 className="font-display text-3xl font-semibold">Únete a la red</h1>
         <p className="mt-2 text-tinta-suave">
           Reporta animales en la calle, ayuda a que los rescaten y gana huellas por cada caso resuelto.
         </p>
-      </div>
+      </Aparecer>
 
-      <Suspense>
-        <LoginForm />
-      </Suspense>
+      <Aparecer retraso={0.15}>
+        <Suspense>
+          <LoginForm />
+        </Suspense>
+      </Aparecer>
 
-      {demo && <DemoLogin />}
+      {demo && (
+        <Aparecer retraso={0.25}>
+          <DemoLogin />
+        </Aparecer>
+      )}
     </main>
   );
 }

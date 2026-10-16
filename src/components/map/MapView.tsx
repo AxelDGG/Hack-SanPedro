@@ -55,6 +55,7 @@ export default function MapView({ animales, recientes, calor, posicion, seleccio
           position={[a.lat, a.lng]}
           icon={iconoAnimal({
             estado: a.estado,
+            tipo: a.tipo,
             especie: a.especie,
             urgente: a.urgencia >= 4 && (a.estado === "avistado" || a.estado === "en_atencion"),
             nuevo: recientes.has(a.id),

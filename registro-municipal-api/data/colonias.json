@@ -1,0 +1,1735 @@
+[
+  {
+    "clave": "COL-001",
+    "nombre": "Alto Eucalipto",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-002",
+    "nombre": "Alto Jazmín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-003",
+    "nombre": "Ampliación Canteras",
+    "lat": 25.65074,
+    "lng": -100.33639,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-004",
+    "nombre": "Ampliación Jardines de San Agustín",
+    "lat": 25.62193,
+    "lng": -100.33456,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-005",
+    "nombre": "Ampliación Tampiquito",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-006",
+    "nombre": "Ampliación Valle del Mirador",
+    "lat": 25.64287,
+    "lng": -100.31636,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-007",
+    "nombre": "Antigua Hacienda San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-008",
+    "nombre": "Balcones de San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-009",
+    "nombre": "Balcones del Campestre",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-010",
+    "nombre": "Balcones del Valle",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-011",
+    "nombre": "Barrancas del Pedregal",
+    "lat": 25.64359,
+    "lng": -100.3852,
+    "codigo_postal": "66245",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-012",
+    "nombre": "Bosques de la Sierra",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-013",
+    "nombre": "Bosques de San Ángel",
+    "lat": 25.62109,
+    "lng": -100.37488,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-014",
+    "nombre": "Bosques de San Pedro",
+    "lat": 25.6625,
+    "lng": -100.40587,
+    "codigo_postal": null,
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-015",
+    "nombre": "Bosques del Valle",
+    "lat": 25.6441,
+    "lng": -100.3745,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-016",
+    "nombre": "Capistrano",
+    "lat": 25.64981,
+    "lng": -100.38265,
+    "codigo_postal": "66244",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-017",
+    "nombre": "Carrizalejo",
+    "lat": 25.6373,
+    "lng": -100.3657,
+    "codigo_postal": "66254",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-018",
+    "nombre": "Casco Urbano",
+    "lat": 25.6629,
+    "lng": -100.4037,
+    "codigo_postal": "66200",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-019",
+    "nombre": "Cerrada Moralillo",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-020",
+    "nombre": "Codornices Aldama",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-021",
+    "nombre": "Colinas de la Sierra Madre",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-022",
+    "nombre": "Colinas de San Agustín",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-023",
+    "nombre": "Colinas de San Ángel",
+    "lat": 25.62433,
+    "lng": -100.37216,
+    "codigo_postal": "66296",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-024",
+    "nombre": "Colonial de la Sierra",
+    "lat": 25.6349,
+    "lng": -100.3848,
+    "codigo_postal": "66286",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-025",
+    "nombre": "Colonial San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-026",
+    "nombre": "Colorines",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-027",
+    "nombre": "Conjunto Habitacional Renzo",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-028",
+    "nombre": "Cortijo del Valle",
+    "lat": 25.64661,
+    "lng": -100.36254,
+    "codigo_postal": "66259",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-029",
+    "nombre": "Del Valle",
+    "lat": 25.6587,
+    "lng": -100.3699,
+    "codigo_postal": "66220",
+    "distrito": "Valle"
+  },
+  {
+    "clave": "COL-030",
+    "nombre": "Echeverría",
+    "lat": 25.67233,
+    "lng": -100.40186,
+    "codigo_postal": "66218",
+    "distrito": "Industrial",
+    "aprox": true
+  },
+  {
+    "clave": "COL-031",
+    "nombre": "El Obispo",
+    "lat": 25.6804,
+    "lng": -100.4034,
+    "codigo_postal": "66216",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-032",
+    "nombre": "El Refugio",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-033",
+    "nombre": "El Santuario",
+    "lat": 25.62935,
+    "lng": -100.38058,
+    "codigo_postal": "66286",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-034",
+    "nombre": "El Secreto",
+    "lat": 25.62193,
+    "lng": -100.33456,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-035",
+    "nombre": "Fátima",
+    "lat": 25.64846,
+    "lng": -100.37099,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-036",
+    "nombre": "Flor de Mayo",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-037",
+    "nombre": "Fuentes del David",
+    "lat": 25.66744,
+    "lng": -100.3751,
+    "codigo_postal": "66224",
+    "distrito": "Valle"
+  },
+  {
+    "clave": "COL-038",
+    "nombre": "Fuentes del Valle",
+    "lat": 25.6654,
+    "lng": -100.3657,
+    "codigo_postal": "66224",
+    "distrito": "Valle"
+  },
+  {
+    "clave": "COL-039",
+    "nombre": "Hacienda Carrizalejo",
+    "lat": 25.62594,
+    "lng": -100.35844,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-040",
+    "nombre": "Hacienda de la Sierra",
+    "lat": 25.6446,
+    "lng": -100.31765,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-041",
+    "nombre": "Hacienda de los Callejones",
+    "lat": 25.67023,
+    "lng": -100.40062,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-042",
+    "nombre": "Hacienda del Rosario",
+    "lat": 25.64702,
+    "lng": -100.39013,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-043",
+    "nombre": "Hacienda del Valle",
+    "lat": 25.65063,
+    "lng": -100.3965,
+    "codigo_postal": "66246",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-044",
+    "nombre": "Hacienda Palo Blanco",
+    "lat": 25.65042,
+    "lng": -100.39429,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-045",
+    "nombre": "Hacienda San Agustín",
+    "lat": 25.64023,
+    "lng": -100.33584,
+    "codigo_postal": "66276",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-046",
+    "nombre": "Jardines Coloniales",
+    "lat": 25.65102,
+    "lng": -100.39747,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-047",
+    "nombre": "Jardines de Mirasierra",
+    "lat": 25.65565,
+    "lng": -100.39163,
+    "codigo_postal": "66236",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-048",
+    "nombre": "Jardines de San Agustín",
+    "lat": 25.6303,
+    "lng": -100.33324,
+    "codigo_postal": "66274",
+    "distrito": "San Agustín"
+  },
+  {
+    "clave": "COL-049",
+    "nombre": "Jardines del Campestre",
+    "lat": 25.64968,
+    "lng": -100.34289,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-050",
+    "nombre": "Jardines del Valle",
+    "lat": 25.66013,
+    "lng": -100.37351,
+    "codigo_postal": "66220",
+    "distrito": "Valle"
+  },
+  {
+    "clave": "COL-051",
+    "nombre": "Jerónimo Siller",
+    "lat": 25.6438,
+    "lng": -100.36873,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-052",
+    "nombre": "Jesús M. Garza",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-053",
+    "nombre": "Joya del Venado",
+    "lat": 25.62594,
+    "lng": -100.35844,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-054",
+    "nombre": "La Admiranza",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-055",
+    "nombre": "La Barranca",
+    "lat": 25.64388,
+    "lng": -100.38512,
+    "codigo_postal": "66240",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-056",
+    "nombre": "La Cañada",
+    "lat": 25.644,
+    "lng": -100.36302,
+    "codigo_postal": "66259",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-057",
+    "nombre": "La Cima",
+    "lat": 25.64836,
+    "lng": -100.40112,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-058",
+    "nombre": "La Cooperativa",
+    "lat": 25.65063,
+    "lng": -100.3965,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-059",
+    "nombre": "La Cúspide",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-060",
+    "nombre": "La Diana",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-061",
+    "nombre": "La Encantada",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-062",
+    "nombre": "La Finca",
+    "lat": 25.6508,
+    "lng": -100.40219,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-063",
+    "nombre": "La Joya",
+    "lat": 25.66041,
+    "lng": -100.38493,
+    "codigo_postal": "66225",
+    "distrito": "Callejones",
+    "aprox": true
+  },
+  {
+    "clave": "COL-064",
+    "nombre": "La Joya de la Corona",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-065",
+    "nombre": "La Montaña",
+    "lat": 25.65178,
+    "lng": -100.38503,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-066",
+    "nombre": "La Muralla",
+    "lat": 25.6425,
+    "lng": -100.32805,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-067",
+    "nombre": "La Parvada Angelitos",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-068",
+    "nombre": "La Ventana",
+    "lat": 25.64739,
+    "lng": -100.39517,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-069",
+    "nombre": "Las Alondras",
+    "lat": 25.63054,
+    "lng": -100.36729,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-070",
+    "nombre": "Las Bugambilias",
+    "lat": 25.66269,
+    "lng": -100.38465,
+    "codigo_postal": "66226",
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-071",
+    "nombre": "Las Calzadas",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-072",
+    "nombre": "Las Campanas",
+    "lat": 25.64844,
+    "lng": -100.39204,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-073",
+    "nombre": "Las Capillas",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-074",
+    "nombre": "Las Ceibas",
+    "lat": 25.64278,
+    "lng": -100.334,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-075",
+    "nombre": "Las Codornices",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-076",
+    "nombre": "Las Privanzas",
+    "lat": 25.63904,
+    "lng": -100.3234,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-077",
+    "nombre": "Las Querenzas",
+    "lat": 25.63575,
+    "lng": -100.33601,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-078",
+    "nombre": "Las Sendas Andalucía",
+    "lat": 25.65448,
+    "lng": -100.4163,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-079",
+    "nombre": "Las Sendas Galicia",
+    "lat": 25.65448,
+    "lng": -100.41025,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-080",
+    "nombre": "Las Uvas",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-081",
+    "nombre": "Las Verandas",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-082",
+    "nombre": "Lázaro Garza Ayala",
+    "lat": 25.66158,
+    "lng": -100.41446,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-083",
+    "nombre": "Linda Vista",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-084",
+    "nombre": "Lomas de San Agustín",
+    "lat": 25.63557,
+    "lng": -100.33303,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-085",
+    "nombre": "Lomas de San Ángel",
+    "lat": 25.62466,
+    "lng": -100.36153,
+    "codigo_postal": "66295",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-086",
+    "nombre": "Lomas de Tampiquito",
+    "lat": 25.64455,
+    "lng": -100.38653,
+    "codigo_postal": "66240",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-087",
+    "nombre": "Lomas del Bosque",
+    "lat": 25.64618,
+    "lng": -100.3833,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-088",
+    "nombre": "Lomas del Campestre",
+    "lat": 25.64089,
+    "lng": -100.33127,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-089",
+    "nombre": "Lomas del Rosario",
+    "lat": 25.63822,
+    "lng": -100.39519,
+    "codigo_postal": "66287",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-090",
+    "nombre": "Lomas del Valle",
+    "lat": 25.645,
+    "lng": -100.3816,
+    "codigo_postal": "66244",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-091",
+    "nombre": "Los Amates",
+    "lat": 25.63783,
+    "lng": -100.33362,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-092",
+    "nombre": "Los Arcángeles",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-093",
+    "nombre": "Los Callejones",
+    "lat": 25.6676,
+    "lng": -100.39729,
+    "codigo_postal": null,
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-094",
+    "nombre": "Los Encinos",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-095",
+    "nombre": "Los Fresnos",
+    "lat": 25.64618,
+    "lng": -100.3833,
+    "codigo_postal": "66244",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-096",
+    "nombre": "Los Olivos",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-097",
+    "nombre": "Los Olmos",
+    "lat": 25.6491,
+    "lng": -100.40627,
+    "codigo_postal": "66235",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-098",
+    "nombre": "Los Pinos",
+    "lat": 25.6717,
+    "lng": -100.3951,
+    "codigo_postal": "66239",
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-099",
+    "nombre": "Los Quetzales",
+    "lat": 25.64054,
+    "lng": -100.3333,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-100",
+    "nombre": "Los Rincones",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-101",
+    "nombre": "Los Sabinos",
+    "lat": 25.65922,
+    "lng": -100.38981,
+    "codigo_postal": "66224",
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-102",
+    "nombre": "Los Sauces",
+    "lat": 25.6604,
+    "lng": -100.4114,
+    "codigo_postal": "66237",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-103",
+    "nombre": "Lucio Blanco",
+    "lat": 25.6712,
+    "lng": -100.4046,
+    "codigo_postal": "66218",
+    "distrito": "Industrial"
+  },
+  {
+    "clave": "COL-104",
+    "nombre": "Mansión del Rosario",
+    "lat": 25.64642,
+    "lng": -100.39042,
+    "codigo_postal": "66247",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-105",
+    "nombre": "Mesa de la Corona",
+    "lat": 25.62515,
+    "lng": -100.34758,
+    "codigo_postal": "66275",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-106",
+    "nombre": "Mirador de Vasconcelos",
+    "lat": 25.66407,
+    "lng": -100.4133,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-107",
+    "nombre": "Mirador del Campestre",
+    "lat": 25.65551,
+    "lng": -100.33635,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-108",
+    "nombre": "Mirasierra",
+    "lat": 25.6528,
+    "lng": -100.3897,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-109",
+    "nombre": "Mirasilla",
+    "lat": 25.63402,
+    "lng": -100.36301,
+    "codigo_postal": null,
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-110",
+    "nombre": "Misión de San Agustín",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-111",
+    "nombre": "Misión de San Patricio",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-112",
+    "nombre": "Misión del Valle",
+    "lat": 25.65624,
+    "lng": -100.41326,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-113",
+    "nombre": "Montebello",
+    "lat": 25.6446,
+    "lng": -100.35726,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-114",
+    "nombre": "Moralillo",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-115",
+    "nombre": "Morelos",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-116",
+    "nombre": "Nemesio García Naranjo",
+    "lat": 25.66862,
+    "lng": -100.40434,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-117",
+    "nombre": "Olímpico",
+    "lat": 25.64812,
+    "lng": -100.3862,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-118",
+    "nombre": "Olinalá",
+    "lat": 25.61876,
+    "lng": -100.37545,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-119",
+    "nombre": "Palo Blanco",
+    "lat": 25.65498,
+    "lng": -100.39858,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-120",
+    "nombre": "Pedregal del Valle",
+    "lat": 25.64033,
+    "lng": -100.38827,
+    "codigo_postal": "66280",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-121",
+    "nombre": "Plan de Ayala",
+    "lat": 25.67319,
+    "lng": -100.41202,
+    "codigo_postal": "66217",
+    "distrito": "Industrial",
+    "aprox": true
+  },
+  {
+    "clave": "COL-122",
+    "nombre": "Portal de Santa Engracia",
+    "lat": 25.64523,
+    "lng": -100.31696,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-123",
+    "nombre": "Prados de la Sierra",
+    "lat": 25.65432,
+    "lng": -100.4055,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-124",
+    "nombre": "Privada 20 de Noviembre",
+    "lat": 25.65058,
+    "lng": -100.38166,
+    "codigo_postal": "66244",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-125",
+    "nombre": "Privada Fundadores",
+    "lat": 25.64349,
+    "lng": -100.32965,
+    "codigo_postal": null,
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-126",
+    "nombre": "Privada Gruta",
+    "lat": 25.64284,
+    "lng": -100.35505,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-127",
+    "nombre": "Privada Lomas de San Agustín",
+    "lat": 25.63605,
+    "lng": -100.33298,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-128",
+    "nombre": "Privada Río Ebro",
+    "lat": 25.64996,
+    "lng": -100.36819,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-129",
+    "nombre": "Privada San Andrés",
+    "lat": 25.65124,
+    "lng": -100.39129,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-130",
+    "nombre": "Privada San Roberto",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-131",
+    "nombre": "Privada Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true
+  },
+  {
+    "clave": "COL-132",
+    "nombre": "Privada Sierra Madre",
+    "lat": 25.64768,
+    "lng": -100.36538,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-133",
+    "nombre": "Privada Versalles",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-134",
+    "nombre": "Pro Vivienda Popular",
+    "lat": 25.65166,
+    "lng": -100.38765,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-135",
+    "nombre": "Punto Central",
+    "lat": 25.64463,
+    "lng": -100.35465,
+    "codigo_postal": "66279",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-136",
+    "nombre": "Real de San Agustín",
+    "lat": 25.6439,
+    "lng": -100.33501,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-137",
+    "nombre": "Real del Valle",
+    "lat": 25.64154,
+    "lng": -100.32476,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-138",
+    "nombre": "Residencial Canteras",
+    "lat": 25.64395,
+    "lng": -100.3157,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-139",
+    "nombre": "Residencial Chipinque",
+    "lat": 25.6347,
+    "lng": -100.35987,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-140",
+    "nombre": "Residencial Frida Kahlo",
+    "lat": 25.64886,
+    "lng": -100.32445,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-141",
+    "nombre": "Residencial Galeana",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-142",
+    "nombre": "Residencial Las Amapas",
+    "lat": 25.67054,
+    "lng": -100.39397,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-143",
+    "nombre": "Residencial Los Cubos",
+    "lat": 25.66074,
+    "lng": -100.39636,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-144",
+    "nombre": "Residencial Palo Blanco",
+    "lat": 25.65498,
+    "lng": -100.39779,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-145",
+    "nombre": "Residencial San Agustín",
+    "lat": 25.6516,
+    "lng": -100.3417,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-146",
+    "nombre": "Residencial San Carlos",
+    "lat": 25.67025,
+    "lng": -100.39313,
+    "codigo_postal": "66228",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-147",
+    "nombre": "Residencial Santa Bárbara La Cripta",
+    "lat": 25.66511,
+    "lng": -100.36429,
+    "codigo_postal": "66224",
+    "distrito": "Valle",
+    "aprox": true
+  },
+  {
+    "clave": "COL-148",
+    "nombre": "Residencial Santa Bárbara Oriente",
+    "lat": 25.65666,
+    "lng": -100.33906,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-149",
+    "nombre": "Residencial Santa Bárbara Poniente",
+    "lat": 25.65983,
+    "lng": -100.3916,
+    "codigo_postal": null,
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-150",
+    "nombre": "Residencial Sierra del Valle",
+    "lat": 25.6314,
+    "lng": -100.38175,
+    "codigo_postal": "66286",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-151",
+    "nombre": "Rincón Colonial",
+    "lat": 25.66701,
+    "lng": -100.40583,
+    "codigo_postal": "66230",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-152",
+    "nombre": "Rincón de Carrizalejo",
+    "lat": 25.644,
+    "lng": -100.36302,
+    "codigo_postal": "66259",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-153",
+    "nombre": "Rincón de Corregidora",
+    "lat": 25.66883,
+    "lng": -100.40366,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-154",
+    "nombre": "Rincón de la Montaña",
+    "lat": 25.65176,
+    "lng": -100.3851,
+    "codigo_postal": "66240",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-155",
+    "nombre": "Rincón de San Francisco",
+    "lat": 25.66265,
+    "lng": -100.41056,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-156",
+    "nombre": "Rincón del Campestre",
+    "lat": 25.6351,
+    "lng": -100.33028,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-157",
+    "nombre": "San Agustín Campestre",
+    "lat": 25.6357,
+    "lng": -100.34609,
+    "codigo_postal": "66270",
+    "distrito": "San Agustín",
+    "aprox": true
+  },
+  {
+    "clave": "COL-158",
+    "nombre": "San Carlos",
+    "lat": 25.66809,
+    "lng": -100.3899,
+    "codigo_postal": null,
+    "distrito": "Callejones"
+  },
+  {
+    "clave": "COL-159",
+    "nombre": "San Francisco",
+    "lat": 25.66158,
+    "lng": -100.39365,
+    "codigo_postal": "66227",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-160",
+    "nombre": "San Gabriel",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-161",
+    "nombre": "San José",
+    "lat": 25.65871,
+    "lng": -100.40448,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-162",
+    "nombre": "San Mateo",
+    "lat": 25.64392,
+    "lng": -100.31659,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-163",
+    "nombre": "San Patricio",
+    "lat": 25.64077,
+    "lng": -100.35049,
+    "codigo_postal": "66270",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-164",
+    "nombre": "San Pedro 400",
+    "lat": 25.684,
+    "lng": -100.4142,
+    "codigo_postal": "66210",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-165",
+    "nombre": "Santa Cruz",
+    "lat": 25.64273,
+    "lng": -100.33752,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-166",
+    "nombre": "Santa Elena",
+    "lat": 25.65448,
+    "lng": -100.4163,
+    "codigo_postal": "66233",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-167",
+    "nombre": "Santa Engracia Oriente",
+    "lat": 25.64349,
+    "lng": -100.32965,
+    "codigo_postal": null,
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-168",
+    "nombre": "Santa Engracia Poniente",
+    "lat": 25.65706,
+    "lng": -100.35191,
+    "codigo_postal": "66267",
+    "distrito": "Valle"
+  },
+  {
+    "clave": "COL-169",
+    "nombre": "Santa Fe",
+    "lat": 25.64114,
+    "lng": -100.32286,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-170",
+    "nombre": "Sierra Nevada",
+    "lat": 25.63404,
+    "lng": -100.37726,
+    "codigo_postal": "66285",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-171",
+    "nombre": "Tampiquito",
+    "lat": 25.6528,
+    "lng": -100.3816,
+    "codigo_postal": "66240",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-172",
+    "nombre": "Turquesa",
+    "lat": 25.6431,
+    "lng": -100.33676,
+    "codigo_postal": "66277",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-173",
+    "nombre": "U.H. Revolución",
+    "lat": 25.683,
+    "lng": -100.4093,
+    "codigo_postal": "66219",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-174",
+    "nombre": "Unidad Habitacional San Pedro",
+    "lat": 25.67946,
+    "lng": -100.41517,
+    "codigo_postal": "66210",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-175",
+    "nombre": "Valle de Chipinque",
+    "lat": 25.6415,
+    "lng": -100.36637,
+    "codigo_postal": "66250",
+    "distrito": "Lomas"
+  },
+  {
+    "clave": "COL-176",
+    "nombre": "Valle de San Agustín",
+    "lat": 25.64538,
+    "lng": -100.3354,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-177",
+    "nombre": "Valle de San Ángel",
+    "lat": 25.6251,
+    "lng": -100.3663,
+    "codigo_postal": "66290",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-178",
+    "nombre": "Valle de Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true
+  },
+  {
+    "clave": "COL-179",
+    "nombre": "Valle de Vasconcelos",
+    "lat": 25.66302,
+    "lng": -100.41585,
+    "codigo_postal": "66238",
+    "distrito": "San Pedro"
+  },
+  {
+    "clave": "COL-180",
+    "nombre": "Valle del Campestre",
+    "lat": 25.6517,
+    "lng": -100.3557,
+    "codigo_postal": "66265",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-181",
+    "nombre": "Valle del Mezquite",
+    "lat": 25.65676,
+    "lng": -100.39104,
+    "codigo_postal": "66226",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-182",
+    "nombre": "Valle del Seminario",
+    "lat": 25.67389,
+    "lng": -100.40024,
+    "codigo_postal": "66218",
+    "distrito": "Industrial"
+  },
+  {
+    "clave": "COL-183",
+    "nombre": "Valle Oriente",
+    "lat": 25.6449,
+    "lng": -100.322,
+    "codigo_postal": "66260",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-184",
+    "nombre": "Veredalta",
+    "lat": 25.63761,
+    "lng": -100.35174,
+    "codigo_postal": "66270",
+    "distrito": "San Ángel"
+  },
+  {
+    "clave": "COL-185",
+    "nombre": "Verona",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-186",
+    "nombre": "Villa Campanario",
+    "lat": 25.64959,
+    "lng": -100.40042,
+    "codigo_postal": "66230",
+    "distrito": "Valle Poniente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-187",
+    "nombre": "Villa Chipinque",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-188",
+    "nombre": "Villa del Obispo",
+    "lat": 25.67914,
+    "lng": -100.39972,
+    "codigo_postal": "66214",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-189",
+    "nombre": "Villa Las Palmas",
+    "lat": 25.64089,
+    "lng": -100.33753,
+    "codigo_postal": "66276",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-190",
+    "nombre": "Villa Montaña",
+    "lat": 25.64502,
+    "lng": -100.40554,
+    "codigo_postal": "66235",
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-191",
+    "nombre": "Villa Montaña Campestre",
+    "lat": 25.63998,
+    "lng": -100.40405,
+    "codigo_postal": null,
+    "distrito": "Valle Poniente"
+  },
+  {
+    "clave": "COL-192",
+    "nombre": "Villas Carmel",
+    "lat": 25.63867,
+    "lng": -100.3269,
+    "codigo_postal": "66278",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-193",
+    "nombre": "Villas Crisantemo",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-194",
+    "nombre": "Villas de Aragón",
+    "lat": 25.64487,
+    "lng": -100.35737,
+    "codigo_postal": "66273",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-195",
+    "nombre": "Villas de San Agustín",
+    "lat": 25.65406,
+    "lng": -100.33237,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente",
+    "aprox": true
+  },
+  {
+    "clave": "COL-196",
+    "nombre": "Villas de Santa Bárbara",
+    "lat": 25.65547,
+    "lng": -100.39792,
+    "codigo_postal": "66236",
+    "distrito": "San Pedro",
+    "aprox": true
+  },
+  {
+    "clave": "COL-197",
+    "nombre": "Villas de Santa Engracia",
+    "lat": 25.65654,
+    "lng": -100.35477,
+    "codigo_postal": "66268",
+    "distrito": "Valle",
+    "aprox": true
+  },
+  {
+    "clave": "COL-198",
+    "nombre": "Villas de Terrasol",
+    "lat": 25.6444,
+    "lng": -100.3844,
+    "codigo_postal": "66249",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-199",
+    "nombre": "Villas del Pedregal",
+    "lat": 25.63826,
+    "lng": -100.38553,
+    "codigo_postal": "66280",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-200",
+    "nombre": "Villas del Valle",
+    "lat": 25.63404,
+    "lng": -100.37726,
+    "codigo_postal": "66285",
+    "distrito": "Lomas",
+    "aprox": true
+  },
+  {
+    "clave": "COL-201",
+    "nombre": "Villas La Rivera",
+    "lat": 25.63379,
+    "lng": -100.3612,
+    "codigo_postal": "66297",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-202",
+    "nombre": "Vista Montaña",
+    "lat": 25.6816,
+    "lng": -100.4064,
+    "codigo_postal": "66216",
+    "distrito": "El Obispo"
+  },
+  {
+    "clave": "COL-203",
+    "nombre": "Vista Real",
+    "lat": 25.65168,
+    "lng": -100.32524,
+    "codigo_postal": "66266",
+    "distrito": "Valle Oriente"
+  },
+  {
+    "clave": "COL-204",
+    "nombre": "Vistas del Valle",
+    "lat": 25.62515,
+    "lng": -100.34758,
+    "codigo_postal": "66275",
+    "distrito": "San Ángel",
+    "aprox": true
+  },
+  {
+    "clave": "COL-205",
+    "nombre": "Volkswagen",
+    "lat": 25.67023,
+    "lng": -100.40062,
+    "codigo_postal": "66239",
+    "distrito": "San Pedro",
+    "aprox": true
+  }
+]

@@ -17,9 +17,11 @@ interface Props {
   especie: Especie;
   onMover: (lat: number, lng: number) => void;
   onUsarGps: () => void;
+  /** Clase de altura del mapa. */
+  alto?: string;
 }
 
-export function UbicacionPicker({ ubicacion, manual, gps, especie, onMover, onUsarGps }: Props) {
+export function UbicacionPicker({ ubicacion, manual, gps, especie, onMover, onUsarGps, alto = "h-44" }: Props) {
   let estado: string;
   if (manual) estado = "Ubicación ajustada a mano";
   else if (gps.posicion) estado = `Tu ubicación actual (±${Math.round(gps.posicion.precision)} m)`;
@@ -29,7 +31,7 @@ export function UbicacionPicker({ ubicacion, manual, gps, especie, onMover, onUs
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="h-44 overflow-hidden rounded-2xl ring-1 ring-arena-oscura">
+      <div className={`${alto} overflow-hidden rounded-2xl ring-1 ring-arena-oscura`}>
         <MiniMapa lat={ubicacion.lat} lng={ubicacion.lng} especie={especie} onMover={onMover} />
       </div>
       <div className="flex items-center justify-between gap-2 text-xs font-semibold text-tinta-suave">

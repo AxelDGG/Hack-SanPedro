@@ -3,14 +3,14 @@
 import { Suspense, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { RequireAuth } from "@/components/auth/RequireAuth";
-import { PageHeader } from "@/components/layout/PageHeader";
 import { Pagina } from "@/components/layout/Pagina";
-import { FormularioReporte } from "./FormularioReporte";
+import { ORDEN_TIPOS, ORIGENES, type Origen, type TipoReporte } from "@/lib/constants";
+import { AsistenteReporte } from "./asistente/AsistenteReporte";
 
 export function ReportarView() {
   return (
     <Pagina>
-      {/* useSearchParams (?animal=) es dato de la URL: va dentro de Suspense. */}
+      {/* useSearchParams (?tipo=, ?animal=…) es dato de la URL: va dentro de Suspense. */}
       <Suspense>
         <Contenido />
       </Suspense>
@@ -20,29 +20,34 @@ export function ReportarView() {
 
 function Contenido() {
   const router = useRouter();
-  const animalId = useSearchParams().get("animal");
-  // Cambiar la key reinicia el formulario para "Reportar otro".
+  const params = useSearchParams();
+  const animalId = params.get("animal");
+  const tipoParam = params.get("tipo");
+  const origenParam = params.get("origen");
+  const tipo = ORDEN_TIPOS.includes(tipoParam as TipoReporte) ? (tipoParam as TipoReporte) : null;
+  const origen = origenParam && origenParam in ORIGENES ? (origenParam as Origen) : null;
+  // Cambiar la key reinicia el asistente para "Reportar otro".
   const [intento, setIntento] = useState(0);
 
   return (
-    <>
-      <PageHeader
-        title={animalId ? "Lo vi también" : "Reportar avistamiento"}
-        subtitle={animalId ? "Confirma dónde y cómo lo viste hoy." : "Foto + ubicación. La IA te ayuda con el resto."}
-      />
-      <RequireAuth motivo="para reportar un animal">
-        {(profile) => (
-          <FormularioReporte
-            key={`${intento}-${animalId}`}
-            userId={profile.id}
-            animalInicialId={animalId}
-            onOtro={() => {
-              if (animalId) router.replace("/reportar");
-              setIntento((n) => n + 1);
-            }}
-          />
-        )}
-      </RequireAuth>
-    </>
+    // Sin cuenta: quien llega desde un link de un grupo entra como invitado.
+    <RequireAuth motivo="para reportar" invitado>
+      {(profile) => (
+        <AsistenteReporte
+          key={`${intento}-${animalId}-${tipo}`}
+          userId={profile.id}
+          tipoInicial={tipo}
+          animalInicialId={animalId}
+          fotoCompartida={params.get("foto")}
+          textoCompartido={params.get("texto")}
+          origenInicial={origen}
+          abrirPegar={params.get("pegar") === "1"}
+          onOtro={() => {
+            if (animalId || tipo || params.size > 0) router.replace("/reportar");
+            setIntento((n) => n + 1);
+          }}
+        />
+      )}
+    </RequireAuth>
   );
 }

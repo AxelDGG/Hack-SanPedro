@@ -3,8 +3,10 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Camera, HeartHandshake, Hexagon, MapIcon, PawPrint, Trophy, UserRound, type LucideIcon } from "lucide-react";
+import { motion } from "motion/react";
+import { Bell, HeartHandshake, Hexagon, House, MapIcon, Plus, UserRound, type LucideIcon } from "lucide-react";
 import { useSession } from "@/components/providers/SessionProvider";
+import { RESORTE, RESORTE_REBOTE } from "@/lib/motion";
 import type { Rol } from "@/lib/constants";
 
 interface NavItem {
@@ -14,7 +16,7 @@ interface NavItem {
 }
 
 const CUARTO_SLOT: Record<Rol, NavItem> = {
-  vecino: { href: "/manada", label: "Manada", icon: PawPrint },
+  vecino: { href: "/avisos", label: "Avisos", icon: Bell },
   rescatista: { href: "/rescate", label: "Casos", icon: HeartHandshake },
   municipio: { href: "/municipio", label: "Zonas", icon: Hexagon },
 };
@@ -37,8 +39,8 @@ function Barra({ pathname }: { pathname: string | null }) {
   const rol = profile?.rol ?? "vecino";
 
   const izquierda: NavItem[] = [
-    { href: "/", label: "Mapa", icon: MapIcon },
-    { href: "/ranking", label: "Ranking", icon: Trophy },
+    { href: "/", label: "Inicio", icon: House },
+    { href: "/mapa", label: "Mapa", icon: MapIcon },
   ];
   const derecha: NavItem[] = [CUARTO_SLOT[rol], { href: "/perfil", label: "Perfil", icon: UserRound }];
 
@@ -55,10 +57,17 @@ function Barra({ pathname }: { pathname: string | null }) {
         <li className="flex justify-center">
           <Link
             href="/reportar"
-            aria-label="Reportar un animal"
-            className="-mt-8 flex size-16 items-center justify-center rounded-full bg-terracota text-white shadow-lg ring-4 ring-crema transition active:scale-95"
+            aria-label="Reportar"
+            className="-mt-8 block rounded-full"
           >
-            <Camera className="size-7" />
+            <motion.span
+              className="flex size-16 items-center justify-center rounded-full bg-terracota text-white shadow-lg ring-4 ring-crema"
+              whileHover={{ scale: 1.06 }}
+              whileTap={{ scale: 0.9 }}
+              transition={RESORTE_REBOTE}
+            >
+              <Plus className="size-8" strokeWidth={2.6} />
+            </motion.span>
           </Link>
         </li>
         {derecha.map((item) => (
@@ -76,11 +85,23 @@ function NavLink({ item, active }: { item: NavItem; active: boolean }) {
       <Link
         href={item.href}
         aria-current={active ? "page" : undefined}
-        className={`flex flex-col items-center gap-0.5 py-1 text-xs font-semibold ${
+        className={`flex flex-col items-center gap-0.5 py-1 text-xs font-semibold transition-colors ${
           active ? "text-terracota" : "text-tinta-suave"
         }`}
       >
-        <Icon className="size-6" strokeWidth={active ? 2.4 : 2} />
+        <motion.span className="relative flex h-8 w-14 items-center justify-center" whileTap={{ scale: 0.85 }}>
+          {/* Pastilla que se desliza a la pestaña activa. */}
+          {active && (
+            <motion.span layoutId="nav-activo" className="absolute inset-0 rounded-full bg-terracota/12" transition={RESORTE} />
+          )}
+          <motion.span
+            className="relative"
+            animate={active ? { y: [0, -4, 0], rotate: [0, -8, 0] } : { y: 0, rotate: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+          >
+            <Icon className="size-6" strokeWidth={active ? 2.4 : 2} />
+          </motion.span>
+        </motion.span>
         {item.label}
       </Link>
     </li>

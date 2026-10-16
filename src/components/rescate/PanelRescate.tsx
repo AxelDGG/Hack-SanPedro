@@ -1,11 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { CheckCircle2, LoaderCircle } from "lucide-react";
+import { AnimatePresence, motion } from "motion/react";
+import { CheckCircle2 } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useGeolocation } from "@/hooks/useGeolocation";
 import { useCasos, type Caso } from "@/hooks/useCasos";
+import { HuellasCaminando } from "@/components/ui/HuellasCaminando";
+import { NumeroAnimado } from "@/components/ui/NumeroAnimado";
+import { Pestanas } from "@/components/ui/Pestanas";
 import { CENTRO_SAN_PEDRO, ESPECIES } from "@/lib/constants";
+import { EASE_SOFT, RESORTE, RESORTE_REBOTE } from "@/lib/motion";
 import { CasoCard } from "./CasoCard";
 import { CambiarEstado } from "./CambiarEstado";
 
@@ -43,86 +48,124 @@ export function PanelRescate({ userId }: { userId: string }) {
   return (
     <div className="flex flex-col gap-4 px-4 pb-8">
       <section className="grid grid-cols-3 gap-2 text-center">
-        <Resumen valor={cercanos.length} etiqueta="por atender" />
-        <Resumen valor={urgentes} etiqueta="urgentes" destacado={urgentes > 0} />
-        <Resumen valor={mios.length} etiqueta="a tu cargo" />
+        <Resumen valor={cercanos.length} etiqueta="por atender" orden={0} />
+        <Resumen valor={urgentes} etiqueta="urgentes" destacado={urgentes > 0} orden={1} />
+        <Resumen valor={mios.length} etiqueta="a tu cargo" orden={2} />
       </section>
 
-      <div className="grid grid-cols-2 gap-1 rounded-2xl bg-arena p-1 text-sm" role="tablist">
-        {(
-          [
-            ["cercanos", "Cercanos"],
-            ["mios", "Mis casos"],
-          ] as const
-        ).map(([valor, etiqueta]) => (
-          <button
-            key={valor}
-            type="button"
-            role="tab"
-            aria-selected={pestana === valor}
-            onClick={() => setPestana(valor)}
-            className={`rounded-xl py-2 font-bold transition ${pestana === valor ? "bg-white shadow-sm" : "text-tinta-suave"}`}
-          >
-            {etiqueta}
-          </button>
-        ))}
-      </div>
+      <Pestanas
+        opciones={[
+          ["cercanos", "Cercanos"],
+          ["mios", "Mis casos"],
+        ]}
+        valor={pestana}
+        onCambio={setPestana}
+      />
 
       {cargando ? (
-        <div className="flex justify-center py-12 text-tinta-suave">
-          <LoaderCircle className="size-8 animate-spin" aria-label="Cargando casos" />
+        <div className="flex justify-center py-12 text-terracota/70">
+          <HuellasCaminando etiqueta="Cargando casos" />
         </div>
       ) : lista.length === 0 ? (
-        <p className="rounded-3xl bg-white p-8 text-center text-tinta-suave ring-1 ring-arena-oscura">
+        <motion.p
+          key={pestana}
+          className="rounded-3xl bg-white p-8 text-center text-tinta-suave ring-1 ring-arena-oscura"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: EASE_SOFT }}
+        >
           {pestana === "cercanos" ? "No hay casos pendientes cerca. ¡Buen trabajo!" : "Aún no tienes casos a tu cargo."}
-        </p>
+        </motion.p>
       ) : (
         <ul className="flex flex-col gap-3">
-          {lista.map((caso) => (
-            <li key={caso.id}>
-              <CasoCard
-                caso={caso}
-                miId={userId}
-                nuevo={nuevos.has(caso.id)}
-                tomando={tomando === caso.id}
-                onTomar={() => tomar(caso)}
-                onCambiarEstado={() => setEditando(caso)}
-              />
-            </li>
-          ))}
+          {/* Los casos nuevos (Realtime) entran deslizándose y el resto se reacomoda. */}
+          <AnimatePresence mode="popLayout">
+            {lista.map((caso, i) => (
+              <motion.li
+                key={caso.id}
+                layout
+                initial={{ opacity: 0, y: 20, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1, transition: { ...RESORTE, delay: Math.min(i, 8) * 0.05 } }}
+                exit={{ opacity: 0, x: -40, transition: { duration: 0.2 } }}
+                transition={RESORTE}
+              >
+                <CasoCard
+                  caso={caso}
+                  miId={userId}
+                  nuevo={nuevos.has(caso.id)}
+                  tomando={tomando === caso.id}
+                  onTomar={() => tomar(caso)}
+                  onCambiarEstado={() => setEditando(caso)}
+                />
+              </motion.li>
+            ))}
+          </AnimatePresence>
         </ul>
       )}
 
-      {editando && (
-        <CambiarEstado
-          animalId={editando.id}
-          nombre={editando.apodo ?? ESPECIES[editando.especie].label}
-          estadoActual={editando.estado}
-          onCerrar={() => setEditando(null)}
-          onListo={(mensaje) => {
-            setEditando(null);
-            mostrarAviso(mensaje);
-          }}
-        />
-      )}
+      <AnimatePresence>
+        {editando && (
+          <CambiarEstado
+            key={editando.id}
+            animalId={editando.id}
+            nombre={editando.apodo ?? ESPECIES[editando.especie].label}
+            estadoActual={editando.estado}
+            onCerrar={() => setEditando(null)}
+            onListo={(mensaje) => {
+              setEditando(null);
+              mostrarAviso(mensaje);
+            }}
+          />
+        )}
+      </AnimatePresence>
 
-      {aviso && (
-        <div
-          role="status"
-          className="fixed inset-x-4 bottom-[calc(var(--nav-h)+1rem)] z-[1150] mx-auto flex max-w-md items-center gap-2 rounded-2xl bg-tinta px-4 py-3 text-sm font-semibold text-white shadow-lg"
-        >
-          <CheckCircle2 className="size-5 shrink-0 text-estado-adoptado" /> {aviso}
-        </div>
-      )}
+      <AnimatePresence>
+        {aviso && (
+          <motion.div
+            key="aviso"
+            role="status"
+            className="fixed inset-x-4 bottom-[calc(var(--nav-h)+1rem)] z-[1150] mx-auto flex max-w-md items-center gap-2 rounded-2xl bg-tinta px-4 py-3 text-sm font-semibold text-white shadow-lg"
+            initial={{ opacity: 0, y: 24, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 16, scale: 0.95, transition: { duration: 0.2 } }}
+            transition={RESORTE}
+          >
+            <motion.span
+              className="shrink-0"
+              initial={{ scale: 0, rotate: -45 }}
+              animate={{ scale: 1, rotate: 0 }}
+              transition={{ ...RESORTE_REBOTE, delay: 0.1 }}
+            >
+              <CheckCircle2 className="size-5 text-estado-adoptado" />
+            </motion.span>
+            {aviso}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
-function Resumen({ valor, etiqueta, destacado = false }: { valor: number; etiqueta: string; destacado?: boolean }) {
+function Resumen({
+  valor,
+  etiqueta,
+  destacado = false,
+  orden,
+}: {
+  valor: number;
+  etiqueta: string;
+  destacado?: boolean;
+  orden: number;
+}) {
   return (
-    <div className={`rounded-2xl p-3 ${destacado ? "bg-terracota text-white" : "bg-white ring-1 ring-arena-oscura"}`}>
-      <p className="font-display text-2xl font-semibold">{valor}</p>
+    <motion.div
+      className={`rounded-2xl p-3 transition-colors duration-500 ${destacado ? "bg-terracota text-white" : "bg-white ring-1 ring-arena-oscura"}`}
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45, ease: EASE_SOFT, delay: orden * 0.06 }}
+    >
+      <NumeroAnimado valor={valor} className="block font-display text-2xl font-semibold" />
       <p className={`text-xs font-bold ${destacado ? "text-white/90" : "text-tinta-suave"}`}>{etiqueta}</p>
-    </div>
+    </motion.div>
   );
 }

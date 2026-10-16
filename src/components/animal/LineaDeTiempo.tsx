@@ -1,7 +1,11 @@
 /* eslint-disable @next/next/no-img-element -- miniaturas de Storage o placeholders locales */
+"use client";
+
+import { motion } from "motion/react";
 import { Camera, Eye, Sparkles } from "lucide-react";
 import { ESTADOS } from "@/lib/constants";
 import { fechaCorta, haceCuanto } from "@/lib/format";
+import { EASE_SOFT, RESORTE, RESORTE_REBOTE } from "@/lib/motion";
 import type { AvistamientoFicha, CambioFicha } from "@/hooks/useFichaAnimal";
 
 type Evento =
@@ -17,10 +21,19 @@ export function LineaDeTiempo({ avistamientos, cambios }: { avistamientos: Avist
 
   return (
     <ol className="relative flex flex-col gap-4 border-l-2 border-arena-oscura pl-5" data-testid="linea-tiempo">
+      {/* Cada evento aparece al entrar en pantalla; los nuevos (Realtime) empujan a los demás con suavidad. */}
       {eventos.map((e) => (
-        <li key={`${e.tipo}-${e.dato.id}`} className="relative">
+        <motion.li
+          key={`${e.tipo}-${e.dato.id}`}
+          className="relative"
+          layout="position"
+          initial={{ opacity: 0, x: -12 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-30px" }}
+          transition={{ duration: 0.5, ease: EASE_SOFT, layout: RESORTE }}
+        >
           {e.tipo === "estado" ? <EventoEstado cambio={e.dato} /> : <EventoAvistamiento avistamiento={e.dato} />}
-        </li>
+        </motion.li>
       ))}
     </ol>
   );
@@ -28,12 +41,16 @@ export function LineaDeTiempo({ avistamientos, cambios }: { avistamientos: Avist
 
 function Punto({ color, children }: { color: string; children?: React.ReactNode }) {
   return (
-    <span
+    <motion.span
       className="absolute top-0.5 -left-[31px] flex size-5 items-center justify-center rounded-full text-white ring-4 ring-crema"
       style={{ backgroundColor: color }}
+      initial={{ scale: 0 }}
+      whileInView={{ scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ ...RESORTE_REBOTE, delay: 0.1 }}
     >
       {children}
-    </span>
+    </motion.span>
   );
 }
 

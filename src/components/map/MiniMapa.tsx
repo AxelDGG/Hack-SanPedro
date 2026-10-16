@@ -6,20 +6,21 @@ import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from "react-lea
 import "leaflet/dist/leaflet.css";
 import "./mapa.css";
 import { iconoAnimal } from "./markerIcon";
-import type { Especie, Estado } from "@/lib/constants";
+import type { Especie, Estado, TipoReporte } from "@/lib/constants";
 
 interface Props {
   lat: number;
   lng: number;
   especie: Especie;
   estado?: Estado;
+  tipo?: TipoReporte;
   /** Si se pasa, el pin se puede arrastrar o mover tocando el mapa. */
   onMover?: (lat: number, lng: number) => void;
 }
 
 /** Mapa pequeño con un solo pin; editable cuando recibe `onMover`. */
-export default function MiniMapa({ lat, lng, especie, estado = "avistado", onMover }: Props) {
-  const icono = iconoAnimal({ estado, especie, urgente: false, nuevo: false, seleccionado: false });
+export default function MiniMapa({ lat, lng, especie, estado = "avistado", tipo, onMover }: Props) {
+  const icono = iconoAnimal({ estado, tipo, especie, urgente: false, nuevo: false, seleccionado: false });
   const handlers = useMemo<L.LeafletEventHandlerFnMap>(
     () => ({
       dragend: (e) => {

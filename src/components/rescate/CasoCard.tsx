@@ -2,12 +2,14 @@
 "use client";
 
 import Link from "next/link";
+import { motion } from "motion/react";
 import { HandHeart, Navigation, RefreshCw } from "lucide-react";
 import { StatusPill } from "@/components/animal/StatusPill";
 import { Urgencia } from "@/components/animal/Urgencia";
 import { buttonClass } from "@/components/ui/Button";
 import { CONDICIONES, ESPECIES } from "@/lib/constants";
 import { distancia, haceCuanto } from "@/lib/format";
+import { RESORTE } from "@/lib/motion";
 import type { Caso } from "@/hooks/useCasos";
 
 interface Props {
@@ -36,9 +38,14 @@ export function CasoCard({ caso, miId, nuevo, tomando, onTomar, onCambiarEstado 
         <Link href={`/animal/${caso.id}`} className="relative size-20 shrink-0 overflow-hidden rounded-2xl bg-arena">
           {caso.foto_portada_url && <img src={caso.foto_portada_url} alt={nombre} className="size-full object-cover" />}
           {nuevo && (
-            <span className="absolute inset-x-0 bottom-0 bg-tinta py-0.5 text-center text-[10px] font-extrabold tracking-wider text-white">
+            <motion.span
+              className="absolute inset-x-0 bottom-0 bg-tinta py-0.5 text-center text-[10px] font-extrabold tracking-wider text-white"
+              initial={{ y: "100%" }}
+              animate={{ y: 0, opacity: [1, 0.65, 1] }}
+              transition={{ y: RESORTE, opacity: { duration: 1.4, repeat: Infinity, ease: "easeInOut" } }}
+            >
               NUEVO
-            </span>
+            </motion.span>
           )}
         </Link>
         <div className="min-w-0 flex-1">
@@ -46,7 +53,7 @@ export function CasoCard({ caso, miId, nuevo, tomando, onTomar, onCambiarEstado 
             <Link href={`/animal/${caso.id}`} className="font-display text-lg leading-tight font-semibold">
               {nombre}
             </Link>
-            <StatusPill estado={caso.estado} />
+            <StatusPill estado={caso.estado} tipo={caso.tipo} />
           </div>
           <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-tinta-suave">
             <Urgencia nivel={caso.urgencia} />

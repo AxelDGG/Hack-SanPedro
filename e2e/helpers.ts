@@ -39,6 +39,30 @@ export async function borrarAnimales(ids: string[]) {
   await db.from("animals").delete().in("id", ids);
 }
 
+/**
+ * Avanza el asistente con "Siguiente" hasta que el botón de abajo diga Publicar/Confirmar
+ * (sin tocarlo). Devuelve los títulos de los pasos por los que pasó.
+ */
+export async function avanzarHastaPublicar(page: Page, maxPasos = 8) {
+  const titulos: string[] = [];
+  for (let i = 0; i < maxPasos; i++) {
+    await page.waitForTimeout(450); // transición entre pasos
+    titulos.push((await page.getByRole("heading", { level: 2 }).first().textContent()) ?? "");
+    if (await page.getByTestId("publicar").isVisible()) return titulos;
+    await page.getByTestId("siguiente").click();
+  }
+  throw new Error(`El asistente no llegó a Publicar. Pasos: ${titulos.join(" → ")}`);
+}
+
+/** ¿El proyecto de Supabase permite sesiones anónimas (reportar sin cuenta)? */
+export async function invitadosHabilitados() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SUPABASE_URL}/auth/v1/settings`, {
+    headers: { apikey: process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY! },
+  });
+  const json = await res.json();
+  return json?.external?.anonymous_users === true;
+}
+
 /** Id del animal desde el enlace "Ver ficha" de la pantalla de éxito. */
 export async function animalIdDeExito(page: Page) {
   const href = await page.getByRole("link", { name: "Ver ficha" }).getAttribute("href");

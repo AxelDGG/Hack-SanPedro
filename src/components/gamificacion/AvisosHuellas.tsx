@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { AnimatePresence, motion } from "motion/react";
 import { X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useSession } from "@/components/providers/SessionProvider";
 import { ESPECIES } from "@/lib/constants";
+import { RESORTE, RESORTE_REBOTE } from "@/lib/motion";
 import type { Tables } from "@/types/database.types";
 import { iconoInsignia } from "./insignias";
 
@@ -20,8 +22,8 @@ interface Aviso {
 const DURACION_MS = 6000;
 
 /**
- * Avisos en vivo para el usuario con sesión: cuando un caso que reportó se resuelve
- * (otra persona cambia el estado) o cuando gana una insignia.
+ * Avisos en vivo para el usuario con sesión: un reporte nuevo en su colonia, alguien vio a su
+ * mascota perdida, un caso que reportó se resolvió (otra persona cambió el estado) o una insignia.
  */
 export function AvisosHuellas() {
   const { user, refreshProfile } = useSession();
@@ -61,6 +63,19 @@ export function AvisosHuellas() {
           });
         },
       )
+      .on<Tables<"notificaciones">>(
+        "postgres_changes",
+        { event: "INSERT", schema: "public", table: "notificaciones", filter: `user_id=eq.${userId}` },
+        ({ new: n }) => {
+          mostrar({
+            id: `no-${n.id}`,
+            titulo: n.titulo,
+            detalle: n.cuerpo,
+            icono: n.tipo === "reporte_zona" ? "ojo" : n.tipo === "posible_coincidencia" ? "lupa" : "corazon",
+            href: n.url,
+          });
+        },
+      )
       .on<Tables<"user_badges">>(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "user_badges", filter: `user_id=eq.${userId}` },
@@ -88,48 +103,65 @@ export function AvisosHuellas() {
     };
   }, [userId, refreshProfile]);
 
-  if (avisos.length === 0) return null;
-
   return (
     <div className="pointer-events-none fixed inset-x-0 top-3 z-[1300] flex flex-col items-center gap-2 px-4" aria-live="polite">
-      {avisos.map((a) => {
-        const Icono = iconoInsignia(a.icono);
-        const contenido = (
-          <>
-            <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-terracota text-white">
-              <Icono className="size-5" />
-            </span>
-            <span className="min-w-0 flex-1">
-              <span className="block font-display text-lg leading-tight font-semibold">{a.titulo}</span>
-              <span className="block truncate text-sm text-white/80">{a.detalle}</span>
-            </span>
-          </>
-        );
-        return (
-          <div
-            key={a.id}
-            role="status"
-            data-testid="aviso-huellas"
-            className="pointer-events-auto flex w-full max-w-sm animate-[cos-aparecer_0.4s_ease-out] items-center gap-3 rounded-2xl bg-tinta px-3 py-3 text-white shadow-xl"
-          >
-            {a.href ? (
-              <Link href={a.href} className="flex min-w-0 flex-1 items-center gap-3">
-                {contenido}
-              </Link>
-            ) : (
-              contenido
-            )}
-            <button
-              type="button"
-              aria-label="Cerrar aviso"
-              onClick={() => setAvisos((prev) => prev.filter((x) => x.id !== a.id))}
-              className="rounded-full p-1 text-white/70"
+      <AnimatePresence mode="popLayout">
+        {avisos.map((a) => {
+          const Icono = iconoInsignia(a.icono);
+          const contenido = (
+            <>
+              <motion.span
+                className="flex size-10 shrink-0 items-center justify-center rounded-full bg-terracota text-white"
+                initial={{ scale: 0, rotate: -40 }}
+                animate={{ scale: 1, rotate: 0 }}
+                transition={{ ...RESORTE_REBOTE, delay: 0.15 }}
+              >
+                <Icono className="size-5" />
+              </motion.span>
+              <span className="min-w-0 flex-1">
+                <span className="block font-display text-lg leading-tight font-semibold">{a.titulo}</span>
+                <span className="block truncate text-sm text-white/80">{a.detalle}</span>
+              </span>
+            </>
+          );
+          return (
+            <motion.div
+              key={a.id}
+              layout
+              role="status"
+              data-testid="aviso-huellas"
+              className="pointer-events-auto relative flex w-full max-w-sm items-center gap-3 overflow-hidden rounded-2xl bg-tinta px-3 py-3 text-white shadow-xl"
+              initial={{ opacity: 0, y: -28, scale: 0.94 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.94, transition: { duration: 0.2 } }}
+              transition={RESORTE}
             >
-              <X className="size-4" />
-            </button>
-          </div>
-        );
-      })}
+              {a.href ? (
+                <Link href={a.href} className="flex min-w-0 flex-1 items-center gap-3">
+                  {contenido}
+                </Link>
+              ) : (
+                contenido
+              )}
+              <button
+                type="button"
+                aria-label="Cerrar aviso"
+                onClick={() => setAvisos((prev) => prev.filter((x) => x.id !== a.id))}
+                className="rounded-full p-1 text-white/70"
+              >
+                <X className="size-4" />
+              </button>
+              {/* Barra que se vacía mientras el aviso sigue en pantalla. */}
+              <motion.span
+                className="absolute inset-x-0 bottom-0 h-0.5 origin-left bg-ambar"
+                initial={{ scaleX: 1 }}
+                animate={{ scaleX: 0 }}
+                transition={{ duration: DURACION_MS / 1000, ease: "linear" }}
+              />
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import { expect, test, type Browser } from "@playwright/test";
-import { animalIdDeExito, borrarAnimales, entrarComo, fotoDePrueba } from "./helpers";
+import { animalIdDeExito, avanzarHastaPublicar, borrarAnimales, entrarComo, fotoDePrueba } from "./helpers";
 
 /**
  * Criterio de éxito de la demo, de punta a punta y con varios dispositivos:
@@ -21,7 +21,7 @@ test("criterio de éxito: reporte con IA → mapa en vivo → rescate → munici
   const lugar = { latitude: 25.6185, longitude: -100.3615 };
 
   const mapa = await nuevaPantalla(browser);
-  await mapa.page.goto("/");
+  await mapa.page.goto("/mapa");
   await expect(mapa.page.locator(".cos-pin").first()).toBeVisible();
 
   const municipio = await nuevaPantalla(browser);
@@ -34,9 +34,10 @@ test("criterio de éxito: reporte con IA → mapa en vivo → rescate → munici
   // 1. La vecina reporta desde su celular.
   const vecina = await nuevaPantalla(browser, lugar);
   await entrarComo(vecina.page, "vecino");
-  await vecina.page.goto("/reportar");
+  await vecina.page.getByTestId("tipo-callejero").click();
   await vecina.page.getByTestId("foto-camara").setInputFiles(await fotoDePrueba("perro-1"));
   await expect(vecina.page.getByTestId("ai-resultado")).toContainText("La IA detectó: Perro");
+  await avanzarHastaPublicar(vecina.page);
   await vecina.page.getByTestId("publicar").click();
   await expect(vecina.page.getByTestId("reporte-exitoso")).toBeVisible();
   const animalId = await animalIdDeExito(vecina.page);

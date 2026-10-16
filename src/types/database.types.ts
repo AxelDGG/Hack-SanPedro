@@ -14,21 +14,96 @@ export type Database = {
   }
   public: {
     Tables: {
+      accesos_contacto: {
+        Row: {
+          animal_id: string
+          created_at: string
+          id: number
+          user_id: string
+        }
+        Insert: {
+          animal_id: string
+          created_at?: string
+          id?: never
+          user_id: string
+        }
+        Update: {
+          animal_id?: string
+          created_at?: string
+          id?: never
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "accesos_contacto_animal_id_fkey"
+            columns: ["animal_id"]
+            isOneToOne: false
+            referencedRelation: "animals"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "accesos_contacto_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      animal_contactos: {
+        Row: {
+          animal_id: string
+          created_at: string
+          nombre: string
+          telefono: string
+        }
+        Insert: {
+          animal_id: string
+          created_at?: string
+          nombre: string
+          telefono: string
+        }
+        Update: {
+          animal_id?: string
+          created_at?: string
+          nombre?: string
+          telefono?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "animal_contactos_animal_id_fkey"
+            columns: ["animal_id"]
+            isOneToOne: true
+            referencedRelation: "animals"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       animals: {
         Row: {
           apodo: string | null
+          collar: boolean | null
           colonia_id: number | null
+          color: string | null
           condiciones: Database["public"]["Enums"]["condicion_animal"][]
           created_at: string
           especie: Database["public"]["Enums"]["especie_animal"]
           estado: Database["public"]["Enums"]["estado_animal"]
           foto_portada_url: string | null
+          fusionado_en: string | null
           id: string
           lat: number
           lng: number
+          origen: Database["public"]["Enums"]["origen_reporte"]
+          perdido_desde: string | null
           rasgos: string | null
+          raza: string | null
+          registro_folio: string | null
           reportado_por: string | null
           rescatista_id: string | null
+          sexo: Database["public"]["Enums"]["sexo_animal"] | null
+          tamano: Database["public"]["Enums"]["tamano_animal"] | null
+          tipo: Database["public"]["Enums"]["tipo_reporte"]
           total_avistamientos: number
           ubicacion_ultima: unknown
           updated_at: string
@@ -37,18 +112,28 @@ export type Database = {
         }
         Insert: {
           apodo?: string | null
+          collar?: boolean | null
           colonia_id?: number | null
+          color?: string | null
           condiciones?: Database["public"]["Enums"]["condicion_animal"][]
           created_at?: string
           especie: Database["public"]["Enums"]["especie_animal"]
           estado?: Database["public"]["Enums"]["estado_animal"]
           foto_portada_url?: string | null
+          fusionado_en?: string | null
           id?: string
           lat: number
           lng: number
+          origen?: Database["public"]["Enums"]["origen_reporte"]
+          perdido_desde?: string | null
           rasgos?: string | null
+          raza?: string | null
+          registro_folio?: string | null
           reportado_por?: string | null
           rescatista_id?: string | null
+          sexo?: Database["public"]["Enums"]["sexo_animal"] | null
+          tamano?: Database["public"]["Enums"]["tamano_animal"] | null
+          tipo?: Database["public"]["Enums"]["tipo_reporte"]
           total_avistamientos?: number
           ubicacion_ultima?: unknown
           updated_at?: string
@@ -57,18 +142,28 @@ export type Database = {
         }
         Update: {
           apodo?: string | null
+          collar?: boolean | null
           colonia_id?: number | null
+          color?: string | null
           condiciones?: Database["public"]["Enums"]["condicion_animal"][]
           created_at?: string
           especie?: Database["public"]["Enums"]["especie_animal"]
           estado?: Database["public"]["Enums"]["estado_animal"]
           foto_portada_url?: string | null
+          fusionado_en?: string | null
           id?: string
           lat?: number
           lng?: number
+          origen?: Database["public"]["Enums"]["origen_reporte"]
+          perdido_desde?: string | null
           rasgos?: string | null
+          raza?: string | null
+          registro_folio?: string | null
           reportado_por?: string | null
           rescatista_id?: string | null
+          sexo?: Database["public"]["Enums"]["sexo_animal"] | null
+          tamano?: Database["public"]["Enums"]["tamano_animal"] | null
+          tipo?: Database["public"]["Enums"]["tipo_reporte"]
           total_avistamientos?: number
           ubicacion_ultima?: unknown
           updated_at?: string
@@ -88,6 +183,13 @@ export type Database = {
             columns: ["colonia_id"]
             isOneToOne: false
             referencedRelation: "v_ranking_colonias"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "animals_fusionado_en_fkey"
+            columns: ["fusionado_en"]
+            isOneToOne: false
+            referencedRelation: "animals"
             referencedColumns: ["id"]
           },
           {
@@ -139,6 +241,10 @@ export type Database = {
       colonias: {
         Row: {
           centro: unknown
+          centro_aproximado: boolean
+          clave: string | null
+          codigo_postal: string | null
+          distrito: string | null
           id: number
           lat: number
           lng: number
@@ -146,6 +252,10 @@ export type Database = {
         }
         Insert: {
           centro?: unknown
+          centro_aproximado?: boolean
+          clave?: string | null
+          codigo_postal?: string | null
+          distrito?: string | null
           id?: never
           lat: number
           lng: number
@@ -153,12 +263,126 @@ export type Database = {
         }
         Update: {
           centro?: unknown
+          centro_aproximado?: boolean
+          clave?: string | null
+          codigo_postal?: string | null
+          distrito?: string | null
           id?: never
           lat?: number
           lng?: number
           nombre?: string
         }
         Relationships: []
+      }
+      limites_uso: {
+        Row: {
+          clave: string
+          conteo: number
+          ventana: string
+        }
+        Insert: {
+          clave: string
+          conteo?: number
+          ventana: string
+        }
+        Update: {
+          clave?: string
+          conteo?: number
+          ventana?: string
+        }
+        Relationships: []
+      }
+      notificaciones: {
+        Row: {
+          animal_id: string | null
+          created_at: string
+          cuerpo: string
+          email_enviado_at: string | null
+          id: number
+          leida: boolean
+          push_enviado_at: string | null
+          tipo: string
+          titulo: string
+          url: string
+          user_id: string
+        }
+        Insert: {
+          animal_id?: string | null
+          created_at?: string
+          cuerpo: string
+          email_enviado_at?: string | null
+          id?: never
+          leida?: boolean
+          push_enviado_at?: string | null
+          tipo: string
+          titulo: string
+          url: string
+          user_id: string
+        }
+        Update: {
+          animal_id?: string | null
+          created_at?: string
+          cuerpo?: string
+          email_enviado_at?: string | null
+          id?: never
+          leida?: boolean
+          push_enviado_at?: string | null
+          tipo?: string
+          titulo?: string
+          url?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "notificaciones_animal_id_fkey"
+            columns: ["animal_id"]
+            isOneToOne: false
+            referencedRelation: "animals"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "notificaciones_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      perfiles_privados: {
+        Row: {
+          alertas_email: boolean
+          alertas_push: boolean
+          email_alertas: string | null
+          telefono: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          alertas_email?: boolean
+          alertas_push?: boolean
+          email_alertas?: string | null
+          telefono?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          alertas_email?: boolean
+          alertas_push?: boolean
+          email_alertas?: string | null
+          telefono?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "perfiles_privados_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: true
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       point_events: {
         Row: {
@@ -244,12 +468,48 @@ export type Database = {
           },
         ]
       }
+      push_suscripciones: {
+        Row: {
+          auth: string
+          created_at: string
+          endpoint: string
+          id: string
+          p256dh: string
+          user_id: string
+        }
+        Insert: {
+          auth: string
+          created_at?: string
+          endpoint: string
+          id?: string
+          p256dh: string
+          user_id: string
+        }
+        Update: {
+          auth?: string
+          created_at?: string
+          endpoint?: string
+          id?: string
+          p256dh?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "push_suscripciones_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       sightings: {
         Row: {
           analisis_ia: Json | null
           animal_id: string
           created_at: string
           es_confirmacion: boolean
+          foto_hash: number | null
           foto_url: string | null
           id: string
           lat: number
@@ -263,6 +523,7 @@ export type Database = {
           animal_id: string
           created_at?: string
           es_confirmacion?: boolean
+          foto_hash?: number | null
           foto_url?: string | null
           id?: string
           lat: number
@@ -276,6 +537,7 @@ export type Database = {
           animal_id?: string
           created_at?: string
           es_confirmacion?: boolean
+          foto_hash?: number | null
           foto_url?: string | null
           id?: string
           lat?: number
@@ -339,6 +601,46 @@ export type Database = {
           },
           {
             foreignKeyName: "status_updates_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      suscripciones_colonia: {
+        Row: {
+          colonia_id: number
+          created_at: string
+          user_id: string
+        }
+        Insert: {
+          colonia_id: number
+          created_at?: string
+          user_id: string
+        }
+        Update: {
+          colonia_id?: number
+          created_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "suscripciones_colonia_colonia_id_fkey"
+            columns: ["colonia_id"]
+            isOneToOne: false
+            referencedRelation: "colonias"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "suscripciones_colonia_colonia_id_fkey"
+            columns: ["colonia_id"]
+            isOneToOne: false
+            referencedRelation: "v_ranking_colonias"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "suscripciones_colonia_user_id_fkey"
             columns: ["user_id"]
             isOneToOne: false
             referencedRelation: "profiles"
@@ -416,28 +718,51 @@ export type Database = {
         Args: { p_lat: number; p_lng: number }
         Returns: number
       }
+      consumir_cuota: {
+        Args: { p_clave: string; p_limite: number; p_ventana_seg?: number }
+        Returns: boolean
+      }
+      distancia_hash: { Args: { a: number; b: number }; Returns: number }
       find_duplicate_candidates: {
         Args: {
-          p_dias?: number
+          p_color?: string
           p_especie: Database["public"]["Enums"]["especie_animal"]
+          p_excluir?: string
+          p_foto_hash?: number
           p_lat: number
           p_lng: number
-          p_radio_m?: number
+          p_raza?: string
+          p_tamano?: Database["public"]["Enums"]["tamano_animal"]
+          p_tipo?: Database["public"]["Enums"]["tipo_reporte"]
         }
         Returns: {
           apodo: string
-          condiciones: Database["public"]["Enums"]["condicion_animal"][]
+          color: string
           distancia_m: number
           especie: Database["public"]["Enums"]["especie_animal"]
           estado: Database["public"]["Enums"]["estado_animal"]
           foto_portada_url: string
           fotos: string[]
           id: string
+          misma_foto: boolean
+          motivos: string[]
+          puntaje: number
           rasgos: string
+          raza: string
+          tamano: Database["public"]["Enums"]["tamano_animal"]
+          tipo: Database["public"]["Enums"]["tipo_reporte"]
           total_avistamientos: number
-          urgencia: number
           visto_ultima_vez: string
         }[]
+      }
+      fotos_subidas_recientes: { Args: never; Returns: number }
+      fusionar_animales: {
+        Args: { p_destino: string; p_origen: string }
+        Returns: Json
+      }
+      marcar_reunido: {
+        Args: { p_animal_id: string; p_nota?: string }
+        Returns: Json
       }
       mi_rol: {
         Args: never
@@ -463,28 +788,55 @@ export type Database = {
           lng: number
           rasgos: string
           rescatista_id: string
+          tipo: Database["public"]["Enums"]["tipo_reporte"]
           total_avistamientos: number
           urgencia: number
           visto_ultima_vez: string
         }[]
       }
+      notificar_reporte: {
+        Args: { p_animal_id: string; p_foto_hash?: number }
+        Returns: number
+      }
       premiar_caso_resuelto: { Args: { p_animal_id: string }; Returns: number }
+      reasignar_colonias: { Args: never; Returns: number }
       report_sighting: {
         Args: {
           p_analisis_ia?: Json
           p_animal_id?: string
+          p_apodo?: string
+          p_collar?: boolean
+          p_color?: string
           p_condiciones?: Database["public"]["Enums"]["condicion_animal"][]
+          p_contacto_nombre?: string
+          p_contacto_telefono?: string
           p_especie: Database["public"]["Enums"]["especie_animal"]
+          p_foto_hash?: number
           p_foto_url?: string
           p_lat: number
           p_lng: number
           p_notas?: string
+          p_origen?: Database["public"]["Enums"]["origen_reporte"]
+          p_perdido_desde?: string
           p_rasgos?: string
+          p_raza?: string
+          p_registro_folio?: string
+          p_sexo?: Database["public"]["Enums"]["sexo_animal"]
+          p_tamano?: Database["public"]["Enums"]["tamano_animal"]
+          p_tipo?: Database["public"]["Enums"]["tipo_reporte"]
           p_urgencia?: number
         }
         Returns: Json
       }
       take_case: { Args: { p_animal_id: string }; Returns: Json }
+      tokens_color: { Args: { p: string }; Returns: string[] }
+      ver_contacto: {
+        Args: { p_animal_id: string }
+        Returns: {
+          nombre: string
+          telefono: string
+        }[]
+      }
     }
     Enums: {
       condicion_animal: "sano" | "flaco" | "herido" | "cachorro"
@@ -495,7 +847,12 @@ export type Database = {
         | "rescatado"
         | "esterilizado"
         | "adoptado"
+        | "reunido"
+      origen_reporte: "app" | "whatsapp" | "facebook" | "instagram" | "otro"
       rol_usuario: "vecino" | "rescatista" | "municipio"
+      sexo_animal: "macho" | "hembra"
+      tamano_animal: "chico" | "mediano" | "grande"
+      tipo_reporte: "perdido" | "encontrado" | "callejero"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -631,8 +988,13 @@ export const Constants = {
         "rescatado",
         "esterilizado",
         "adoptado",
+        "reunido",
       ],
+      origen_reporte: ["app", "whatsapp", "facebook", "instagram", "otro"],
       rol_usuario: ["vecino", "rescatista", "municipio"],
+      sexo_animal: ["macho", "hembra"],
+      tamano_animal: ["chico", "mediano", "grande"],
+      tipo_reporte: ["perdido", "encontrado", "callejero"],
     },
   },
 } as const
