@@ -48,7 +48,7 @@ test.describe("Fase 2 · reportar", () => {
 
     await expect(page.getByTestId("reporte-exitoso")).toBeVisible();
     await expect(page.getByText("+10 huellas")).toBeVisible();
-    await expect(page.getByTestId("compartir-whatsapp")).toHaveAttribute("href", /wa\.me/);
+    await expect(page.getByTestId("compartir-whatsapp")).toHaveAttribute("href", /api\.whatsapp\.com\/send\?text=/);
     const id = await animalIdDeExito(page);
     creados.push(id);
 

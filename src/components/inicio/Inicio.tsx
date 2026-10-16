@@ -164,7 +164,7 @@ function CercaDeTi({ coloniaId }: { coloniaId: number | null }) {
 function CompartirEnGrupos() {
   const mensaje = () =>
     [
-      "🐾 ¿Se te perdió tu perro o gato, o viste uno en la calle?",
+      "¿Se te perdió tu perro o gato, o viste uno en la calle?",
       "Repórtalo en CallejerOS, sin registrarte, y avisamos a los vecinos de tu colonia:",
       `• Se me perdió: ${enlaceReportar("perdido")}`,
       `• Vi o encontré uno: ${enlaceReportar("encontrado")}`,

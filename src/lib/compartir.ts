@@ -29,10 +29,10 @@ export function textoParaCompartir(a: AnimalCompartible): string {
 
   const encabezado =
     a.tipo === "perdido"
-      ? `🔎 SE BUSCA: ${a.apodo ?? `mi ${especie}`}${donde}`
+      ? `SE BUSCA: ${a.apodo ?? `mi ${especie}`}${donde}`
       : a.tipo === "encontrado"
-        ? `🐾 ENCONTRADO: ${especie}${donde}. ¿Es tuyo o sabes de quién es?`
-        : `🐾 ${TIPOS.callejero.label.toUpperCase()}: un ${especie} necesita ayuda${donde}`;
+        ? `ENCONTRADO: ${especie}${donde}. ¿Es tuyo o sabes de quién es?`
+        : `${TIPOS.callejero.label.toUpperCase()}: un ${especie} necesita ayuda${donde}`;
 
   const cierre =
     a.tipo === "perdido"
@@ -44,8 +44,13 @@ export function textoParaCompartir(a: AnimalCompartible): string {
     .join("\n");
 }
 
+/**
+ * Abre WhatsApp con el mensaje listo. Va directo a api.whatsapp.com: la redirección de wa.me
+ * rompe los caracteres de 4 bytes (emojis) en WhatsApp Web y escritorio. Por lo mismo, los
+ * mensajes que armamos no llevan emojis.
+ */
 export function enlaceWhatsApp(texto: string) {
-  return `https://wa.me/?text=${encodeURIComponent(texto)}`;
+  return `https://api.whatsapp.com/send?text=${encodeURIComponent(texto)}`;
 }
 
 /** Links cortos para pegar en los grupos: abren directo el asistente del tipo indicado. */
