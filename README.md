@@ -25,7 +25,7 @@ Vecinos reportan con foto (la IA llena los datos), rescatistas atienden los caso
 | App | https://callejeros-six.vercel.app |
 | Registro municipal (simulado) | https://callejeros-registro.vercel.app |
 | Links cortos para los grupos | `/r/perdido`, `/r/vi`, `/r/callejero` |
-| Código | https://github.com/AxelDGG/HackSanPedro |
+| Código | https://github.com/AxelDGG/Hack-SanPedro |
 
 ## Recorrido de la demo
 
