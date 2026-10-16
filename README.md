@@ -281,11 +281,13 @@ Los colores de estado (rojo, ámbar, azul, violeta y verde) y la escala de los h
 
 ## Deploy en Vercel
 
-Son dos proyectos del equipo *axeldgg's projects*: `callejeros` (la app) y `callejeros-registro` (el registro municipal simulado). Hoy se despliegan con la CLI desde la carpeta local; el repo de GitHub no está conectado a Vercel.
+Son dos proyectos del equipo *axeldgg's projects*:
+
+- **`callejeros` (la app)**: conectado al repo de GitHub. Cada push a `main` se despliega solo a producción, y las demás ramas generan un *preview*.
+- **`callejeros-registro` (el registro municipal simulado)**: sin repo conectado; casi no cambia y se despliega a mano:
 
 ```bash
-vercel deploy --prod                              # app, desde la raíz
-cd registro-municipal-api && vercel deploy --prod # registro
+cd registro-municipal-api && vercel deploy --prod
 ```
 
 - **Variables de la app** (Production): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`, `SUPABASE_SECRET_KEY` (solo servidor, para las alertas y los límites de uso), `NEXT_PUBLIC_SITE_URL`, `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL`, `AI_MOCK`, `NEXT_PUBLIC_DEMO_MODE`, `DEMO_PASSWORD`, `NEXT_PUBLIC_VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`, `GMAIL_USER`, `GMAIL_APP_PASSWORD`, `REGISTRO_API_URL` y `REGISTRO_API_KEY`.
